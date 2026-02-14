@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Salon Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.faq-section {
+    position: relative;
+    padding: 110px 5%;
+    background: linear-gradient(to bottom, #fdf2f8 0%, #fce7f3 100%);
+    overflow: hidden;
+}
+
+.faq-section::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 8%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(219, 39, 119, 0.08) 0%, transparent 70%);
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    animation: morph 15s ease-in-out infinite;
+}
+
+.faq-section::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.06) 0%, transparent 70%);
+    border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+    animation: morph 20s ease-in-out infinite reverse;
+}
+
+@keyframes morph {
+    0%, 100% { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; }
+    50% { border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%; }
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.faq-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #db2777;
+    margin-bottom: 16px;
+}
+
+.faq-header h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: #831843;
+    margin-bottom: 20px;
+}
+
+.faq-header p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #9f1239;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    background: #ffffff;
+    border: 2px solid #fbcfe8;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.faq-item:nth-child(1) { animation-delay: 0.1s; }
+.faq-item:nth-child(2) { animation-delay: 0.15s; }
+.faq-item:nth-child(3) { animation-delay: 0.2s; }
+.faq-item:nth-child(4) { animation-delay: 0.25s; }
+.faq-item:nth-child(5) { animation-delay: 0.3s; }
+
+.faq-item.active {
+    border-color: #db2777;
+    box-shadow: 0 8px 24px rgba(219, 39, 119, 0.15);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 24px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #831843;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #db2777;
+}
+
+.faq-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    stroke: #db2777;
+    stroke-width: 2.5;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 24px;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 24px 24px 24px;
+}
+
+.faq-answer p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.7;
+    margin: 0;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .faq-section { padding: 70px 5%; }
+    .faq-question { font-size: 1.05rem; padding: 20px; }
+    .faq-answer { padding: 0 20px; }
+    .faq-item.active .faq-answer { padding: 0 20px 20px 20px; }
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+}
+</style>
+</head>
+<body>
+
+<section class="faq-section">
+    <div class="faq-container">
+        <div class="faq-header">
+            <div class="faq-label">Common Questions</div>
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about our salon services, pricing, and policies</p>
+        </div>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do I need to book an appointment or can I walk in?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>We highly recommend booking an appointment to guarantee your preferred time slot. However, we do accept walk-ins based on availability. Book online or call us at (02) 9555 1234.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What is your cancellation policy?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>We require 24 hours notice for cancellations or rescheduling. Late cancellations or no-shows may incur a 50% service fee. We understand emergencies happen - just give us a call as soon as possible.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How long does a typical colour service take?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>A full colour service typically takes 2-3 hours depending on your hair length and the complexity of the colour. Highlights or balayage can take 3-4 hours. Your stylist will give you an accurate time estimate during your consultation.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What payment methods do you accept?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>We accept cash, all major credit cards (Visa, Mastercard, Amex), EFTPOS, and digital payments including Apple Pay and Google Pay. Payment is due at the time of service.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do you offer bridal packages?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! We offer comprehensive bridal packages including hair trials, day-of styling, and group packages for bridal parties. Contact us at least 3 months before your wedding date to discuss your vision and book a consultation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleFAQ(button) {
+    const item = button.parentElement;
+    const isActive = item.classList.contains('active');
+    
+    document.querySelectorAll('.faq-item').forEach(faqItem => {
+        faqItem.classList.remove('active');
+    });
+    
+    if (!isActive) {
+        item.classList.add('active');
+    }
+}
+</script>
+</body>
+</html>

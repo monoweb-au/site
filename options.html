@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Options | MonoWeb</title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/shared.js" defer></script>
+    <script src="assets/demo-viewer.js" defer></script>
+</head>
+
+<body class="options-page">
+    <div id="header-placeholder"></div>
+
+
+    <div class="section-base">
+        <div class="content">
+            <h1>Website Options</h1>
+            <p class="intro">Simple, transparent pricing. Choose your plan, pick your sections, and add any extras you
+                need.</p>
+
+        </div>
+    </div>
+
+    <div class="section-alt" id="step1">
+        <div class="content">
+            <!-- STEP 1: Choose Your Plan -->
+            <section class="step-section">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h2 class="step-title">Choose Your Plan</h2>
+                </div>
+                <p class="step-subtitle">Start with Starter or go with Plus for more sections and enhanced SEO.</p>
+
+                <div class="package-comparison">
+                    <div class="package-box">
+                        <h3>Starter</h3>
+                        <div class="package-price">$649</div>
+                        <div class="package-sections"><strong>Choose 4 sections</strong></div>
+                        <div class="package-extra">+ 1 revision round</div>
+                    </div>
+
+                    <div class="package-box featured">
+                        <h3>Plus</h3>
+                        <div class="package-price">$849</div>
+                        <div class="package-sections"><strong>Choose 6 sections</strong></div>
+                        <div class="package-extra">+ Enhanced SEO + 2 revision rounds</div>
+                    </div>
+                </div>
+
+                <h3 class="subsection-title">What's Included in Both Plans</h3>
+
+                <div class="auto-included-grid">
+                    <div class="auto-item"><span>Basic header (business name, tagline, navigation)</span></div>
+                    <div class="auto-item"><span>Contact form with spam protection</span></div>
+                    <div class="auto-item"><span>Google Maps location embed</span></div>
+                    <div class="auto-item"><span>Click-to-call phone & email buttons</span></div>
+                    <div class="auto-item"><span>Opening hours display</span></div>
+                    <div class="auto-item"><span>Social media icon links</span></div>
+                    <div class="auto-item"><span>Mobile-responsive design</span></div>
+                    <div class="auto-item"><span>Hosting & SSL ($20/month)</span></div>
+                    <div class="auto-item"><span>Domain connection & setup guidance</span></div>
+                    <div class="auto-item"><span>Basic image optimization (resize, compress)</span></div>
+                    <div class="auto-item"><span>Privacy & Terms template pages</span></div>
+                </div>
+
+                <div class="info-banner">
+                    <p><strong>Plus package extras:</strong> Enhanced SEO setup, Google Analytics, Search Console
+                        submission, schema markup, sitemap & robots.txt, and 2 revision rounds (vs 1 in Starter).</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="section-base" id="step2">
+        <div class="content">
+            <!-- STEP 2: Choose Your Sections -->
+            <section class="step-section">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h2 class="step-title">Choose Your Content</h2>
+                </div>
+                <p class="step-subtitle">Pick your website sections: <br>Starter package includes 4, and Plus includes 6. <br>Each section is a distinct part of your one-page website. </p>
+
+                <div class="info-banner">
+                    <p><strong>ℹ️ <strong>Use the dropdown below to preview live demos of each section.</strong></p>
+                </div>
+
+                <div id="demoViewerEmbed" class="demo-viewer-container"></div>
+
+            </section>
+        </div>
+    </div>
+
+    <div class="section-alt" id="step3">
+        <div class="content">
+            <!-- STEP 3: Add Extras (Optional) -->
+            <section class="step-section">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h2 class="step-title">Add Extras (Optional)</h2>
+                </div>
+                <p class="step-subtitle">Add these now or anytime after your website launches.</p>
+
+                <h3 class="category-subtitle">Beyond Your Package</h3>
+                <div class="addon-grid">
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Extra Section</h4>
+                            <span class="addon-price">$100</span>
+                        </div>
+                        <p class="addon-description">Add another section beyond your package limit.</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Additional Page</h4>
+                            <span class="addon-price">$450</span>
+                        </div>
+                        <p class="addon-description">Add a separate page with up to 4 sections (e.g., detailed services
+                            page, standalone gallery).</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Extended Gallery</h4>
+                            <span class="addon-price">$125</span>
+                        </div>
+                        <p class="addon-description">Professional photo gallery with lightbox for 20+ images (basic 5-10
+                            image gallery included in Gallery section).</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Additional Testimonials</h4>
+                            <span class="addon-price">$75</span>
+                        </div>
+                        <p class="addon-description">Expand testimonials beyond what's included (3 in Starter, 6 in
+                            Plus).</p>
+                    </div>
+                </div>
+
+                <h3 class="category-subtitle">Integrations & Tools</h3>
+                <div class="addon-grid">
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Booking System</h4>
+                            <span class="addon-price">$75</span>
+                        </div>
+                        <p class="addon-description">Integrate Calendly, Acuity, or similar booking tools (embed code
+                            required).</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">WhatsApp Click-to-Chat</h4>
+                            <span class="addon-price">$50</span>
+                        </div>
+                        <p class="addon-description">Floating WhatsApp button for direct customer messaging.</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Email Newsletter Signup</h4>
+                            <span class="addon-price">$75</span>
+                        </div>
+                        <p class="addon-description">Mailchimp or similar email signup form integration.</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Live Chat Widget</h4>
+                            <span class="addon-price">$75</span>
+                        </div>
+                        <p class="addon-description">Tawk.to or similar free live chat for instant messaging (you create
+                            account, we integrate).</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Custom Contact Form</h4>
+                            <span class="addon-price">$100</span>
+                        </div>
+                        <p class="addon-description">Multi-step forms, conditional fields, or file uploads beyond basic
+                            contact form.</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">PDF Download Button</h4>
+                            <span class="addon-price">$75</span>
+                        </div>
+                        <p class="addon-description">Add downloadable PDF (menu, price list, brochure).</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Cookie Consent Banner</h4>
+                            <span class="addon-price">$75</span>
+                        </div>
+                        <p class="addon-description">GDPR-compliant cookie consent popup for tracking/analytics.</p>
+                    </div>
+                </div>
+
+                <h3 class="category-subtitle">Content Assistance</h3>
+                <div class="addon-grid">
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Logo Design</h4>
+                            <span class="addon-price">$400</span>
+                        </div>
+                        <p class="addon-description">Professional logo for your business, with 2-3 concepts to choose
+                            from and refine (5-7 day turnaround).</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Stock Photo Sourcing</h4>
+                            <span class="addon-price">$75</span>
+                        </div>
+                        <p class="addon-description">We find up to 5 professional stock photos relevant to your
+                            business.</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Photo Editing</h4>
+                            <span class="addon-price">$50</span>
+                        </div>
+                        <p class="addon-description">Color correction, brightness/contrast adjustment (up to 10 images).
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="category-subtitle">Updates & Support</h3>
+                <div class="addon-grid">
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Content Updates</h4>
+                            <span class="addon-price">$85/hour</span>
+                        </div>
+                        <p class="addon-description">Post-launch text, image, or contact updates.</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Extra Revision Round</h4>
+                            <span class="addon-price">$125</span>
+                        </div>
+                        <p class="addon-description">Additional design changes during build (up to 10 feedback points).
+                            Larger changes quoted separately.</p>
+                    </div>
+
+                    <div class="addon-card">
+                        <div class="addon-header">
+                            <h4 class="addon-name">Rush Service</h4>
+                            <span class="addon-price">+50%</span>
+                        </div>
+                        <p class="addon-description">Fast-track any add-on to completion within 3 business days.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="section-base cta-only">
+        <div class="content">
+            <div class="cta-section">
+                <h2>Ready to Get Started?</h2>
+                <p>Choose your package, pick your sections, and let's build your website.</p>
+                <a href="index.html#contact" class="btn">Get Your Website</a>
+            </div>
+        </div>
+    </div>
+    <div id="footer-placeholder"></div>
+
+</body>
+
+</html>

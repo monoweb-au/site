@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications Demo</title>
+<style>
+/* Reset for iframe */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+
+.certifications-section {
+    padding: 110px 5%;
+    background: linear-gradient(to bottom, #eff6ff 0%, #dbeafe 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Medical cross pattern */
+.certifications-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.cert-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.cert-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.cert-label {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #1e40af;
+    margin-bottom: 16px;
+}
+
+.cert-header h2 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+
+.cert-header p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.1rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.cert-card {
+    background: #ffffff;
+    border: 2px solid #bfdbfe;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.cert-card:nth-child(1) { animation-delay: 0.1s; }
+.cert-card:nth-child(2) { animation-delay: 0.2s; }
+.cert-card:nth-child(3) { animation-delay: 0.3s; }
+.cert-card:nth-child(4) { animation-delay: 0.4s; }
+
+.cert-card:hover {
+    transform: translateY(-8px);
+    border-color: #3b82f6;
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
+}
+
+.cert-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.cert-card:hover .cert-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.cert-icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: #ffffff;
+    fill: none;
+    stroke-width: 2;
+}
+
+.cert-name {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.cert-organization {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .certifications-section { padding: 70px 5%; }
+    .cert-grid { grid-template-columns: 1fr; gap: 24px; }
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="certifications-section">
+    <div class="cert-container">
+        <div class="cert-header">
+            <div class="cert-label">Our Credentials</div>
+            <h2>Certifications & Memberships</h2>
+            <p>Recognized qualifications ensuring the highest standard of care</p>
+        </div>
+        
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h3 class="cert-name">RACGP Accredited</h3>
+                <p class="cert-organization">Royal Australian College of General Practitioners</p>
+            </div>
+            
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="7"></circle>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                    </svg>
+                </div>
+                <h3 class="cert-name">AHPRA Registered</h3>
+                <p class="cert-organization">Australian Health Practitioner Regulation Agency</p>
+            </div>
+            
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </div>
+                <h3 class="cert-name">Advanced Cardiac Life Support</h3>
+                <p class="cert-organization">Current ACLS certification (2024)</p>
+            </div>
+            
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3 class="cert-name">AMA Member</h3>
+                <p class="cert-organization">Australian Medical Association</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>

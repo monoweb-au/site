@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Table Demo</title>
+<style>
+/* Reset for iframe */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500;700&display=swap');
+
+.pricing-section {
+    padding: 110px 5%;
+    background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated grid background */
+.pricing-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.pricing-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.pricing-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.pricing-header p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.pricing-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 50px 40px;
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.6s ease-out both;
+    position: relative;
+}
+
+.pricing-card:nth-child(1) { animation-delay: 0.1s; }
+.pricing-card:nth-child(2) { 
+    animation-delay: 0.2s;
+    border-color: #fbbf24;
+    background: rgba(251, 191, 36, 0.1);
+    transform: scale(1.05);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(251, 191, 36, 0.5);
+    box-shadow: 0 20px 60px rgba(251, 191, 36, 0.3);
+}
+
+.pricing-card:nth-child(2):hover {
+    transform: translateY(-8px) scale(1.07);
+}
+
+.plan-badge {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0c4a6e;
+    background: #fbbf24;
+    padding: 8px 20px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+}
+
+.plan-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.plan-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fbbf24;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.plan-price span {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.plan-period {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 36px;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+
+.plan-features li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.plan-features li svg {
+    width: 22px;
+    height: 22px;
+    stroke: #fbbf24;
+    fill: none;
+    stroke-width: 3;
+    flex-shrink: 0;
+}
+
+.plan-cta {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #0c4a6e;
+    background: #fbbf24;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.plan-cta:hover {
+    background: #fcd34d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .pricing-section { padding: 70px 5%; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card:nth-child(2) { transform: scale(1); }
+    .pricing-card { padding: 40px 30px; }
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="pricing-section">
+    <div class="pricing-container">
+        <div class="pricing-header">
+            <h2>Membership Plans</h2>
+            <p>Choose the plan that fits your fitness goals</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-badge">Starter</div>
+                <h3 class="plan-name">Basic</h3>
+                <div class="plan-price">$29<span>/week</span></div>
+                <div class="plan-period">Billed weekly - no lock-in contract</div>
+                <ul class="plan-features">
+                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Gym floor access</li>
+                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Free weights & cardio equipment</li>
+                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Standard hours (6am-10pm)</li>
+                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Change room & showers</li>
+                </ul>
+                <a class="plan-cta">Get Started</a>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="plan-badge">Most Popular</div>
+                <h3 class="plan-name">Premium</h3>
+                <div class="plan-price">$49<span>/week</span></div>
+                <div class="plan-period">Billed weekly - cancel anytime</div>
+                <ul class="plan-features">
+                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Basic</li>
+                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> All group fitness classes</li>
+                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 24/7 gym access</li>
+                    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 personal training session/month</li>
+                </ul>
+                <a class="plan-cta">Get Started</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>

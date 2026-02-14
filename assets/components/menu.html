@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Demo</title>
+<style>
+/* Reset for iframe */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Import Fonts - Cormorant Garamond (headings) + Montserrat (body) */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* Menu Section - Burgundy/Wine Design */
+.menu-section {
+    position: relative;
+    padding: 110px 5%;
+    background: linear-gradient(to bottom, #fefdfb 0%, #faf8f5 100%);
+    overflow: hidden;
+}
+
+/* Subtle texture overlay */
+.texture-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C1810' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* Decorative divider */
+.menu-divider-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #9c1810, transparent);
+}
+
+/* Container */
+.menu-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Section Header */
+.menu-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.menu-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #9c1810;
+    margin-bottom: 16px;
+}
+
+.menu-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 600;
+    color: #27160f;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+}
+
+.menu-header p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #78716c;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Category Navigation (optional tabs) */
+.menu-categories {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #e7e5e4;
+}
+
+.category-tab {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #78716c;
+    background: none;
+    border: none;
+    padding: 10px 0;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.category-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -32px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #9c1810;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.category-tab:hover,
+.category-tab.active {
+    color: #9c1810;
+}
+
+.category-tab.active::after {
+    transform: scaleX(1);
+}
+
+/* Menu Category Section */
+.menu-category {
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.menu-category:nth-child(1) { animation-delay: 0.1s; }
+.menu-category:nth-child(2) { animation-delay: 0.2s; }
+.menu-category:nth-child(3) { animation-delay: 0.3s; }
+
+.category-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.category-header::before,
+.category-header::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #9c1810);
+}
+
+.category-header::before {
+    right: calc(50% + 150px);
+}
+
+.category-header::after {
+    left: calc(50% + 150px);
+    background: linear-gradient(to left, transparent, #9c1810);
+}
+
+.category-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #27160f;
+    margin-bottom: 8px;
+}
+
+.category-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #a8a29e;
+    font-style: italic;
+}
+
+/* Menu Items Grid */
+.menu-items {
+    display: grid;
+    gap: 30px;
+}
+
+/* Menu Item */
+.menu-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e7e5e4;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Item Info */
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #27160f;
+    line-height: 1.2;
+}
+
+.item-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9c1810;
+    background: rgba(156, 24, 16, 0.08);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.item-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #78716c;
+    line-height: 1.6;
+}
+
+/* Item Price */
+.item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #9c1810;
+    white-space: nowrap;
+    align-self: start;
+}
+
+/* Special Notice */
+.menu-notice {
+    text-align: center;
+    margin-top: 60px;
+    padding: 30px;
+    background: rgba(156, 24, 16, 0.03);
+    border: 1px dashed rgba(156, 24, 16, 0.2);
+    border-radius: 12px;
+    animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+.menu-notice p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #57534e;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.menu-notice svg {
+    width: 18px;
+    height: 18px;
+    stroke: #9c1810;
+    fill: none;
+    stroke-width: 2;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .menu-section {
+        padding: 70px 5%;
+    }
+    
+    .menu-categories {
+        gap: 20px;
+    }
+    
+    .category-header::before,
+    .category-header::after {
+        width: 60px;
+    }
+    
+    .category-header::before {
+        right: calc(50% + 120px);
+    }
+    
+    .category-header::after {
+        left: calc(50% + 120px);
+    }
+    
+    .menu-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .item-price {
+        align-self: auto;
+    }
+    
+    .item-name {
+        font-size: 1.3rem;
+    }
+    
+    .category-title {
+        font-size: 2rem;
+    }
+}
+
+/* Remove side padding on mobile for iframe display */
+@media (max-width: 768px) {
+    section {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Menu Section HTML -->
+<section class="menu-section" id="menu">
+    
+    <!-- Texture overlay -->
+    <div class="texture-overlay"></div>
+    <div class="menu-divider-top"></div>
+    
+    <div class="menu-container">
+        
+        <!-- Section Header -->
+        <div class="menu-header">
+            <div class="menu-subtitle">Our Menu</div>
+            <h2>Culinary Delights</h2>
+            <p>Fresh, locally-sourced ingredients prepared with passion and creativity</p>
+        </div>
+        
+        <!-- Category Tabs (optional - can be removed) -->
+        <div class="menu-categories">
+            <button class="category-tab active">All</button>
+            <button class="category-tab">Starters</button>
+            <button class="category-tab">Mains</button>
+            <button class="category-tab">Desserts</button>
+        </div>
+        
+        <!-- Menu Category: Starters -->
+        <div class="menu-category">
+            <div class="category-header">
+                <h3 class="category-title">Starters</h3>
+                <p class="category-description">Begin your culinary journey</p>
+            </div>
+            
+            <div class="menu-items">
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Caesar Salad</h4>
+                            <span class="item-badge">Popular</span>
+                        </div>
+                        <p class="item-description">Crisp romaine lettuce, house-made croutons, parmesan, and classic Caesar dressing</p>
+                    </div>
+                    <div class="item-price">$14</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Soup of the Day</h4>
+                        </div>
+                        <p class="item-description">Chef's daily creation served with artisan bread</p>
+                    </div>
+                    <div class="item-price">$12</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Bruschetta</h4>
+                            <span class="item-badge">New</span>
+                        </div>
+                        <p class="item-description">Grilled sourdough topped with fresh tomatoes, basil, garlic, and olive oil</p>
+                    </div>
+                    <div class="item-price">$13</div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Menu Category: Mains -->
+        <div class="menu-category">
+            <div class="category-header">
+                <h3 class="category-title">Main Courses</h3>
+                <p class="category-description">Signature dishes crafted with care</p>
+            </div>
+            
+            <div class="menu-items">
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Grilled Salmon</h4>
+                            <span class="item-badge">Chef's Pick</span>
+                        </div>
+                        <p class="item-description">Atlantic salmon with roasted vegetables, lemon butter sauce, and herb rice</p>
+                    </div>
+                    <div class="item-price">$32</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Ribeye Steak</h4>
+                        </div>
+                        <p class="item-description">12oz grass-fed ribeye, truffle mash, seasonal greens, red wine jus</p>
+                    </div>
+                    <div class="item-price">$42</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Mushroom Risotto</h4>
+                            <span class="item-badge">Vegetarian</span>
+                        </div>
+                        <p class="item-description">Creamy arborio rice with wild mushrooms, truffle oil, and parmesan</p>
+                    </div>
+                    <div class="item-price">$26</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Chicken Parmigiana</h4>
+                        </div>
+                        <p class="item-description">Breaded chicken breast, mozzarella, marinara sauce, served with pasta</p>
+                    </div>
+                    <div class="item-price">$28</div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Menu Category: Desserts -->
+        <div class="menu-category">
+            <div class="category-header">
+                <h3 class="category-title">Desserts</h3>
+                <p class="category-description">Sweet endings to remember</p>
+            </div>
+            
+            <div class="menu-items">
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Tiramisu</h4>
+                            <span class="item-badge">House Made</span>
+                        </div>
+                        <p class="item-description">Classic Italian dessert with espresso-soaked ladyfingers and mascarpone</p>
+                    </div>
+                    <div class="item-price">$11</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Chocolate Lava Cake</h4>
+                        </div>
+                        <p class="item-description">Warm chocolate cake with molten center, vanilla ice cream, berry coulis</p>
+                    </div>
+                    <div class="item-price">$12</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h4 class="item-name">Seasonal Fruit Tart</h4>
+                        </div>
+                        <p class="item-description">Buttery pastry shell filled with vanilla custard and fresh seasonal fruits</p>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Menu Notice -->
+        <div class="menu-notice">
+            <p>
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                Please inform your server of any dietary restrictions or allergies. Menu items and prices subject to change.
+            </p>
+        </div>
+        
+    </div>
+</section>
+
+
+</body>
+</html>

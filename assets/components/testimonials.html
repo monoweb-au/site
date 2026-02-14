@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials - Restaurant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.testimonials-section {
+    padding: 110px 5%;
+    background: linear-gradient(135deg, #7c2d12 0%, #92400e 50%, #b45309 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: glow 10s ease-in-out infinite;
+}
+
+.testimonials-section::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(70px);
+    animation: glow 12s ease-in-out infinite reverse;
+}
+
+@keyframes glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonials-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.testimonials-header h2 {
+    font-family: 'Crimson Text', serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.testimonials-header p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+.testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+.testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(251, 191, 36, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.star {
+    width: 20px;
+    height: 20px;
+    fill: #fbbf24;
+}
+
+.testimonial-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.author-image {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(251, 191, 36, 0.3);
+}
+
+.author-info h4 {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.author-info p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .testimonials-section { padding: 70px 5%; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+}
+</style>
+</head>
+<body>
+
+<section class="testimonials-section">
+    <div class="testimonials-container">
+        <div class="testimonials-header">
+            <h2>What Our Guests Say</h2>
+            <p>Discover why locals and visitors alike love dining with us</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <p class="testimonial-text">"The best Italian restaurant in Sydney, hands down. The pasta is made fresh daily and you can taste the difference. The tiramisu is to die for!"</p>
+                <div class="testimonial-author">
+                    <img class="author-image" src="https://picsum.photos/100/100?random=701" alt="Sarah Mitchell">
+                    <div class="author-info">
+                        <h4>Sarah Mitchell</h4>
+                        <p>Food Blogger</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <p class="testimonial-text">"Incredible atmosphere and even better food. We celebrated our anniversary here and the staff made it so special. Can't wait to return!"</p>
+                <div class="testimonial-author">
+                    <img class="author-image" src="https://picsum.photos/100/100?random=702" alt="James Chen">
+                    <div class="author-info">
+                        <h4>James Chen</h4>
+                        <p>Regular Customer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <p class="testimonial-text">"Authentic Italian cuisine prepared by chefs who truly care about their craft. The wine list is exceptional. Highly recommended!"</p>
+                <div class="testimonial-author">
+                    <img class="author-image" src="https://picsum.photos/100/100?random=703" alt="Emma Rodriguez">
+                    <div class="author-info">
+                        <h4>Emma Rodriguez</h4>
+                        <p>Wine Enthusiast</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

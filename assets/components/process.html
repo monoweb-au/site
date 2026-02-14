@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Demo</title>
+<style>
+/* Reset for iframe */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap');
+
+.process-section {
+    padding: 110px 5%;
+    background: linear-gradient(to bottom, #fffbeb 0%, #fef3c7 100%);
+}
+
+.process-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.process-label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #d97706;
+    margin-bottom: 16px;
+}
+
+.process-header h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 900;
+    color: #78350f;
+    margin-bottom: 20px;
+}
+
+.process-header p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    color: #92400e;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.process-steps {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.process-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 30px;
+    align-items: start;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.process-step:nth-child(1) { animation-delay: 0.1s; }
+.process-step:nth-child(2) { animation-delay: 0.2s; }
+.process-step:nth-child(3) { animation-delay: 0.3s; }
+.process-step:nth-child(4) { animation-delay: 0.4s; }
+
+.step-number {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #78350f;
+    box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4);
+    flex-shrink: 0;
+}
+
+.step-content {
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 16px;
+    border: 2px solid #fde68a;
+    transition: all 0.3s ease;
+}
+
+.process-step:hover .step-content {
+    border-color: #fbbf24;
+    box-shadow: 0 12px 40px rgba(251, 191, 36, 0.2);
+}
+
+.step-title {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #78350f;
+    margin-bottom: 12px;
+}
+
+.step-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.05rem;
+    color: #78716c;
+    line-height: 1.7;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .process-section { padding: 70px 5%; }
+    .process-step { grid-template-columns: 60px 1fr; gap: 20px; }
+    .step-number { width: 60px; height: 60px; font-size: 1.5rem; }
+    .step-content { padding: 24px; }
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="process-section">
+    <div class="process-header">
+        <div class="process-label">How It Works</div>
+        <h2>Simple, Hassle-Free Service</h2>
+        <p>From your first call to project completion, we make home repairs easy</p>
+    </div>
+    
+    <div class="process-steps">
+        <div class="process-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3 class="step-title">Contact Us</h3>
+                <p class="step-description">Call, text, or book online. Tell us what needs fixing and we'll schedule a convenient time to visit your home.</p>
+            </div>
+        </div>
+        
+        <div class="process-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3 class="step-title">We Assess & Quote</h3>
+                <p class="step-description">Our experienced handyman assesses the job and provides an upfront, fixed-price quote with no hidden fees.</p>
+            </div>
+        </div>
+        
+        <div class="process-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3 class="step-title">We Complete The Work</h3>
+                <p class="step-description">Once approved, we get straight to work using quality materials and professional techniques. Most jobs completed same-day.</p>
+            </div>
+        </div>
+        
+        <div class="process-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3 class="step-title">You Approve & Enjoy</h3>
+                <p class="step-description">We walk you through the completed work. Once you're happy, payment is due. All work comes with our satisfaction guarantee.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Demo</title>
+<style>
+/* Reset for iframe */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Raleway:wght@400;500;600;700&display=swap');
+
+.about-section {
+    position: relative;
+    padding: 110px 5%;
+    background: linear-gradient(to bottom, #f0fdfa 0%, #ccfbf1 100%);
+    overflow: hidden;
+}
+
+/* Floating orbs background */
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: floatOrb 15s ease-in-out infinite;
+}
+
+.about-section::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(13, 148, 136, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: floatOrb 20s ease-in-out infinite reverse;
+}
+
+@keyframes floatOrb {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px); }
+}
+
+.about-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.about-content {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.about-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0d9488;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.about-label::before {
+    content: '';
+    width: 40px;
+    height: 3px;
+    background: #0d9488;
+}
+
+.about-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 600;
+    margin-bottom: 28px;
+    line-height: 1.15;
+    color: #134e4a;
+}
+
+.highlight { color: #14b8a6; font-style: italic; }
+
+.about-content p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.about-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 36px 0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.05rem;
+    color: #334155;
+    font-weight: 600;
+}
+
+.feature-icon {
+    width: 28px;
+    height: 28px;
+    background: #14b8a6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.feature-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: #ffffff;
+    stroke-width: 3;
+    fill: none;
+}
+
+.about-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(20, 184, 166, 0.3);
+}
+
+.about-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(20, 184, 166, 0.4);
+}
+
+.about-image { animation: fadeIn 0.8s ease-out 0.2s both; }
+
+.about-image-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 8px solid #ffffff;
+    position: relative;
+}
+
+.about-image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, transparent 50%);
+}
+
+.about-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.about-image-wrapper:hover img { transform: scale(1.05); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 968px) {
+    .about-section { padding: 80px 5%; }
+    .about-container { grid-template-columns: 1fr; gap: 50px; }
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-content">
+            <div class="about-label"><span>Our Story</span></div>
+            <h2>Your Sanctuary for <span class="highlight">Wellness & Rejuvenation</span></h2>
+            <p>For over a decade, Serenity Spa has been Sydney's premier destination for holistic wellness and beauty. We believe true beauty radiates from within, which is why we combine luxurious treatments with a calming, nurturing environment.</p>
+            <p>Our expert therapists are certified in the latest techniques and use only premium, natural products. Every treatment is customized to your unique needs.</p>
+            
+            <div class="about-features">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span>Certified therapists with 10+ years experience</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span>100% natural, organic products</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span>Luxurious, tranquil private treatment rooms</span>
+                </div>
+            </div>
+            
+            <a class="about-cta"><span>Book Your Experience</span></a>
+        </div>
+        
+        <div class="about-image">
+            <div class="about-image-wrapper">
+                <!-- REPLACE WITH YOUR SPA/TEAM PHOTO -->
+                <img src="https://picsum.photos/600/700?random=101" alt="Serenity Spa">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>

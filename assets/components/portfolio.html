@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Demo</title>
+<style>
+/* Reset for iframe */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;600&display=swap');
+
+.portfolio-section {
+    padding: 110px 5%;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle gradient orbs */
+.portfolio-section::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(251, 113, 133, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+}
+
+.portfolio-section::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(90px);
+}
+
+.portfolio-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.portfolio-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #fb7185;
+    margin-bottom: 16px;
+}
+
+.portfolio-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.portfolio-header p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+
+.portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(251, 113, 133, 0.3);
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.portfolio-item:hover .portfolio-image {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.3) 60%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-category {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fb7185;
+    margin-bottom: 8px;
+}
+
+.portfolio-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.portfolio-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .portfolio-section { padding: 70px 5%; }
+    .portfolio-grid { grid-template-columns: 1fr; gap: 24px; }
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="portfolio-section">
+    <div class="portfolio-container">
+        <div class="portfolio-header">
+            <div class="portfolio-label">Our Portfolio</div>
+            <h2>Recent Projects</h2>
+            <p>Browse through our collection of stunning designs and see what we can create for you</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img class="portfolio-image" src="https://picsum.photos/800/500?random=501" alt="Urban Coffee Co website">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-category">Web Design</div>
+                    <h3 class="portfolio-title">Urban Coffee Co.</h3>
+                    <p class="portfolio-description">Modern e-commerce site with custom illustrations and smooth animations</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img class="portfolio-image" src="https://picsum.photos/800/500?random=502" alt="TechStart branding">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-category">Branding</div>
+                    <h3 class="portfolio-title">TechStart Summit</h3>
+                    <p class="portfolio-description">Complete brand identity including logo, colors, and marketing materials</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img class="portfolio-image" src="https://picsum.photos/800/500?random=503" alt="Fitness Plus app">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-category">Mobile App</div>
+                    <h3 class="portfolio-title">Fitness Plus</h3>
+                    <p class="portfolio-description">Intuitive fitness tracking app with personalized workout plans</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img class="portfolio-image" src="https://picsum.photos/800/500?random=504" alt="Bloom Botanicals packaging">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-category">Packaging Design</div>
+                    <h3 class="portfolio-title">Bloom Botanicals</h3>
+                    <p class="portfolio-description">Elegant packaging design for premium skincare product line</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>

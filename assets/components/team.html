@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Team - Medical Practice</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #eff6ff 0%, #dbeafe 100%);
+            min-height: 100vh;
+        }
+        
+        .team-section {
+            padding: 110px 5%;
+            background: linear-gradient(to bottom, #eff6ff 0%, #dbeafe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Medical cross pattern background */
+        .team-section::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 12s ease-in-out infinite;
+        }
+        
+        .team-section::after {
+            content: '';
+            position: absolute;
+            bottom: 15%;
+            right: 8%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+        }
+        
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .team-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .team-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #2563eb;
+            margin-bottom: 16px;
+        }
+        
+        .team-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+        
+        .team-header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .team-member {
+            background: #ffffff;
+            border: 2px solid #bfdbfe;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+        
+        .team-member:nth-child(1) { animation-delay: 0.1s; }
+        .team-member:nth-child(2) { animation-delay: 0.2s; }
+        .team-member:nth-child(3) { animation-delay: 0.3s; }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+        }
+        
+        .member-image {
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            position: relative;
+        }
+        
+        .member-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 58, 138, 0.3) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .team-member:hover .member-image::after {
+            opacity: 1;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+        
+        .member-content {
+            padding: 32px;
+        }
+        
+        .member-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+        
+        .member-role {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .member-bio {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .member-credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .credential-badge {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1e40af;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .member-contact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #ffffff;
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .contact-info {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+        
+        .contact-info a {
+            color: #3b82f6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: #2563eb;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .team-section { padding: 70px 5%; }
+            .team-grid { grid-template-columns: 1fr; }
+            .member-content { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <section class="team-section">
+        <div class="team-container">
+            <div class="team-header">
+                <div class="team-label">Our Medical Team</div>
+                <h2>Meet Our Doctors</h2>
+                <p>Experienced, compassionate healthcare professionals dedicated to your wellbeing</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <!-- REPLACE WITH YOUR DOCTOR PHOTO -->
+                        <img src="https://picsum.photos/400/400?random=801" alt="Dr. Sarah Chen">
+                    </div>
+                    <div class="member-content">
+                        <h3 class="member-name">Dr. Sarah Chen</h3>
+                        <div class="member-role">General Practitioner</div>
+                        <p class="member-bio">With over 15 years of experience, Dr. Chen specializes in family medicine and preventative care. She is passionate about building long-term relationships with her patients.</p>
+                        
+                        <div class="member-credentials">
+                            <span class="credential-badge">MBBS</span>
+                            <span class="credential-badge">FRACGP</span>
+                            <span class="credential-badge">Women's Health</span>
+                        </div>
+                        
+                        <div class="member-contact">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="contact-info">
+                                <a>dr.chen@practice.com.au</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <!-- REPLACE WITH YOUR DOCTOR PHOTO -->
+                        <img src="https://picsum.photos/400/400?random=802" alt="Dr. Michael Torres">
+                    </div>
+                    <div class="member-content">
+                        <h3 class="member-name">Dr. Michael Torres</h3>
+                        <div class="member-role">General Practitioner</div>
+                        <p class="member-bio">Dr. Torres brings a holistic approach to healthcare with expertise in chronic disease management and mental health support for all ages.</p>
+                        
+                        <div class="member-credentials">
+                            <span class="credential-badge">MBBS</span>
+                            <span class="credential-badge">FRACGP</span>
+                            <span class="credential-badge">Mental Health</span>
+                        </div>
+                        
+                        <div class="member-contact">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="contact-info">
+                                <a>dr.torres@practice.com.au</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <!-- REPLACE WITH YOUR DOCTOR PHOTO -->
+                        <img src="https://picsum.photos/400/400?random=803" alt="Dr. Emma Patel">
+                    </div>
+                    <div class="member-content">
+                        <h3 class="member-name">Dr. Emma Patel</h3>
+                        <div class="member-role">General Practitioner</div>
+                        <p class="member-bio">Fluent in three languages, Dr. Patel has a special interest in pediatric care and works closely with families to ensure the best outcomes for children.</p>
+                        
+                        <div class="member-credentials">
+                            <span class="credential-badge">MBBS</span>
+                            <span class="credential-badge">DCH</span>
+                            <span class="credential-badge">Pediatrics</span>
+                        </div>
+                        
+                        <div class="member-contact">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="contact-info">
+                                <a>dr.patel@practice.com.au</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

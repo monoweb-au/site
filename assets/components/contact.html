@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Demo</title>
+<style>
+/* Reset for iframe */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+.contact-section {
+    padding: 110px 5%;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    position: relative;
+}
+
+/* Radial gradient orbs */
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(251, 113, 133, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+}
+
+.contact-section::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(70px);
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-info {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.contact-info h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: start;
+    gap: 16px;
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(251, 113, 133, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: #fb7185;
+    stroke-width: 2;
+    fill: none;
+}
+
+.contact-item-content h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fb7185;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contact-item-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.contact-item-content a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item-content a:hover {
+    color: #fb7185;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #fb7185;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #0f172a;
+    background: linear-gradient(135deg, #fb7185 0%, #f97316 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(251, 113, 133, 0.4);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 968px) {
+    .contact-section { padding: 70px 5%; }
+    .contact-container { grid-template-columns: 1fr; gap: 40px; }
+    .contact-form { padding: 30px 24px; }
+}
+</style>
+</head>
+<body>
+
+<section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <p>Have a question or ready to start your project? We'd love to hear from you.</p>
+            
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="contact-item-content">
+                        <h3>Visit Us</h3>
+                        <p>Level 3, 123 George Street<br>Sydney NSW 2000</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <div class="contact-item-content">
+                        <h3>Call Us</h3>
+                        <p><a>(02) 9123 4567</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="contact-item-content">
+                        <h3>Email Us</h3>
+                        <p><a>hello@business.com.au</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="contact-item-content">
+                        <h3>Business Hours</h3>
+                        <p>Mon-Fri: 9am - 6pm<br>Sat-Sun: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
