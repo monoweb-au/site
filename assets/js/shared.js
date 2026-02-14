@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerFullNav = `
     <nav>
       <a href="index.html" class="logo" aria-label="MonoWeb home">
-        <img src="assets/mw-logo.png" alt="MonoWeb logo">
+        <img src="assets/img/mw-logo.png" alt="MonoWeb logo">
       </a>
 
       <ul class="nav-links">
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerPricingNav = `
     <nav>
       <a href="index.html" class="logo" aria-label="MonoWeb home">
-        <img src="assets/mw-logo.png" alt="MonoWeb logo">
+        <img src="assets/img/mw-logo.png" alt="MonoWeb logo">
       </a>
 
       <ul class="nav-links">
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerSimpleNav = `
     <nav>
       <a href="index.html" class="logo" aria-label="MonoWeb home">
-        <img src="assets/mw-logo.png" alt="MonoWeb logo">
+        <img src="assets/img/mw-logo.png" alt="MonoWeb logo">
       </a>
     </nav>
   `;
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const footerHTML = `
     <footer>
       <a href="index.html" class="logo" aria-label="MonoWeb home">
-        <img src="assets/mw-logo.png" alt="MonoWeb logo">
+        <img src="assets/img/mw-logo.png" alt="MonoWeb logo">
       </a>
 
       <p>

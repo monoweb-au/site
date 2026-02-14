@@ -7,139 +7,139 @@
         {
             id: 'hero',
             name: 'Enhanced Hero Section',
-            demo: 'assets/demos/hero-section.html',
+            demo: 'assets/components/hero-section.html',
             description: 'Full-width intro with background image, headline, description, and call-to-action button.'
         },
         {
             id: 'services',
             name: 'Services',
-            demo: 'assets/demos/services.html',
+            demo: 'assets/components/services.html',
             description: 'Showcase what you offer with 3-6 service cards, each with icon, title, and description.'
         },
         {
             id: 'about',
             name: 'About / Company Story',
-            demo: 'assets/demos/about.html',
+            demo: 'assets/components/about.html',
             description: 'Your story, mission, company history, or what makes you different.'
         },
         {
             id: 'contact',
             name: 'Contact Section',
-            demo: 'assets/demos/contact.html',
+            demo: 'assets/components/contact.html',
             description: 'Full contact section with form, map, address, and business hours (beyond basic header).'
         },
         {
             id: 'testimonials',
             name: 'Testimonials',
-            demo: 'assets/demos/testimonials.html',
+            demo: 'assets/components/testimonials.html',
             description: 'Customer reviews with photos and names (3 reviews in Starter, 6 in Plus).'
         },
         {
             id: 'gallery',
             name: 'Gallery',
-            demo: 'assets/demos/gallery.html',
+            demo: 'assets/components/gallery.html',
             description: 'Photo showcase in a grid layout (5-10 images basic, 20+ extended is addon).'
         },
         {
             id: 'features',
             name: 'Features / Benefits',
-            demo: 'assets/demos/features.html',
+            demo: 'assets/components/features.html',
             description: 'Icon grid showing your top benefits and features. Ideal for building credibility and answering "why choose us?"'
         },
         {
             id: 'pricing',
             name: 'Pricing',
-            demo: 'assets/demos/pricing-table.html',
+            demo: 'assets/components/pricing-table.html',
             description: 'Display your pricing, packages, or services in a clear table format.'
         },
         {
             id: 'team',
             name: 'Team / Meet the Owner',
-            demo: 'assets/demos/team.html',
+            demo: 'assets/components/team.html',
             description: 'Staff or owner profiles with photos and bios (1 person spotlight or full team of 3-6 people).'
         },
         {
             id: 'portfolio',
             name: 'Portfolio / Work Examples',
-            demo: 'assets/demos/portfolio.html',
+            demo: 'assets/components/portfolio.html',
             description: 'Showcase previous projects or work with images and descriptions (3-6 examples).'
         },
         {
             id: 'menu',
             name: 'Menu List',
-            demo: 'assets/demos/menu.html',
+            demo: 'assets/components/menu.html',
             description: 'Showcase menu items with descriptions and prices. Great for restaurants, bars and cafes.'
         },
         {
             id: 'events',
             name: 'Events / Calendar',
-            demo: 'assets/demos/events.html',
+            demo: 'assets/components/events.html',
             description: 'Showcase upcoming workshops, classes, or special events with dates and registration buttons.'
         },
         {
             id: 'video',
             name: 'Video Showcase',
-            demo: 'assets/demos/video.html',
+            demo: 'assets/components/video.html',
             description: 'Embed a YouTube or Vimeo video with supporting text. Great for showcasing your work or story.'
         },
         {
             id: 'faq',
             name: 'FAQ Section',
-            demo: 'assets/demos/faq.html',
+            demo: 'assets/components/faq.html',
             description: 'Frequently asked questions in an accordion format to address common enquiries.'
         },
         {
             id: 'process',
             name: 'Process / How It Works',
-            demo: 'assets/demos/process.html',
+            demo: 'assets/components/process.html',
             description: 'Your workflow or process explained in 3-4 clear steps.'
         },
         {
             id: 'before-after',
             name: 'Before/After Showcase',
-            demo: 'assets/demos/before-after.html',
+            demo: 'assets/components/before-after.html',
             description: 'Interactive slider comparing before and after images (up to 4 sliders).'
         },
         {
             id: 'stats',
             name: 'Stats / Social Proof',
-            demo: 'assets/demos/stats.html',
+            demo: 'assets/components/stats.html',
             description: 'Numbers that build trust (e.g., years in business, happy customers, projects completed).'
         },
         {
             id: 'featured-products',
             name: 'Featured Products',
-            demo: 'assets/demos/featured-products.html',
+            demo: 'assets/components/featured-products.html',
             description: 'Display 3-6 products with images and descriptions (not ecommerce - display only, no shopping cart).'
         },
         {
             id: 'certifications',
             name: 'Certifications / Awards',
-            demo: 'assets/demos/certifications.html',
+            demo: 'assets/components/certifications.html',
             description: 'Display licenses, industry memberships, accreditations, or awards with logos.'
         },
         {
             id: 'timeline',
             name: 'Timeline / History',
-            demo: 'assets/demos/timeline.html',
+            demo: 'assets/components/timeline.html',
             description: 'Tell your brand story chronologically with year badges and milestone descriptions.'
         },
         {
             id: 'service-area',
             name: 'Service Area',
-            demo: 'assets/demos/service-area.html',
+            demo: 'assets/components/service-area.html',
             description: 'Show your coverage area with a map or list of suburbs/regions you serve.'
         },
         {
             id: 'special-offers',
             name: 'Special Offers',
-            demo: 'assets/demos/special-offers.html',
+            demo: 'assets/components/special-offers.html',
             description: 'Highlight current promotions, seasonal deals, or limited-time offers.'
         },
         {
             id: 'careers',
             name: 'Careers & Jobs',
-            demo: 'assets/demos/careers.html',
+            demo: 'assets/components/careers.html',
             description: 'Showcase open positions with job details, requirements, and apply buttons.'
         }
     ];
