@@ -31,6 +31,7 @@ body {
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* Navigation */
@@ -161,7 +162,10 @@ a.logo:hover {
 /* Responsive - Mobile */
 @media (max-width: 968px) {
     nav {
+        position: relative;
         justify-content: center;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
     }
 
     .nav-links {
@@ -468,11 +472,25 @@ body:hover::before {
     animation: float3 10s ease-in-out infinite;
 }
 
+
 /* Services Section */
 .services {
     padding: 6rem 5%;
     background: rgba(67, 86, 119, 0.5);
     position: relative;
+    overflow: hidden;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .section-header {
@@ -517,6 +535,16 @@ body:hover::before {
     overflow: hidden;
     opacity: 0;
     transform: translateY(30px);
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
 }
 
 .service-card.visible {
@@ -585,6 +613,7 @@ body:hover::before {
     color: var(--text-muted);
     line-height: 1.8;
     font-size: 0.95rem;
+    margin-bottom: 0;
 }
 
 /* Process Section */
@@ -592,6 +621,20 @@ body:hover::before {
     padding: 6rem 5%;
     background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
     position: relative;
+    overflow: hidden;
+}
+
+.process::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(6, 182, 212, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6, 182, 212, 0.12) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+    pointer-events: none;
 }
 
 .process-timeline {
@@ -607,7 +650,7 @@ body:hover::before {
     top: 0;
     height: 100%;
     width: 2px;
-    background: linear-gradient(180deg, var(--accent-cyan), transparent);
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple) 60%, transparent);
     transform: translateX(-50%);
 }
 
@@ -700,6 +743,7 @@ body:hover::before {
 
 .process-content p {
     color: var(--text-muted);
+    margin-bottom: 0;
 }
 
 .view-demos-btn {
@@ -723,9 +767,22 @@ body:hover::before {
 
 /* Testimonials Section */
 .testimonials {
-    padding: 3rem 5% 6rem 5%;
-    background: rgba(67, 86, 119, 0.5);
+    padding: 6rem 5%;
+    background: linear-gradient(180deg, var(--bg-gradient-1) 0%, rgba(30, 20, 50, 0.6) 50%, var(--bg-gradient-1) 100%);
     position: relative;
+    overflow: hidden;
+}
+
+.testimonials::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .testimonials-grid {
@@ -739,8 +796,10 @@ body:hover::before {
 .testimonial-card {
     padding: 2.5rem;
     border-radius: 20px;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5));
-    border: 1px solid rgba(6, 182, 212, 0.1);
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(20, 15, 40, 0.5));
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     transition: all 0.4s ease;
     opacity: 0;
     transform: translateY(30px);
@@ -748,6 +807,13 @@ body:hover::before {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.testimonial-stars {
+    color: #fbbf24;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
 }
 
 .testimonial-card.visible {
@@ -764,8 +830,8 @@ body:hover::before {
 
 .testimonial-card:hover {
     transform: translateY(-10px);
-    border-color: var(--accent-cyan);
-    box-shadow: 0 20px 60px rgba(6, 182, 212, 0.2);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
 }
 
 .testimonial-image {
@@ -774,7 +840,7 @@ body:hover::before {
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 1.5rem;
-    border: 3px solid var(--accent-cyan);
+    border: 3px solid rgba(139, 92, 246, 0.5);
 }
 
 .testimonial-image img {
@@ -805,9 +871,21 @@ body:hover::before {
 
 /* Pricing Section */
 .pricing {
-    padding: 6rem 5% 3rem 5%;
-    background: rgba(67, 86, 119, 0.5);
+    padding: 6rem 5%;
+    background: linear-gradient(160deg, rgba(67, 86, 119, 0.5) 0%, rgba(59, 48, 84, 0.4) 100%);
     position: relative;
+    overflow: hidden;
+}
+
+.pricing::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .pricing-grid {
@@ -834,14 +912,41 @@ body:hover::before {
     animation: fadeInUp 0.8s ease forwards;
 }
 
+@keyframes pricingFeaturedIn {
+    to {
+        opacity: 1;
+        transform: scale(1.03) translateY(0);
+    }
+}
+
+.pricing-card.featured.visible {
+    animation: pricingFeaturedIn 0.8s ease forwards;
+}
+
 .pricing-card:nth-child(2) {
     animation-delay: 0.2s;
 }
 
 .pricing-card.featured {
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(30, 41, 59, 0.5));
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.12), rgba(139, 92, 246, 0.08), rgba(30, 41, 59, 0.5));
     border-color: var(--accent-cyan);
+    border-width: 2px;
     position: relative;
+    transform: scale(1.03) translateY(30px);
+    box-shadow: 0 10px 50px rgba(6, 182, 212, 0.15), 0 0 80px rgba(139, 92, 246, 0.05);
+}
+
+.pricing-card.featured::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .pricing-card.featured::before {
@@ -863,6 +968,11 @@ body:hover::before {
     transform: translateY(-10px);
     border-color: var(--accent-cyan);
     box-shadow: 0 20px 60px rgba(6, 182, 212, 0.2);
+}
+
+.pricing-card.featured:hover {
+    transform: scale(1.03) translateY(-10px);
+    box-shadow: 0 25px 70px rgba(6, 182, 212, 0.25), 0 0 100px rgba(139, 92, 246, 0.08);
 }
 
 .pricing-header h3 {
@@ -925,10 +1035,27 @@ body:hover::before {
 }
 
 /* Contact Section */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .contact {
     padding: 6rem 5%;
-    background: rgba(67, 86, 119, 0.5);
+    background: linear-gradient(160deg, rgba(50, 80, 90, 0.5) 0%, rgba(67, 86, 119, 0.4) 100%);
     position: relative;
+    overflow: hidden;
+}
+
+.contact::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(6, 182, 212, 0.05) 25%, rgba(139, 92, 246, 0.04) 50%, rgba(6, 182, 212, 0.05) 75%, transparent 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 12s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .contact-content {
@@ -1000,6 +1127,11 @@ body:hover::before {
 
 /* Responsive Design */
 @media (max-width: 968px) {
+    .hero {
+        padding-top: 2rem;
+        min-height: 0;
+    }
+
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1071,6 +1203,18 @@ body:hover::before {
     .pricing-grid {
         grid-template-columns: 1fr;
         max-width: 100%;
+    }
+
+    .pricing-card.featured {
+        transform: translateY(30px);
+    }
+
+    .pricing-card.featured.visible {
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .pricing-card.featured:hover {
+        transform: translateY(-10px);
     }
 
     .hero-img {
@@ -1170,6 +1314,7 @@ body:hover::before {
     border-top: 4px solid #ffffff14;
 }
 
+
 /* FAQ Section */
 .faq {
     padding: 6rem 5%;
@@ -1266,16 +1411,18 @@ body:hover::before {
 .info-banner {
     background: rgba(6, 182, 212, 0.1);
     border-left: 3px solid var(--accent-cyan);
-    padding: 1.5rem;
-    margin: 3rem auto;
+    padding: 0.75rem 1rem;
+    margin: 2rem auto 0;
     border-radius: 5px;
+    max-width: 600px;
 }
 
 .info-banner p {
     color: var(--text-muted);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.4;
     text-align: center;
+    font-size: 0.8rem;
 }
 
 
