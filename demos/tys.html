@@ -1061,6 +1061,10 @@
                 display: none;
             }
 
+            .hero {
+                padding: 8rem 6% 4rem;
+            }
+
             .hero-container,
             .about-container,
             .contact-grid {
@@ -1070,6 +1074,19 @@
 
             .hero-content h1 {
                 font-size: 3.5rem;
+            }
+
+            .hero-buttons {
+                flex-wrap: wrap;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
             }
 
             .features-grid,
@@ -1094,6 +1111,83 @@
 
             .pricing-card.featured {
                 transform: scale(1);
+            }
+
+            .testimonial-quote {
+                font-size: 1.5rem;
+            }
+
+            .contact-cta .price-highlight {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 7rem 5% 3rem;
+            }
+
+            .nav {
+                padding: 1rem 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2,
+            .about-content h2,
+            .contact-info h2 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 0.9rem 1.8rem;
+                font-size: 0.95rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .feature-card,
+            .class-card,
+            .pricing-card {
+                padding: 2rem;
+            }
+
+            .features,
+            .about,
+            .classes,
+            .pricing,
+            .gallery,
+            .contact {
+                padding: 5rem 5%;
+            }
+
+            .testimonial {
+                padding: 5rem 5%;
+            }
+
+            .testimonial-quote {
+                font-size: 1.25rem;
+            }
+
+            .contact-cta {
+                padding: 2.5rem 2rem;
+            }
+
+            .contact-cta h3 {
+                font-size: 1.5rem;
+            }
+
+            .contact-cta .price-highlight {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -1152,8 +1246,8 @@
                 </div>
                 <div class="floating-element">
                     <h4>New Student Offer</h4>
-                    <p>14 days unlimited yoga</p>
-                    <div class="price">$40</div>
+                    <p>30 days unlimited yoga</p>
+                    <div class="price">$99</div>
                 </div>
             </div>
         </div>
@@ -1327,7 +1421,7 @@
                 </div>
                 <div class="pricing-card featured">
                     <h3>Unlimited Membership</h3>
-                    <div class="pricing-price">$65</div>
+                    <div class="pricing-price">$80</div>
                     <div class="pricing-period">per fortnight</div>
                     <ul class="pricing-features">
                         <li>Unlimited classes</li>
@@ -1339,12 +1433,11 @@
                 </div>
                 <div class="pricing-card">
                     <h3>Class Passes</h3>
-                    <div class="pricing-price">$100</div>
-                    <div class="pricing-period">5 classes</div>
+                    <div class="pricing-price">$120</div>
                     <ul class="pricing-features">
                         <li>Valid 6 months</li>
-                        <li>10 classes - $195</li>
-                        <li>20 classes - $280</li>
+                        <li>5 classes - $120</li>
+                        <li>20 classes - $340</li>
                         <li>Flexible usage</li>
                     </ul>
                     <a href="#contact" class="btn btn-secondary" style="width: 100%;">Buy Pass</a>
@@ -1379,8 +1472,8 @@
                 </div>
                 <div class="contact-cta">
                     <h3>New Student Special</h3>
-                    <div class="price-highlight">$40</div>
-                    <p>14 days of unlimited yoga</p>
+                    <div class="price-highlight">$99</div>
+                    <p>30 days of unlimited yoga</p>
                     <a href="tel:0412499700" class="btn">Call to Book</a>
                 </div>
             </div>
