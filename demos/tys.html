@@ -81,6 +81,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
         }
 
         .nav-links {
@@ -258,23 +266,11 @@
 
         .stat-item {
             position: relative;
-            padding-left: 1rem;
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 10px;
         }
 
         .stat-number {
             font-family: 'Outfit', sans-serif;
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
@@ -299,11 +295,12 @@
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 25px 80px -20px rgba(0, 0, 0, 0.25);
+            aspect-ratio: 1;
         }
 
         .image-card img {
             width: 100%;
-            height: 600px;
+            height: 100%;
             object-fit: cover;
             display: block;
         }
@@ -413,7 +410,7 @@
 
         .feature-card {
             background: white;
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 24px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid var(--border);
@@ -459,7 +456,7 @@
 
         .feature-card h3 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--dark);
             margin-bottom: 1rem;
@@ -509,11 +506,12 @@
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 25px 80px -20px rgba(0, 0, 0, 0.25);
+            aspect-ratio: 1;
         }
 
         .about-image-card img {
             width: 100%;
-            height: 550px;
+            height: 100%;
             object-fit: cover;
             display: block;
         }
@@ -677,7 +675,7 @@
 
         .class-card {
             background: linear-gradient(135deg, #F8FAFC 0%, white 100%);
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 24px;
             border-left: 5px solid var(--primary);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -747,7 +745,7 @@
 
         .pricing-card {
             background: white;
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 24px;
             border: 2px solid var(--border);
             transition: all 0.4s ease;
@@ -1055,8 +1053,45 @@
             font-size: 0.95rem;
         }
 
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(43, 122, 159, 0.3);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(43, 122, 159, 0.4);
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
+            .nav {
+                justify-content: center;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -1081,8 +1116,8 @@
             }
 
             .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
             }
 
             .about-highlights {
@@ -1197,7 +1232,7 @@
 
     <!-- Navigation -->
     <nav class="nav" id="nav">
-        <div class="logo">The Yoga School</div>
+        <div class="logo"><img src="tys-logo.png" alt="TYS Logo">The Yoga School</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -1480,13 +1515,17 @@
         </div>
     </section>
 
+    <!-- Scroll to Top -->
+    <button type="button" class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 The Yoga School Cairns. All rights reserved.</p>
     </footer>
 
     <script>
-        // Scroll animation for nav
+        // Scroll animation for nav + scroll-to-top button
+        const scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('nav');
             if (window.scrollY > 50) {
@@ -1494,6 +1533,15 @@
             } else {
                 nav.classList.remove('scrolled');
             }
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Smooth scroll
