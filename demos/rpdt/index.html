@@ -21,7 +21,7 @@
             --dark: #111;
             --off-white: #F5F5F0;
             --text: #333;
-            --text-light: #666;
+            --text-light: #888;
         }
 
         body {
@@ -109,12 +109,12 @@
             position: absolute;
             inset: 0;
             background:
-                url('https://images.unsplash.com/photo-1449965408869-ebd3fee7710d?w=1600&q=80') center/cover no-repeat;
+                url('coastal-road.jpg') center/cover no-repeat;
             opacity: 0.2;
         }
 
-        /* Steering wheel watermark in hero */
-        .hero-wheel {
+        /* Steering wheel watermark in features section */
+        .features-wheel {
             position: absolute;
             right: -100px;
             bottom: -100px;
@@ -126,35 +126,6 @@
 
         @keyframes wheelSpin {
             to { transform: rotate(360deg); }
-        }
-
-        /* Speed lines behind heading */
-        .speed-lines {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 200px;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .speed-line {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255,140,0,0.3), transparent);
-            animation: speedStreak 3s ease-in-out infinite;
-        }
-
-        .speed-line:nth-child(1) { top: 20%; width: 40%; left: 5%; animation-delay: 0s; }
-        .speed-line:nth-child(2) { top: 40%; width: 55%; left: -10%; animation-delay: 0.7s; }
-        .speed-line:nth-child(3) { top: 60%; width: 35%; right: 0; left: auto; animation-delay: 1.4s; }
-        .speed-line:nth-child(4) { top: 80%; width: 45%; left: 15%; animation-delay: 2.1s; }
-
-        @keyframes speedStreak {
-            0%, 100% { opacity: 0; transform: translateX(-20px); }
-            50% { opacity: 1; transform: translateX(20px); }
         }
 
         .hero-content {
@@ -851,7 +822,7 @@
 
         /* ===== ABOUT ===== */
         .about {
-            background: white;
+            background: var(--off-white);
             padding: 6rem 5%;
             position: relative;
         }
@@ -949,25 +920,56 @@
             overflow: hidden;
         }
 
-        /* Faint road dashes in contact background */
-        .contact::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: repeating-linear-gradient(180deg,
-                rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 30px,
-                transparent 30px, transparent 60px);
-            pointer-events: none;
-        }
 
         .contact-inner {
-            max-width: 700px;
+            max-width: 1000px;
             margin: 0 auto;
-            text-align: center;
             position: relative;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: stretch;
+            gap: 4rem;
+        }
+
+        .contact-map {
+            flex: 1;
+            overflow: hidden;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem;
+            transition: border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-map:hover { border-color: var(--red); }
+
+        .contact-map iframe {
+            width: 100%;
+            flex: 1;
+            min-height: 250px;
+            display: block;
+            border: 0;
+        }
+
+        .contact-map-label {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-text {
+            flex: 1;
+            text-align: center;
         }
 
         .contact h2 {
@@ -986,10 +988,10 @@
         .contact-phone {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 2rem 3rem;
+            padding: 1.25rem 2rem;
             text-align: center;
             max-width: 400px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 1.5rem;
             transition: border-color 0.3s;
         }
 
@@ -1013,6 +1015,33 @@
         }
 
         .contact-phone a:hover { color: var(--orange); }
+
+        .contact-detail {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1.25rem 2rem;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto 1.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .contact-detail:hover { border-color: var(--red); }
+
+        .contact-detail h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-detail p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
 
         /* Turn signal pulse on CTA */
         .contact-big-btn {
@@ -1273,7 +1302,7 @@
 
         .scroll-top-btn {
             position: fixed;
-            bottom: 5.5rem;
+            bottom: 6.5rem;
             right: 1.5rem;
             width: 42px;
             height: 42px;
@@ -1338,7 +1367,7 @@
             .nav { justify-content: center; }
 
             .hero h1 { font-size: clamp(3rem, 10vw, 6rem); }
-            .hero-wheel { width: 300px; height: 300px; right: -80px; bottom: -60px; }
+            .features-wheel { width: 300px; height: 300px; right: -80px; bottom: -60px; }
 
             .hero-stats-bar {
                 gap: 2rem;
@@ -1381,6 +1410,9 @@
                 justify-content: center;
             }
 
+            .contact-row { flex-direction: column; gap: 2.5rem; }
+            .contact-map iframe { height: 250px; }
+
         }
 
         @media (max-width: 640px) {
@@ -1388,7 +1420,7 @@
             .hero-sub { font-size: 1rem; }
 
             .hero-logo { height: 120px; }
-            .hero-wheel { width: 220px; height: 220px; right: -50px; bottom: -40px; }
+            .features-wheel { width: 220px; height: 220px; right: -50px; bottom: -40px; }
 
             .hero-actions { flex-direction: column; width: 100%; }
             .hero-actions .btn { width: 100%; text-align: center; }
@@ -1439,21 +1471,6 @@
     <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-bg"></div>
-        <!-- Slow-spinning steering wheel watermark -->
-        <svg class="hero-wheel" viewBox="0 0 200 200" fill="none" stroke="white" stroke-width="2">
-            <circle cx="100" cy="100" r="90"/>
-            <circle cx="100" cy="100" r="60"/>
-            <circle cx="100" cy="100" r="15"/>
-            <line x1="100" y1="40" x2="100" y2="85"/>
-            <line x1="48" y1="130" x2="87" y2="108"/>
-            <line x1="152" y1="130" x2="113" y2="108"/>
-        </svg>
-        <div class="speed-lines">
-            <div class="speed-line"></div>
-            <div class="speed-line"></div>
-            <div class="speed-line"></div>
-            <div class="speed-line"></div>
-        </div>
         <div class="hero-content">
             <img src="rpdt-logo.png" alt="RP Driver Training" class="hero-logo">
             <h1>Drive Smarter,<br><em>Not Harder</em></h1>
@@ -1489,8 +1506,16 @@
 
     <!-- Features -->
     <section class="features-strip">
+        <svg class="features-wheel" viewBox="0 0 200 200" fill="none" stroke="#333" stroke-width="2">
+            <circle cx="100" cy="100" r="90"/>
+            <circle cx="100" cy="100" r="60"/>
+            <circle cx="100" cy="100" r="15"/>
+            <line x1="100" y1="40" x2="100" y2="85"/>
+            <line x1="48" y1="130" x2="87" y2="108"/>
+            <line x1="152" y1="130" x2="113" y2="108"/>
+        </svg>
         <h2 class="reveal">Why RP Driver Training</h2>
-        <p class="lead reveal">Practical, real-world training that builds safer driving habits for life</p>
+        <p class="lead reveal">Practical, real-world training that builds safer driving habits for life.</p>
         <div class="features-row">
             <div class="feature-block reveal">
                 <div class="feature-num">01</div>
@@ -1535,7 +1560,7 @@
     <!-- Courses -->
     <section class="courses" id="courses">
         <h2 class="reveal">Our Courses</h2>
-        <p class="lead reveal">One-on-one and group programs for safer, more confident drivers</p>
+        <p class="lead reveal">One-on-one and group programs for safer, more confident drivers.</p>
         <div class="courses-scroll">
             <div class="course-tile tilt-hover">
                 <svg class="tile-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1573,7 +1598,7 @@
     <!-- Driver Comparison -->
     <section class="driver-compare">
         <h2 class="reveal">Which Driver Are You?</h2>
-        <p class="lead reveal">Defensive driving goes beyond following the road rules — it's about anticipating hazards, staying in control, and reducing risk</p>
+        <p class="lead reveal">Defensive driving goes beyond following the road rules — it's about anticipating hazards, staying in control, and reducing risk.</p>
         <table class="compare-table reveal">
             <thead>
                 <tr>
@@ -1657,7 +1682,7 @@
     <!-- Booking (Square Scheduling) -->
     <section class="booking" id="booking">
         <h2 class="reveal">Book Your Course</h2>
-        <p class="lead reveal">Book your defensive driving course in Cairns — select a service, pick a date and choose a time</p>
+        <p class="lead reveal">Book your defensive driving course in Cairns — select a service, pick a date and choose a time.</p>
         <div class="sq-widget reveal">
             <div class="sq-header">RP Driver Training</div>
             <div class="sq-service">
@@ -1709,7 +1734,7 @@
                 <div class="about-badge">Your Instructor</div>
                 <h2 class="reveal">Ronnie Perry</h2>
                 <p class="reveal">Based in Cairns, Ronnie delivers practical, one-on-one driver training that makes a real difference. As an accredited member of the Australian Driver Trainers Association, every session is professional, structured, and tailored to you.</p>
-                <p class="reveal">Whether you're a new P plater finding your confidence, a senior driver looking for a refresher, or transitioning to an Australian licence — Ronnie's patient, hands-on coaching helps you become a safer, more confident driver.</p>
+                <p class="reveal">Whether you're a new P plater finding your confidence, a senior driver looking for a refresher, or transitioning to an Australian licence – Ronnie's patient, hands-on coaching helps you become a safer, more confident driver.</p>
                 <div class="about-credentials reveal">
                     <div class="credential">
                         <strong>ADTA</strong>
@@ -1731,13 +1756,31 @@
     <!-- Contact -->
     <section class="contact" id="contact">
         <div class="contact-inner">
-            <h2 class="reveal">Ready to Drive<br>With Confidence?</h2>
-            <p class="lead reveal">Cairns-based defensive driving — book your course or ask any questions</p>
-            <div class="contact-phone reveal">
-                <h4>Phone</h4>
-                <a href="tel:0492968558">0492 968 558</a>
+            <div class="contact-header">
+                <h2 class="reveal">Ready to Drive With Confidence?</h2>
+                <p class="lead reveal">Cairns-based defensive driving — book your course or ask any questions.</p>
             </div>
-            <a href="#booking" class="contact-big-btn reveal">Book Now</a>
+            <div class="contact-row">
+                <div class="contact-map reveal">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3817.2734032987096!2d145.73558988479476!3d-16.911800642374985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x69786539cd08fec7%3A0x90b2207703a78fdb!2sRP%20Driver%20Training!5e0!3m2!1sen!2sau!4v1771154434111!5m2!1sen!2sau" allowfullscreen="" loading="lazy" title="RP Driver Training location"></iframe>
+                    <p class="contact-map-label">159-161 Pease St, Manoora QLD 4870</p>
+                </div>
+                <div class="contact-text">
+                    <div class="contact-phone reveal">
+                        <h4>Phone</h4>
+                        <a href="tel:0492968558">0492 968 558</a>
+                    </div>
+                    <div class="contact-detail reveal">
+                        <h4>Location</h4>
+                        <p>159-161 Pease St<br>Manoora QLD 4870</p>
+                    </div>
+                    <div class="contact-detail reveal">
+                        <h4>Hours</h4>
+                        <p>Saturday 6:00 am – 6:00 pm</p>
+                    </div>
+                    <a href="#booking" class="contact-big-btn reveal">Book Now</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1752,7 +1795,7 @@
     <div class="sticky-bar" id="stickyBar">
         <a href="tel:0492968558" class="sticky-bar-call">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call Now — 0492 968 558
+            CALL: 0492 968 558
         </a>
     </div>
 
