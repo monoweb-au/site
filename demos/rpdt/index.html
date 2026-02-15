@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RP Driver Training | Defensive Driving Courses Cairns</title>
+    <meta name="description" content="Defensive driving courses in Cairns with ADTA-accredited instructor Ronnie Perry. 3-hour one-on-one training for P platers, seniors, and international licence holders. Book online today.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 70px; }
+        h1, h2, h3 { font-weight: lighter; }
+
+        :root {
+            --red: #CC3300;
+            --orange: #FF8C00;
+            --dark: #111;
+            --off-white: #F5F5F0;
+            --text: #333;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 0 5%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(17, 17, 17, 0.95);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--red);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-brand span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--orange); }
+
+        .nav-links .nav-phone {
+            color: white;
+            background: var(--red);
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .nav-links .nav-phone:hover { background: #b32d00; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                url('https://images.unsplash.com/photo-1449965408869-ebd3fee7710d?w=1600&q=80') center/cover no-repeat;
+            opacity: 0.2;
+        }
+
+        /* Steering wheel watermark in hero */
+        .hero-wheel {
+            position: absolute;
+            right: -100px;
+            bottom: -100px;
+            width: 500px;
+            height: 500px;
+            opacity: 0.06;
+            animation: wheelSpin 15s linear infinite;
+        }
+
+        @keyframes wheelSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Speed lines behind heading */
+        .speed-lines {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 200px;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .speed-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,140,0,0.3), transparent);
+            animation: speedStreak 3s ease-in-out infinite;
+        }
+
+        .speed-line:nth-child(1) { top: 20%; width: 40%; left: 5%; animation-delay: 0s; }
+        .speed-line:nth-child(2) { top: 40%; width: 55%; left: -10%; animation-delay: 0.7s; }
+        .speed-line:nth-child(3) { top: 60%; width: 35%; right: 0; left: auto; animation-delay: 1.4s; }
+        .speed-line:nth-child(4) { top: 80%; width: 45%; left: 15%; animation-delay: 2.1s; }
+
+        @keyframes speedStreak {
+            0%, 100% { opacity: 0; transform: translateX(-20px); }
+            50% { opacity: 1; transform: translateX(20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+        }
+
+        .hero-logo {
+            height: 150px;
+            width: auto;
+            display: block;
+            margin: 0 auto 4rem;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 10vw, 7rem);
+            color: white;
+            line-height: 0.9;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--orange);
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 580px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: inline-block;
+        }
+
+        .btn-red {
+            background: var(--red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            background: #b32d00;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .hero-stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-stat {
+            text-align: center;
+            position: relative;
+            width: 100px;
+        }
+
+        .hero-stat strong {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--orange);
+            display: block;
+            line-height: 1;
+        }
+
+        .hero-stat span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TYRE TRACK DIVIDER ===== */
+        .tyre-track {
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tyre-track svg {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tyre-track-dark { background: var(--dark); }
+        .tyre-track-light { background: var(--off-white); }
+
+
+        /* ===== SCROLL-REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== CAR SVG DECORATIONS ===== */
+        .section-car-accent {
+            position: absolute;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        /* ===== FEATURES STRIP ===== */
+        .features-strip {
+            background: var(--off-white);
+            padding: 6rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-strip h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .features-strip .lead {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .features-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .feature-block {
+            padding: 2.5rem;
+            border-right: 1px solid #ddd;
+            transition: background 0.3s;
+        }
+
+        .feature-block:last-child { border-right: none; }
+
+        .feature-block:hover { background: white; }
+
+        /* Road sign style feature numbers */
+        .feature-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            color: white;
+            background: var(--dark);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .feature-block h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-block p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* ===== COURSES ===== */
+        .courses {
+            background: white;
+            padding: 6rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .courses h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .courses .lead {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .courses-scroll {
+            display: flex;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 1rem;
+        }
+
+        .courses-scroll::-webkit-scrollbar { height: 4px; }
+        .courses-scroll::-webkit-scrollbar-track { background: #eee; }
+        .courses-scroll::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+        .courses-scroll-hint {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1.25rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+        .courses-scroll-hint svg {
+            animation: nudgeRight 1.5s ease-in-out infinite;
+        }
+        @keyframes nudgeRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .course-tile {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            background: var(--dark);
+            color: white;
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .course-tile:hover { transform: translateY(-4px); }
+
+        .course-tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--red);
+        }
+
+        .course-tile:nth-child(2)::before { background: var(--orange); }
+        .course-tile:nth-child(3)::before { background: #e64a19; }
+        .course-tile:nth-child(4)::before { background: var(--red); }
+
+        .course-tile .tile-icon {
+            margin-bottom: 1.5rem;
+            opacity: 0.6;
+        }
+
+        .course-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .course-tile h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .course-tile p {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        /* Faint tyre track background in course tiles */
+        .course-tile::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -10px;
+            width: 100px;
+            height: 200px;
+            background: repeating-linear-gradient(0deg,
+                transparent 0px, transparent 8px,
+                rgba(255,255,255,0.03) 8px, rgba(255,255,255,0.03) 10px);
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        /* ===== DRIVER TYPES ===== */
+        .driver-compare {
+            background: var(--off-white);
+            padding: 6rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+        .driver-compare::after {
+            content: '';
+            position: absolute;
+            right: -60px;
+            bottom: -40px;
+            width: 350px;
+            height: 200px;
+            background: url('car.png') no-repeat center / contain;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        .driver-compare h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .driver-compare .lead {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 4rem;
+        }
+
+        .compare-table {
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .compare-table th {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            padding: 1.5rem 2rem;
+            text-align: left;
+            border-bottom: 3px solid var(--dark);
+        }
+
+        .compare-table th:first-child {
+            width: 120px;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .compare-table th.bad { color: #DC2626; }
+        .compare-table th.good { color: #059669; }
+
+        .compare-table th svg {
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+        .compare-table td {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #ddd;
+            line-height: 1.6;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            vertical-align: top;
+        }
+
+        .compare-table td:first-child {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .compare-cta {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #059669;
+            position: relative;
+        }
+        .compare-cta .about-badge { color: #059669; }
+
+        .compare-chevrons {
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-top: 1.5rem;
+        }
+        .compare-chevrons svg {
+            opacity: 0.3;
+            animation: chevronPulse 2s ease-in-out infinite;
+        }
+        .compare-chevrons svg:nth-child(2) { animation-delay: 0.3s; }
+        .compare-chevrons svg:nth-child(3) { animation-delay: 0.6s; }
+        @keyframes chevronPulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* ===== PRICING BLOCK ===== */
+        .pricing-block {
+            background: var(--dark);
+            color: white;
+            padding: 8rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Headlight beam effect */
+        .pricing-block::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 500px;
+            background: radial-gradient(ellipse at top, rgba(255,140,0,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .pricing-block .section-car-accent {
+            left: -80px;
+            bottom: -40px;
+            width: 400px;
+            opacity: 0.03;
+        }
+
+        .pricing-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 6rem;
+            position: relative;
+        }
+
+        .pricing-text {
+            flex: 1;
+        }
+
+        .pricing-label {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-text h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-text .subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .pricing-text ul {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .pricing-text li {
+            padding: 0.6rem 0;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-text li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            flex-shrink: 0;
+        }
+
+        .pricing-text .gift-note {
+            background: rgba(255,140,0,0.15);
+            border-left: 3px solid var(--orange);
+            padding: 0.75rem 1.25rem;
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Licence plate styled pricing card */
+        .pricing-card-big {
+            flex: 0 0 320px;
+            background: linear-gradient(160deg, #1a1a1a, #2a2a2a);
+            border: 3px solid #444;
+            border-radius: 8px;
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+            position: relative;
+            box-shadow: inset 0 0 0 3px #222, inset 0 0 0 6px #333;
+        }
+
+        /* Plate bolts */
+        .pricing-card-big .plate-bolt {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 40%, #666, #333);
+            border: 1px solid #555;
+        }
+
+        .pricing-card-big .plate-bolt:nth-child(1) { top: 12px; left: 12px; }
+        .pricing-card-big .plate-bolt:nth-child(2) { top: 12px; right: 12px; }
+        .pricing-card-big .plate-bolt:nth-child(3) { bottom: 12px; left: 12px; }
+        .pricing-card-big .plate-bolt:nth-child(4) { bottom: 12px; right: 12px; }
+
+        .pricing-card-big::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--red), var(--orange));
+            border-radius: 8px 8px 0 0;
+        }
+
+        .pricing-card-big h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-amount {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .pricing-duration {
+            color: var(--orange);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-includes {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .pricing-card-big .btn-red {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Speedometer gauge */
+        .gauge-wrap {
+            margin: 2rem auto 0;
+            width: 120px;
+            height: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gauge-bg {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 8px solid #222;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            transform: rotate(-45deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .gauge-fill {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 8px solid transparent;
+            border-top-color: var(--red);
+            border-right-color: var(--orange);
+            transform: rotate(-45deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: gaugeReveal 1.5s ease-out forwards;
+            clip-path: inset(0 0 50% 0);
+        }
+
+        @keyframes gaugeReveal {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .gauge-needle {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            height: 50px;
+            background: white;
+            transform-origin: bottom center;
+            transform: rotate(-70deg);
+            animation: needleSweep 2s ease-out forwards;
+            border-radius: 2px;
+        }
+
+        @keyframes needleSweep {
+            0% { transform: rotate(-70deg); }
+            100% { transform: rotate(50deg); }
+        }
+
+        .gauge-dot {
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: white;
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .about-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-photo {
+            flex: 0 0 250px;
+            position: relative;
+        }
+
+        .about-photo img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%);
+            border-radius: 50%;
+        }
+
+        .about-photo::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border: 3px solid var(--red);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-badge {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+
+        .about h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-credentials {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .credential {
+            text-align: center;
+        }
+
+        .credential strong {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            color: var(--dark);
+            display: block;
+        }
+
+        .credential span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--dark);
+            color: white;
+            padding: 6rem 5% 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Faint road dashes in contact background */
+        .contact::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: repeating-linear-gradient(180deg,
+                rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 30px,
+                transparent 30px, transparent 60px);
+            pointer-events: none;
+        }
+
+        .contact-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .contact .lead {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-phone {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem 3rem;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto 3rem;
+            transition: border-color 0.3s;
+        }
+
+        .contact-phone:hover { border-color: var(--red); }
+
+        .contact-phone h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-phone a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .contact-phone a:hover { color: var(--orange); }
+
+        /* Turn signal pulse on CTA */
+        .contact-big-btn {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            padding: 1.25rem 4rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.25s;
+            position: relative;
+        }
+
+        .contact-big-btn::before,
+        .contact-big-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            animation: blinker 1.5s ease-in-out infinite;
+        }
+
+        .contact-big-btn::before {
+            left: -30px;
+            border-right: 10px solid var(--orange);
+        }
+
+        .contact-big-btn::after {
+            right: -30px;
+            border-left: 10px solid var(--orange);
+        }
+
+        @keyframes blinker {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .contact-big-btn:hover {
+            background: #b32d00;
+            transform: translateY(-2px);
+        }
+
+        /* ===== BOOKING (Square Scheduling) ===== */
+        .booking {
+            background: white;
+            padding: 6rem 5%;
+        }
+        .booking h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .booking .lead {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        .sq-widget {
+            max-width: 520px;
+            margin: 0 auto;
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        .sq-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #e5e5e5;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #111;
+        }
+        .sq-service {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .sq-service select {
+            width: 100%;
+            padding: 0.65rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: #333;
+            background: white;
+            appearance: auto;
+        }
+        .sq-calendar {
+            padding: 1rem 1.5rem;
+        }
+        .sq-month-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #111;
+        }
+        .sq-month-nav button {
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: #666;
+            padding: 0.25rem 0.5rem;
+        }
+        .sq-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            gap: 2px;
+        }
+        .sq-days .day-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            padding: 0.4rem 0;
+        }
+        .sq-days .day {
+            padding: 0.45rem;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            color: #333;
+        }
+        .sq-days .day.empty { visibility: hidden; }
+        .sq-days .day.past { color: #ccc; }
+        .sq-days .day.available { cursor: pointer; font-weight: 500; }
+        .sq-days .day.available:hover { background: #f0f0f0; }
+        .sq-days .day.selected { background: #111; color: white; font-weight: 600; }
+        .sq-days .day.today { border: 1px solid #111; }
+        .sq-slots {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #e5e5e5;
+        }
+        .sq-slots-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+        .sq-slots-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .sq-slot {
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #333;
+            background: white;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .sq-slot:hover { border-color: #111; color: #111; }
+        .sq-slot.selected { background: #111; color: white; border-color: #111; }
+        .sq-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #e5e5e5;
+        }
+        .sq-footer button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #111;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .sq-footer button:hover { background: #333; }
+        .sq-powered {
+            text-align: center;
+            padding: 0.75rem;
+            font-size: 0.7rem;
+            color: #aaa;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0a0a;
+            padding: 2rem 5% 7rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.85rem;
+        }
+
+        footer p + p { margin-top: 0.25rem; }
+        .footer-logo { height: 60px; margin-bottom: 1.25rem; }
+
+        /* ===== STICKY BOTTOM BAR ===== */
+        .sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            background: rgba(17, 17, 17, 0.95);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border-top: 2px solid var(--red);
+            padding: 1.1rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .sticky-bar.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-bar-call {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--red);
+            color: white;
+            padding: 0.7rem 2rem;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.25s;
+        }
+
+        .sticky-bar-call:hover { background: #b32d00; transform: translateY(-1px); }
+
+        .sticky-bar-call svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 5.5rem;
+            right: 1.5rem;
+            width: 42px;
+            height: 42px;
+            background: var(--dark);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s, background 0.2s;
+            pointer-events: none;
+            z-index: 98;
+        }
+        .scroll-top-btn.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .scroll-top-btn:hover { background: var(--red); }
+
+        /* ===== SCROLLING CAR ===== */
+        .scroll-car {
+            position: fixed;
+            top: 56px;
+            left: -30px;
+            width: 30px;
+            height: auto;
+            z-index: 101;
+            pointer-events: none;
+            filter: invert(18%) sepia(95%) saturate(4000%) hue-rotate(15deg) brightness(0.85);
+        }
+
+        /* ===== TILT ON HOVER ===== */
+        .tilt-hover {
+            transition: transform 0.2s ease;
+        }
+
+        /* ===== ROAD DASHES between sections ===== */
+        .road-dash-divider {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            background: inherit;
+        }
+
+        .road-dash-divider span {
+            display: flex;
+            gap: 12px;
+        }
+
+        .road-dash-divider i {
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: var(--red);
+            opacity: 0.3;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .nav { justify-content: center; }
+
+            .hero h1 { font-size: clamp(3rem, 10vw, 6rem); }
+            .hero-wheel { width: 300px; height: 300px; right: -80px; bottom: -60px; }
+
+            .hero-stats-bar {
+                gap: 2rem;
+                flex-wrap: wrap;
+            }
+
+            .features-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .feature-block {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .feature-block:last-child { border-bottom: none; }
+
+            .pricing-inner {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .pricing-card-big { flex: none; width: 100%; max-width: 400px; }
+
+            .compare-table th:first-child,
+            .compare-table td:first-child {
+                display: none;
+            }
+
+            .about-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-photo { flex: none; width: 220px; margin: 0 auto; }
+            .about-photo img { width: 220px; height: 220px; }
+
+            .about-credentials {
+                justify-content: center;
+            }
+
+        }
+
+        @media (max-width: 640px) {
+            .hero { padding: 7rem 5% 4rem; }
+            .hero-sub { font-size: 1rem; }
+
+            .hero-logo { height: 120px; }
+            .hero-wheel { width: 220px; height: 220px; right: -50px; bottom: -40px; }
+
+            .hero-actions { flex-direction: column; width: 100%; }
+            .hero-actions .btn { width: 100%; text-align: center; }
+
+            .features-strip, .courses, .driver-compare, .about, .booking, .contact { padding: 4rem 5%; }
+
+            .features-strip h2, .courses h2, .driver-compare h2, .about h2, .booking h2 { font-size: 2.5rem; }
+            .pricing-text h2 { font-size: 3rem; }
+            .contact h2 { font-size: 3rem; }
+            .pricing-amount { font-size: 4.5rem; }
+
+            .course-tile { flex: 0 0 85vw; }
+            .courses-scroll-hint { display: flex; }
+
+            .about-photo { width: 180px; }
+            .about-photo img { width: 180px; height: 180px; }
+
+            .about-credentials {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .sticky-bar-call {
+                font-size: 1rem;
+                padding: 0.6rem 1.5rem;
+            }
+
+            .contact { padding-bottom: 6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <a href="#home" class="nav-brand">
+            <span>RP Driver Training – Cairns</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#booking">Book</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" class="nav-phone">0492 968 558</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <!-- Slow-spinning steering wheel watermark -->
+        <svg class="hero-wheel" viewBox="0 0 200 200" fill="none" stroke="white" stroke-width="2">
+            <circle cx="100" cy="100" r="90"/>
+            <circle cx="100" cy="100" r="60"/>
+            <circle cx="100" cy="100" r="15"/>
+            <line x1="100" y1="40" x2="100" y2="85"/>
+            <line x1="48" y1="130" x2="87" y2="108"/>
+            <line x1="152" y1="130" x2="113" y2="108"/>
+        </svg>
+        <div class="speed-lines">
+            <div class="speed-line"></div>
+            <div class="speed-line"></div>
+            <div class="speed-line"></div>
+            <div class="speed-line"></div>
+        </div>
+        <div class="hero-content">
+            <img src="rpdt-logo.png" alt="RP Driver Training" class="hero-logo">
+            <h1>Drive Smarter,<br><em>Not Harder</em></h1>
+            <p class="hero-sub">One-on-one defensive driving courses in Cairns for P platers, seniors, and international licence holders. Tailored to your needs, in your own car.</p>
+            <div class="hero-actions">
+                <a href="#booking" class="btn btn-red">Book a Course</a>
+                <a href="#courses" class="btn btn-outline">View Courses</a>
+            </div>
+            <div class="hero-stats-bar">
+                <div class="hero-stat">
+                    <strong>3hrs</strong>
+                    <span>Courses</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>ADTA</strong>
+                    <span>Accredited</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>Cairns</strong>
+                    <span>Based</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tyre track divider -->
+    <div class="tyre-track tyre-track-dark">
+        <svg viewBox="0 0 1200 40" preserveAspectRatio="none">
+            <path d="M0,20 Q150,5 300,20 T600,20 T900,20 T1200,20" stroke="rgba(204,51,0,0.15)" stroke-width="3" fill="none"/>
+            <path d="M0,25 Q150,10 300,25 T600,25 T900,25 T1200,25" stroke="rgba(204,51,0,0.1)" stroke-width="2" fill="none"/>
+        </svg>
+    </div>
+
+    <!-- Features -->
+    <section class="features-strip">
+        <h2 class="reveal">Why RP Driver Training</h2>
+        <p class="lead reveal">Practical, real-world training that builds safer driving habits for life</p>
+        <div class="features-row">
+            <div class="feature-block reveal">
+                <div class="feature-num">01</div>
+                <h3>Your Own Car</h3>
+                <p>Train in the vehicle you drive every day. Build confidence and muscle memory in a familiar environment.</p>
+            </div>
+            <div class="feature-block reveal">
+                <div class="feature-num">02</div>
+                <h3>Real Road Conditions</h3>
+                <p>Highway merging, CBD navigation, country roads and parking. Practice the situations you actually face.</p>
+            </div>
+            <div class="feature-block reveal">
+                <div class="feature-num">03</div>
+                <h3>Tailored to You</h3>
+                <p>Every session is customised. Whether you need highway confidence or parking practice, we focus on what matters.</p>
+            </div>
+        </div>
+        <div class="features-row">
+            <div class="feature-block reveal">
+                <div class="feature-num">04</div>
+                <h3>Drive–Debrief–Drive</h3>
+                <p>Three driving segments with coaching breaks to discuss techniques and build new habits for everyday driving.</p>
+            </div>
+            <div class="feature-block reveal">
+                <div class="feature-num">05</div>
+                <h3>Handbook Included</h3>
+                <p>Take home a defensive driving handbook to reinforce what you've learned and continue improving.</p>
+            </div>
+            <div class="feature-block reveal">
+                <div class="feature-num">06</div>
+                <h3>ADTA Accredited</h3>
+                <p>Ronnie is a certified member of the Australian Driver Trainers Association — a qualified professional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Road dash divider -->
+    <div class="road-dash-divider tyre-track-light">
+        <span><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    </div>
+
+    <!-- Courses -->
+    <section class="courses" id="courses">
+        <h2 class="reveal">Our Courses</h2>
+        <p class="lead reveal">One-on-one and group programs for safer, more confident drivers</p>
+        <div class="courses-scroll">
+            <div class="course-tile tilt-hover">
+                <svg class="tile-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <div class="course-label">Most Popular</div>
+                <h3>Defensive &amp; Advanced</h3>
+                <p>Our signature course for P platers and everyday drivers. Anticipate hazards, manage risk, and drive with calm confidence.</p>
+            </div>
+            <div class="course-tile tilt-hover">
+                <svg class="tile-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                <div class="course-label">Refresher</div>
+                <h3>Seniors Refresher</h3>
+                <p>A supportive, pressure-free refresher for older drivers. Update your skills and rebuild confidence at your own pace.</p>
+            </div>
+            <div class="course-tile tilt-hover">
+                <svg class="tile-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/><circle cx="7" cy="15" r="1"/><circle cx="12" cy="15" r="1"/></svg>
+                <div class="course-label">Licence Support</div>
+                <h3>International Conversions</h3>
+                <p>Transitioning to an Australian licence? Get familiar with local road rules, conditions, and driving culture.</p>
+            </div>
+            <div class="course-tile tilt-hover">
+                <svg class="tile-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <div class="course-label">Groups</div>
+                <h3>Corporate &amp; Group Events</h3>
+                <p>Programs for workplaces, schools, parents of new learner drivers, and support workers.</p>
+            </div>
+        </div>
+        <div class="courses-scroll-hint">
+            <div class="about-badge">
+            Swipe for more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        </div>
+    </section>
+
+    <!-- Driver Comparison -->
+    <section class="driver-compare">
+        <h2 class="reveal">Which Driver Are You?</h2>
+        <p class="lead reveal">Defensive driving goes beyond following the road rules — it's about anticipating hazards, staying in control, and reducing risk</p>
+        <table class="compare-table reveal">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th class="bad">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        Reactionary
+                    </th>
+                    <th class="good">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Anticipatory
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Focus</td>
+                    <td>Waits until a hazard is already present before responding</td>
+                    <td>Thinks ahead, scans the road, and predicts what other drivers might do</td>
+                </tr>
+                <tr>
+                    <td>Behaviour</td>
+                    <td>Sudden braking, swerving, or erratic corrections at the last moment</td>
+                    <td>Smooth, calm, and in control. Adjusts early to avoid problems</td>
+                </tr>
+                <tr>
+                    <td>Mindset</td>
+                    <td>Tense, anxious, or frustrated. Things "happen to them"</td>
+                    <td>Calm and confident. Feels in charge because they are prepared</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="compare-cta reveal"><div class="about-badge">We help you become an anticipatory driver
+        </div>
+            <div class="compare-chevrons">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-block" id="pricing">
+        <svg class="section-car-accent" viewBox="0 0 512 256" fill="white"><path d="M432 128h-16l-48-80c-4-7-12-12-20-12H164c-8 0-16 5-20 12l-48 80H80c-18 0-32 14-32 32v48c0 9 7 16 16 16h16c0 27 21 48 48 48s48-21 48-48h160c0 27 21 48 48 48s48-21 48-48h16c9 0 16-7 16-16v-48c0-18-14-32-32-32zM164 52h184l38 64H126l38-64zM128 256c-18 0-32-14-32-32s14-32 32-32 32 14 32 32-14 32-32 32zm256 0c-18 0-32-14-32-32s14-32 32-32 32 14 32 32-14 32-32 32z"/></svg>
+        <div class="pricing-inner">
+            <div class="pricing-text reveal">
+                <div class="pricing-label">Featured Course</div>
+                <h2>Defensive Driving<br>Course 101</h2>
+                <p class="subtitle">A tailored mix of highway, CBD, country and other driving environments. Three drives with three coaching breaks.</p>
+                <ul>
+                    <li>3 hours of personalised training</li>
+                    <li>Learn in your own car</li>
+                    <li>Highway, CBD &amp; country driving</li>
+                    <li>3 drives with coaching breaks</li>
+                    <li>Defensive driving handbook</li>
+                    <li>Tailored to your needs</li>
+                </ul>
+                <div class="gift-note">🎁 Great gift idea for P platers</div>
+            </div>
+            <div class="pricing-card-big tilt-hover reveal">
+                <div class="plate-bolt"></div>
+                <div class="plate-bolt"></div>
+                <div class="plate-bolt"></div>
+                <div class="plate-bolt"></div>
+                <h3>Course 101</h3>
+                <div class="pricing-amount">$289</div>
+                <div class="pricing-duration">3 Hours One-on-One</div>
+                <div class="pricing-includes">📖 Handbook included</div>
+                <a href="#booking" class="btn btn-red">Book Now</a>
+                <div class="gauge-wrap">
+                    <div class="gauge-bg"></div>
+                    <div class="gauge-fill"></div>
+                    <div class="gauge-needle"></div>
+                    <div class="gauge-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking (Square Scheduling) -->
+    <section class="booking" id="booking">
+        <h2 class="reveal">Book Your Course</h2>
+        <p class="lead reveal">Book your defensive driving course in Cairns — select a service, pick a date and choose a time</p>
+        <div class="sq-widget reveal">
+            <div class="sq-header">RP Driver Training</div>
+            <div class="sq-service">
+                <select aria-label="Select a service">
+                    <option>Defensive Driving Course 101 — $289 (3 hrs)</option>
+                    <option>Seniors Refresher — $289 (3 hrs)</option>
+                    <option>International Licence Conversion — $289 (3 hrs)</option>
+                </select>
+            </div>
+            <div class="sq-calendar">
+                <div class="sq-month-nav">
+                    <button type="button" aria-label="Previous month">&lsaquo;</button>
+                    <span>February 2026</span>
+                    <button type="button" aria-label="Next month">&rsaquo;</button>
+                </div>
+                <div class="sq-days">
+                    <span class="day-label">Sun</span><span class="day-label">Mon</span><span class="day-label">Tue</span><span class="day-label">Wed</span><span class="day-label">Thu</span><span class="day-label">Fri</span><span class="day-label">Sat</span>
+                    <span class="day past">1</span><span class="day past">2</span><span class="day past">3</span><span class="day past">4</span><span class="day past">5</span><span class="day past">6</span><span class="day past">7</span>
+                    <span class="day past">8</span><span class="day past">9</span><span class="day past">10</span><span class="day past">11</span><span class="day past">12</span><span class="day past">13</span><span class="day past">14</span>
+                    <span class="day today">15</span><span class="day available selected">16</span><span class="day available">17</span><span class="day available">18</span><span class="day available">19</span><span class="day available">20</span><span class="day available">21</span>
+                    <span class="day available">22</span><span class="day available">23</span><span class="day available">24</span><span class="day available">25</span><span class="day available">26</span><span class="day available">27</span><span class="day available">28</span>
+                </div>
+            </div>
+            <div class="sq-slots">
+                <div class="sq-slots-label">Available times — Mon 16 Feb</div>
+                <div class="sq-slots-grid">
+                    <span class="sq-slot">8:00 am</span>
+                    <span class="sq-slot selected">9:00 am</span>
+                    <span class="sq-slot">10:00 am</span>
+                    <span class="sq-slot">12:00 pm</span>
+                    <span class="sq-slot">1:00 pm</span>
+                    <span class="sq-slot">2:00 pm</span>
+                </div>
+            </div>
+            <div class="sq-footer">
+                <button type="button">Continue</button>
+            </div>
+            <div class="sq-powered">Powered by Square</div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-inner">
+            <div class="about-photo reveal">
+                <img src="ronnie.jpg" alt="Ronnie Perry — RP Driver Training instructor">
+            </div>
+            <div class="about-text">
+                <div class="about-badge">Your Instructor</div>
+                <h2 class="reveal">Ronnie Perry</h2>
+                <p class="reveal">Based in Cairns, Ronnie delivers practical, one-on-one driver training that makes a real difference. As an accredited member of the Australian Driver Trainers Association, every session is professional, structured, and tailored to you.</p>
+                <p class="reveal">Whether you're a new P plater finding your confidence, a senior driver looking for a refresher, or transitioning to an Australian licence — Ronnie's patient, hands-on coaching helps you become a safer, more confident driver.</p>
+                <div class="about-credentials reveal">
+                    <div class="credential">
+                        <strong>ADTA</strong>
+                        <span>Accredited</span>
+                    </div>
+                    <div class="credential">
+                        <strong>#6865</strong>
+                        <span>Member ID</span>
+                    </div>
+                    <div class="credential">
+                        <strong>1:1</strong>
+                        <span>Personalised</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <h2 class="reveal">Ready to Drive<br>With Confidence?</h2>
+            <p class="lead reveal">Cairns-based defensive driving — book your course or ask any questions</p>
+            <div class="contact-phone reveal">
+                <h4>Phone</h4>
+                <a href="tel:0492968558">0492 968 558</a>
+            </div>
+            <a href="#booking" class="contact-big-btn reveal">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="rpdt-logo.png" alt="RP Driver Training" class="footer-logo">
+        <p>&copy; 2026 RP Driver Training. All rights reserved.</p>
+        <p>Ronnie Perry — ADTA #6865</p>
+    </footer>
+
+    <!-- Sticky bottom bar -->
+    <div class="sticky-bar" id="stickyBar">
+        <a href="tel:0492968558" class="sticky-bar-call">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now — 0492 968 558
+        </a>
+    </div>
+
+    <!-- Scroll to top -->
+    <button type="button" class="scroll-top-btn" id="scrollTop" aria-label="Scroll to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- Scrolling car -->
+    <img class="scroll-car" id="scrollCar" src="car.png" alt="" width="30" height="15">
+
+    <script>
+        const stickyBar = document.getElementById('stickyBar');
+        const scrollTopBtn = document.getElementById('scrollTop');
+        const scrollCar = document.getElementById('scrollCar');
+
+        window.addEventListener('scroll', () => {
+            const show = window.scrollY > 300;
+            stickyBar.classList.toggle('visible', show);
+            scrollTopBtn.classList.toggle('visible', show);
+            if (scrollCar) {
+                const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                scrollCar.style.left = (pct * (window.innerWidth - 30)) + 'px';
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('.tilt-hover').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2) * 6;
+                const y = (rect.height / 2 - (e.clientY - rect.top)) / (rect.height / 2) * 6;
+                card.style.transform = `perspective(600px) rotateX(${y}deg) rotateY(${x}deg) translateY(-4px)`;
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+        });
+    </script>
+</body>
+</html>
