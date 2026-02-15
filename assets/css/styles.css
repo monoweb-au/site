@@ -23,6 +23,7 @@
 /* Base Styles */
 body {
     font-family: 'Inter', sans-serif;
+    font-weight: 300;
     background-color: var(--primary-dark);
     color: var(--text-light);
     overflow-x: hidden;
@@ -319,7 +320,6 @@ body:hover::before {
 .hero-description {
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     color: var(--text-muted);
-    font-weight: 300;
     line-height: 1.6;
     margin-top: 0;
     margin-bottom: 0;
@@ -514,7 +514,6 @@ body:hover::before {
 .section-header p {
     color: var(--text-muted);
     font-size: 1.2rem;
-    font-weight: 300;
 }
 
 .services-grid {
@@ -1370,7 +1369,6 @@ body:hover::before {
     font-size: 1.5rem;
     color: var(--accent-cyan);
     transition: transform 0.3s ease;
-    font-weight: 300;
 }
 
 .faq-item.active .faq-icon {
@@ -1539,8 +1537,15 @@ h1 {
 .package-box h3 {
     font-family: 'Outfit', sans-serif;
     font-size: 1.8rem;
-    color: var(--accent-light-cyan);
+    color: #fff;
     margin-bottom: 0.5rem;
+}
+
+.package-was {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-bottom: 0.25rem;
 }
 
 .package-price {
