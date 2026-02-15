@@ -264,12 +264,6 @@
             transform: translateY(0);
         }
 
-        /* ===== CAR SVG DECORATIONS ===== */
-        .section-car-accent {
-            position: absolute;
-            opacity: 0.04;
-            pointer-events: none;
-        }
 
         /* ===== FEATURES STRIP ===== */
         .features-strip {
@@ -473,17 +467,6 @@
             position: relative;
             overflow: hidden;
         }
-        .driver-compare::after {
-            content: '';
-            position: absolute;
-            right: -60px;
-            bottom: -40px;
-            width: 350px;
-            height: 200px;
-            background: url('car.png') no-repeat center / contain;
-            opacity: 0.04;
-            pointer-events: none;
-        }
 
         .driver-compare h2 {
             font-family: 'Bebas Neue', sans-serif;
@@ -601,12 +584,6 @@
             pointer-events: none;
         }
 
-        .pricing-block .section-car-accent {
-            left: -80px;
-            bottom: -40px;
-            width: 400px;
-            opacity: 0.03;
-        }
 
         .pricing-inner {
             max-width: 1000px;
@@ -1439,8 +1416,7 @@
             .about-photo img { width: 180px; height: 180px; }
 
             .about-credentials {
-                flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             .sticky-bar-call {
@@ -1643,7 +1619,6 @@
 
     <!-- Pricing -->
     <section class="pricing-block" id="pricing">
-        <svg class="section-car-accent" viewBox="0 0 512 256" fill="white"><path d="M432 128h-16l-48-80c-4-7-12-12-20-12H164c-8 0-16 5-20 12l-48 80H80c-18 0-32 14-32 32v48c0 9 7 16 16 16h16c0 27 21 48 48 48s48-21 48-48h160c0 27 21 48 48 48s48-21 48-48h16c9 0 16-7 16-16v-48c0-18-14-32-32-32zM164 52h184l38 64H126l38-64zM128 256c-18 0-32-14-32-32s14-32 32-32 32 14 32 32-14 32-32 32zm256 0c-18 0-32-14-32-32s14-32 32-32 32 14 32 32-14 32-32 32z"/></svg>
         <div class="pricing-inner">
             <div class="pricing-text reveal">
                 <div class="pricing-label">Featured Course</div>
