@@ -55,6 +55,8 @@
             text-decoration: none;
         }
 
+        .nav-brand-icon { height: 30px; width: 30px; }
+
         .nav-brand span {
             font-size: 1rem;
             font-weight: 600;
@@ -1214,11 +1216,12 @@
         }
 
         footer p {
-            color: rgba(255,255,255,0.35);
+            color: white;
             font-size: 0.85rem;
         }
 
         footer p + p { margin-top: 0.25rem; }
+        footer a { color: var(--red); }
         .footer-logo { height: 60px; margin-bottom: 1.25rem; }
 
         /* ===== STICKY BOTTOM BAR ===== */
@@ -1323,10 +1326,10 @@
 
         .road-dash-divider i {
             display: block;
-            width: 40px;
-            height: 4px;
-            background: var(--red);
-            opacity: 0.3;
+            width: 50px;
+            height: 6px;
+            background: #999;
+            opacity: 0.4;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -1424,6 +1427,7 @@
     <!-- Nav -->
     <nav class="nav">
         <a href="#home" class="nav-brand">
+            <img src="favicon.png" alt="" class="nav-brand-icon">
             <span>RP Driver Training <span class="nav-brand-light">Cairns</span></span>
         </a>
         <ul class="nav-links">
@@ -1741,13 +1745,12 @@
             </div>
         </div>
     </section>
-l
 
     <!-- Footer -->
     <footer>
         <img src="rpdt-logo.png" alt="RP Driver Training" class="footer-logo">
-        <p>&copy; 2026 RP Driver Training. All rights reserved.</p>
-        <p>Ronnie Perry — ADTA #6865</p>
+        <p>&copy; 2026 RP Driver Training. </p>
+        <p>Website design by <a href="https://www.monoweb.com.au" target="_blank" rel="noopener"><strong>MonoWeb</strong></a>. </p>
     </footer>
 
     <!-- Sticky bottom bar -->
