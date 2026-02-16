@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <li><a href="index.html#why-us">Why Choose Us?</a></li>
         <li><a href="index.html#process">How It Works</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="index.html#faq">FAQs</a></li>
+        <li><a href="index.html#faqs">FAQs</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </nav>

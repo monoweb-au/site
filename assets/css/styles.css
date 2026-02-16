@@ -691,16 +691,51 @@ body:hover::before {
     overflow: hidden;
 }
 
+.why-monoweb .section-header {
+    position: relative;
+    z-index: 2;
+}
+
 .why-monoweb::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1000px;
-    height: 400px;
-    background: radial-gradient(ellipse, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(15, 23, 42, 0.7) 40%, rgba(30, 41, 59, 0.95) 50%, rgba(15, 23, 42, 1) 60%);
     pointer-events: none;
+    z-index: 1;
+}
+
+.why-monoweb::after {
+    content: '<meta name="viewport" content="width=device-width, initial-scale=1.0">\A<link rel="stylesheet" href="assets/css/styles.css">\A\A:root {\A  --primary-dark: #0f172a;\A  --accent-cyan: #06b6d4;\A  --text-light: #f1f5f9;\A}\A\Abody {\A  font-family: "Inter", sans-serif;\A  background-color: var(--primary-dark);\A  color: var(--text-light);\A  line-height: 1.7;\A}\A\A.hero {\A  display: flex;\A  align-items: center;\A  padding: 4rem 2rem;\A}\A\A@media (max-width: 768px) {\A  .container {\A    padding: 1rem;\A  }\A}\A\A<meta name="viewport" content="width=device-width, initial-scale=1.0">\A<link rel="stylesheet" href="assets/css/styles.css">\A\A:root {\A  --primary-dark: #0f172a;\A  --accent-cyan: #06b6d4;\A  --text-light: #f1f5f9;\A}\A\Abody {\A  font-family: "Inter", sans-serif;\A  background-color: var(--primary-dark);\A  color: var(--text-light);\A  line-height: 1.7;\A}\A\A.hero {\A  display: flex;\A  align-items: center;\A  padding: 4rem 2rem;\A}\A\A@media (max-width: 768px) {\A  .container {\A    padding: 1rem;\A  }\A}';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 70%;
+    max-width: 900px;
+    height: 200%;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: rgba(6, 182, 212, 0.35);
+    white-space: pre;
+    pointer-events: none;
+    z-index: 0;
+    animation: matrixFall 20s linear infinite;
+    overflow: visible;
+    letter-spacing: 0.03em;
+    padding-left: 10%;
+}
+
+@keyframes matrixFall {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(-50%, 0%);
+    }
 }
 
 .comparison-table-wrapper {
@@ -951,11 +986,16 @@ body:hover::before {
     z-index: 2;
     align-items: center;
     justify-content: center;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
     color: white;
     box-shadow: 0 0 0 10px rgba(15, 23, 42, 0.5);
+}
+
+.process-number .service-icon {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+    margin: 0;
+    display: block;
 }
 
 .process-content h3 {
@@ -1491,6 +1531,15 @@ body:hover::before {
     .pricing-grid {
         grid-template-columns: 1fr;
         max-width: 100%;
+    }
+
+    .pricing-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .pricing-features {
+        padding-left: 0;
+        margin-left: 0;
     }
 
     .pricing-card.featured:hover {
