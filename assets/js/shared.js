@@ -129,6 +129,104 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Smooth scroll for hero chevron
+  const scrollHint = document.getElementById('scrollHint');
+  if (scrollHint) {
+    scrollHint.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById('services');
+      if (!target) return;
+      const start = window.pageYOffset;
+      const end = target.offsetTop;
+      const distance = end - start;
+      const duration = 800;
+      let startTime = null;
+
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        window.scrollTo(0, start + distance * ease);
+        if (elapsed < duration) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
+  // Magnetic CTA button
+  const magneticBtns = document.querySelectorAll('.hero .btn-primary');
+  magneticBtns.forEach((btn) => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+
+  // 3D tilt on service cards (clear animation lock first)
+  const serviceCards = document.querySelectorAll('.service-card');
+  serviceCards.forEach((card) => {
+    card.addEventListener('animationend', () => {
+      card.style.animation = 'none';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    });
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${y * -8}deg) translateY(-10px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0)';
+    });
+  });
+
+  // Particle starfield in testimonials
+  const particleSection = document.querySelector('.testimonials');
+  if (particleSection) {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'section-particles';
+    particleSection.insertBefore(canvas, particleSection.firstChild);
+    const ctx = canvas.getContext('2d');
+
+    const resize = () => { canvas.width = particleSection.offsetWidth; canvas.height = particleSection.offsetHeight; };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const particles = Array.from({ length: 150 }, () => ({
+      x: Math.random() * particleSection.offsetWidth,
+      y: Math.random() * particleSection.offsetHeight,
+      r: Math.random() * 2 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+      o: Math.random() * 0.5 + 0.15,
+    }));
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(139, 92, 246, ${p.o})`;
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+      requestAnimationFrame(draw);
+    };
+    draw();
+  }
+
   // Intersection Observer animations (index only)
   const animated = document.querySelectorAll('.service-card, .process-step, .testimonial-card, .pricing-card');
   if (animated.length) {
