@@ -315,6 +315,12 @@ body:hover::before {
     height: auto;
     border-radius: 14px;
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    animation: heroFloat 4s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
 
 .hero-description {
@@ -472,6 +478,30 @@ body:hover::before {
     animation: float3 10s ease-in-out infinite;
 }
 
+
+.scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    color: var(--accent-cyan);
+    text-decoration: none;
+    opacity: 0.5;
+    animation: scrollBounce 2s ease-in-out infinite;
+    z-index: 2;
+    line-height: 1;
+}
+
+.scroll-hint:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+}
 
 /* Services Section */
 .services {
@@ -648,15 +678,43 @@ body:hover::before {
     left: 50%;
     top: 0;
     height: 100%;
-    width: 2px;
-    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple) 60%, transparent);
+    width: 4px;
+    background: rgba(6, 182, 212, 0.1);
     transform: translateX(-50%);
+}
+
+.process-timeline::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: calc(var(--timeline-fill, 0) * 100%);
+    width: 4px;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+    transform: translateX(-50%);
+    transition: height 0.15s linear;
+}
+
+.timeline-spark {
+    position: absolute;
+    left: 50%;
+    top: calc(var(--timeline-fill, 0) * 100%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-light-cyan);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px 3px rgba(34, 211, 238, 0.6), 0 0 20px 6px rgba(34, 211, 238, 0.25);
+    transition: top 0.15s linear;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .process-step {
     display: flex;
     margin-bottom: 4rem;
     position: relative;
+    z-index: 1;
     opacity: 0;
     transform: translateX(-50px);
 }
@@ -720,6 +778,7 @@ body:hover::before {
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
     border-radius: 50%;
     display: flex;
+    z-index: 2;
     align-items: center;
     justify-content: center;
     font-family: 'Outfit', sans-serif;
@@ -806,6 +865,8 @@ body:hover::before {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .testimonial-stars {
@@ -854,6 +915,19 @@ body:hover::before {
     line-height: 1.8;
     margin-bottom: 1.5rem;
     font-style: italic;
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: rgba(139, 92, 246, 0.2);
+    pointer-events: none;
 }
 
 .testimonial-author strong {
@@ -1171,7 +1245,12 @@ body:hover::before {
         gap: 3rem;
     }
 
-    .process-timeline::before {
+    .process-timeline::before,
+    .process-timeline::after {
+        left: 30px;
+    }
+
+    .timeline-spark {
         left: 30px;
     }
 
@@ -1837,7 +1916,7 @@ h1 {
 }
 
 .icon-no-fees {
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2224px%22%20viewBox%3D%220%20-960%20960%20960%22%20width%3D%2224px%22%20fill%3D%22%23FFFFFF%22%3E%3Cpath%20d%3D%22M574-618q-12-30-35.5-47T482-682q-18%200-35%205t-31%2019l-58-58q14-14%2038-25.5t44-14.5v-84h80v82q45%209%2079%2036.5t51%2071.5l-76%2032ZM792-56%20608-240q-15%2015-41%2024.5T520-204v84h-80v-86q-56-14-93.5-51T292-350l80-32q12%2042%2040.5%2072t75.5%2030q18%200%2033-4.5t29-13.5L56-792l56-56%20736%20736-56%2056Z%22%2F%3E%3C%2Fsvg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2224px%22%20viewBox%3D%220%20-960%20960%20960%22%20width%3D%2224px%22%20fill%3D%22%23FFFFFF%22%3E%3Cpath%20d%3D%22m424-312%20282-282-56-56-226%20226-114-114-56%2056%20170%20170ZM200-120q-33%200-56.5-23.5T120-200v-560q0-33%2023.5-56.5T200-840h560q33%200%2056.5%2023.5T840-760v560q0%2033-23.5%2056.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z%22%2F%3E%3C%2Fsvg%3E");
 }
 
 .icon-get-enquiries {

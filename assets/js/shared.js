@@ -112,6 +112,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+  // Process timeline fill on scroll
+  const timeline = document.querySelector('.process-timeline');
+  if (timeline) {
+    const spark = document.createElement('div');
+    spark.className = 'timeline-spark';
+    timeline.appendChild(spark);
+
+    window.addEventListener('scroll', () => {
+      const rect = timeline.getBoundingClientRect();
+      const timelineTop = rect.top;
+      const timelineHeight = rect.height;
+      const triggerPoint = window.innerHeight * 0.5;
+      const progress = Math.min(Math.max((triggerPoint - timelineTop) / timelineHeight, 0), 1);
+      timeline.style.setProperty('--timeline-fill', progress);
+    });
+  }
+
   // Intersection Observer animations (index only)
   const animated = document.querySelectorAll('.service-card, .process-step, .testimonial-card, .pricing-card');
   if (animated.length) {
