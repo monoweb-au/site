@@ -11,6 +11,12 @@
     --text-muted: #cbd5e1;
     --bg-gradient-1: #0f172a;
     --bg-gradient-2: #253041;
+
+    /* Light section colors */
+    --bg-light: #f8fafc;
+    --bg-light-alt: #f1f5f9;
+    --text-dark: #1e293b;
+    --text-dark-muted: #475569;
 }
 
 /* Reset */
@@ -157,6 +163,14 @@ a.logo:hover {
 }
 
 .nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--accent-cyan);
+}
+
+.nav-links a.active::after {
     width: 100%;
 }
 
@@ -669,6 +683,139 @@ body:hover::before {
     margin-bottom: 0;
 }
 
+/* Why MonoWeb Section (Comparison) */
+.why-monoweb {
+    padding: 6rem 5%;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
+    position: relative;
+    overflow: hidden;
+}
+
+.why-monoweb::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.comparison-table-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    overflow-x: auto;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(6, 182, 212, 0.1);
+    table-layout: fixed;
+}
+
+.comparison-table thead th {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid rgba(6, 182, 212, 0.2);
+    position: relative;
+    line-height: 1.2;
+    width: 50%;
+}
+
+.diy-header {
+    background: rgba(30, 41, 59, 0.4);
+    color: var(--text-muted);
+    border-right: 1px solid rgba(203, 213, 225, 0.1);
+}
+
+.diy-header::before {
+    content: '×';
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(203, 213, 225, 0.5);
+    font-weight: bold;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.monoweb-header {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(30, 41, 59, 0.5));
+    color: var(--accent-light-cyan);
+}
+
+.monoweb-header::before {
+    content: '✓';
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-cyan);
+    font-weight: bold;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.comparison-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.comparison-table tbody tr:hover {
+    background: rgba(6, 182, 212, 0.05);
+}
+
+.comparison-table td {
+    padding: 1.5rem 2rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(203, 213, 225, 0.1);
+    position: relative;
+    vertical-align: top;
+}
+
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.diy-cell {
+    background: rgba(30, 41, 59, 0.2);
+    border-right: 1px solid rgba(203, 213, 225, 0.1);
+}
+
+.monoweb-cell {
+    background: rgba(6, 182, 212, 0.03);
+}
+
+@media (max-width: 968px) {
+    .comparison-table thead th {
+        font-size: 1.3rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .comparison-table td {
+        padding: 1.25rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .diy-header::before,
+    .monoweb-header::before {
+        left: 1rem;
+        font-size: 1.4rem;
+    }
+}
+
 /* Process Section */
 .process {
     padding: 6rem 5%;
@@ -1093,6 +1240,17 @@ body:hover::before {
     font-size: 1rem;
     text-align: center;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.promo-lottie {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    margin: -20px 0;
 }
 
 .pricing-was {
@@ -1481,9 +1639,8 @@ body:hover::before {
 
 .faq-question h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    /* CHANGED from 600 */
+    font-size: 1.1rem;
+    font-weight: 400;
     color: var(--text-light);
     margin: 0;
 }

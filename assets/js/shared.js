@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <ul class="nav-links">
         <li><a href="index.html#services">What You Get</a></li>
+        <li><a href="index.html#why-us">Why Choose Us?</a></li>
         <li><a href="index.html#process">How It Works</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#faq">FAQs</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </nav>
@@ -259,6 +261,43 @@ document.addEventListener('DOMContentLoaded', () => {
     notification.classList.add('show');
     window.setTimeout(() => notification.classList.remove('show'), 5000);
   };
+
+  // Active section indicator in navigation
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"], .nav-links a[href*="#"]');
+  if (navLinks.length) {
+    const sections = Array.from(navLinks)
+      .map(link => {
+        const hash = link.getAttribute('href').split('#')[1];
+        return hash ? document.getElementById(hash) : null;
+      })
+      .filter(Boolean);
+
+    const updateActiveNav = () => {
+      const scrollPosition = window.pageYOffset + window.innerHeight / 3;
+
+      let currentSection = null;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          currentSection = section;
+        }
+      });
+
+      navLinks.forEach(link => {
+        const hash = link.getAttribute('href').split('#')[1];
+        if (currentSection && hash === currentSection.id) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav(); // Run on load
+  }
 
   // Contact form handler (index only; progressive enhancement)
   const contactForm = document.getElementById('contactForm');
