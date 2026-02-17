@@ -645,7 +645,7 @@
             background: #D4C4B0;
             opacity: 0;
             transition: opacity 0.4s ease-out;
-            grid-column: 1 / -1;
+            width: 100%;
         }
 
         .mortar-line.visible {
@@ -697,8 +697,8 @@
 
         @keyframes plumbSwing {
             0%, 100% { transform: translateX(-50%) rotate(0deg); }
-            25% { transform: translateX(-50%) rotate(2deg); }
-            75% { transform: translateX(-50%) rotate(-2deg); }
+            25% { transform: translateX(-50%) rotate(4deg); }
+            75% { transform: translateX(-50%) rotate(-4deg); }
         }
 
 
@@ -1970,7 +1970,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Concept Masonry. All rights reserved.</p>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Concept Masonry. All rights reserved.</p>
         <p>Website design by <a href="https://www.monoweb.com.au" target="_blank" rel="noopener"><strong>MonoWeb</strong></a>.</p>
     </footer>
 
@@ -2032,10 +2032,10 @@
                         2: document.getElementById('mortar-2')
                     };
 
-                    const brickDelay = 250;
-                    const vertMortarDelay = 150;
-                    const horzMortarDelay = 200;
-                    const rowPause = 300;
+                    const brickDelay = 150;
+                    const vertMortarDelay = 80;
+                    const horzMortarDelay = 120;
+                    const rowPause = 180;
 
                     function animateRow(rowNumber, startTime, showHorzMortar = true) {
                         const bricks = Array.from(brickWall.querySelectorAll(`.wall-brick[data-row="${rowNumber}"]`));
