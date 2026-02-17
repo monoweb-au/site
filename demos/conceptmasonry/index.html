@@ -139,19 +139,6 @@
             position: relative;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--cyan-light);
-            color: var(--cyan-dark);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -227,7 +214,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-
         }
 
         /* ===== BRICK DUST PARTICLES ===== */
@@ -286,7 +272,6 @@
         }
 
 
-        /* ===== SPIRIT LEVEL ===== */
         /* ===== SECTION DIVIDER ===== */
         .section-divider {
             padding: 4rem 5%;
@@ -331,10 +316,6 @@
             width: 24px;
             height: 15px;
             background: url('assets/img/plumb-bob.png') center / contain no-repeat;
-        }
-
-        .section-divider .plumb-bob {
-            display: none;
         }
 
         .spirit-level {
@@ -633,10 +614,6 @@
             transform: translateY(0) scale(1);
         }
 
-        .wall-brick.built::after {
-            opacity: 1;
-        }
-
         .mortar-line {
             position: absolute;
             left: 0;
@@ -645,7 +622,6 @@
             background: #D4C4B0;
             opacity: 0;
             transition: opacity 0.4s ease-out;
-            width: 100%;
         }
 
         .mortar-line.visible {
@@ -1913,7 +1889,6 @@
     <section class="section-divider">
         <div class="plumb-line-container">
             <div class="plumb-line" id="plumbLine"></div>
-            <div class="plumb-bob" id="plumbBob"></div>
             <div class="spirit-level" id="spiritLevel">
                 <div class="level-vial">
                     <div class="level-marks"></div>
