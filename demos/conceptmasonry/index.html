@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept Masonry | Expert Bricklaying & Stonework</title>
+    <meta name="description" content="Professional bricklaying and stonework services. Quality craftsmanship for residential and commercial projects. Feature walls, retaining walls, extensions and repairs.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --cyan: #00BCD4;
+            --cyan-dark: #0097A7;
+            --cyan-light: #E0F7FA;
+            --text: #1A1A1A;
+            --text-light: #666666;
+            --border: #E5E5E5;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-brand-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--cyan); }
+
+        .nav-cta {
+            background: var(--cyan);
+            color: white !important;
+            padding: 0.65rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--cyan-dark);
+            transform: translateY(-1px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 10rem 5% 6rem;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--cyan-light) 0%, transparent 70%);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--cyan-light);
+            color: var(--cyan-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-experience {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-experience strong {
+            color: var(--cyan);
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            color: var(--cyan);
+            position: relative;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--cyan);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--cyan-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,188,212,0.25);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--cyan);
+            background: var(--cyan-light);
+        }
+
+        /* Hero Image */
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            box-shadow: inset 0 0 120px rgba(0,0,0,0.25);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        /* ===== BRICK DUST PARTICLES ===== */
+        .dust-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .dust {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(169, 101, 82, 0.3);
+            border-radius: 50%;
+            animation: dustFloat 15s linear infinite;
+        }
+
+        .dust:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .dust:nth-child(2) { left: 25%; animation-delay: 2s; }
+        .dust:nth-child(3) { left: 40%; animation-delay: 4s; }
+        .dust:nth-child(4) { left: 60%; animation-delay: 6s; }
+        .dust:nth-child(5) { left: 75%; animation-delay: 8s; }
+        .dust:nth-child(6) { left: 90%; animation-delay: 10s; }
+
+        @keyframes dustFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(50vh) translateX(30px) scale(1.2);
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(-20px) translateX(-20px) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+
+        /* ===== MORTAR SPREADING ===== */
+        .mortar-spread {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #D4C4B0, transparent);
+            animation: spreadMortar 3s ease-in-out infinite;
+        }
+
+        @keyframes spreadMortar {
+            0% { width: 0; left: 0; }
+            50% { width: 100%; left: 0; }
+            100% { width: 0; left: 100%; }
+        }
+
+        /* ===== TROWEL CURSOR EFFECT ===== */
+        .service-card {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M8 24L14 8L16 10L10 26L8 24Z" fill="%2300BCD4"/></svg>') 16 16, auto;
+        }
+
+        /* ===== SPIRIT LEVEL ===== */
+        /* ===== SECTION DIVIDER ===== */
+        .section-divider {
+            padding: 4rem 5%;
+            background: linear-gradient(to bottom, var(--off-white) 0%, var(--off-white) 50%, var(--white) 50%, var(--white) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+        }
+
+        .plumb-line-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plumb-line {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 2px;
+            width: 0;
+            background: linear-gradient(to right, #666, #888);
+            transition: width 2s ease-out;
+        }
+
+        .plumb-line.visible {
+            width: 100%;
+        }
+
+        .plumb-line::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #888, #444);
+            clip-path: polygon(100% 50%, 70% 0%, 0% 0%, 0% 100%, 70% 100%);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .section-divider .plumb-bob {
+            display: none;
+        }
+
+        .spirit-level {
+            width: 280px;
+            height: 38px;
+            background: linear-gradient(to bottom, #F4D03F, #E6A93D);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease 1.5s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .spirit-level.visible {
+            opacity: 1;
+            animation: levelCheck 4s ease-in-out 1.5s infinite;
+        }
+
+        @keyframes levelCheck {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-1.5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(1.5deg); }
+        }
+
+        .level-vial {
+            width: 130px;
+            height: 20px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-bubble {
+            position: absolute;
+            width: 35px;
+            height: 16px;
+            background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(200,220,255,0.7));
+            border-radius: 50%;
+            top: 2px;
+            left: 47px;
+            animation: bubbleMove 4s ease-in-out 1.5s infinite;
+        }
+
+        @keyframes bubbleMove {
+            0%, 100% { left: 47px; }
+            25% { left: 60px; }
+            50% { left: 47px; }
+            75% { left: 34px; }
+        }
+
+        .level-marks {
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            left: 50%;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--cyan-light);
+            color: var(--cyan-dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.03em;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--cyan);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 28px,
+                    rgba(0,188,212,0.03) 28px,
+                    rgba(0,188,212,0.03) 30px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 58px,
+                    rgba(0,188,212,0.03) 58px,
+                    rgba(0,188,212,0.03) 60px
+                );
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .service-card:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--cyan-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--cyan);
+        }
+
+        .service-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== WALL SECTION ===== */
+        .wall-section {
+            padding: 6rem 5%;
+            background: var(--off-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wall-content {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+        }
+
+        .wall-display {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            padding-top: 5rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+            position: relative;
+            overflow: visible;
+        }
+
+        .wall-background-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--cyan-light);
+            z-index: 1;
+            pointer-events: none;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .brick-wall {
+            display: grid;
+            grid-template-columns: 1fr 6px 1fr 6px 1fr 6px 1fr;
+            gap: 0;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .wall-brick {
+            aspect-ratio: 2/1;
+            background: linear-gradient(135deg, #C97B6B 0%, #A65E52 100%);
+            border-radius: 1px;
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            transition: all 0.5s ease-out;
+            position: relative;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .wall-brick::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+            border-radius: 1px;
+        }
+
+        .vert-mortar {
+            background: #D4C4B0;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .vert-mortar.visible {
+            opacity: 1;
+        }
+
+        .wall-brick.built {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .wall-brick.built::after {
+            opacity: 1;
+        }
+
+        .mortar-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: #D4C4B0;
+            opacity: 0;
+            transition: opacity 0.4s ease-out;
+        }
+
+        .mortar-line.visible {
+            opacity: 1;
+        }
+
+        #mortar-0 {
+            top: calc(66.66% - 3px);
+        }
+
+        #mortar-1 {
+            top: calc(33.33% - 3px);
+        }
+
+        .wall-display .plumb-bob {
+            position: absolute;
+            left: 50%;
+            top: -40px;
+            width: 2px;
+            height: 0;
+            background: linear-gradient(to bottom, #666, #888);
+            transform: translateX(-50%);
+            transform-origin: top center;
+            animation: plumbSwing 3s ease-in-out infinite;
+            opacity: 0;
+            transition: opacity 0.5s ease, height 0.8s ease;
+            z-index: 10;
+        }
+
+        .wall-display .plumb-bob::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #888, #444);
+            clip-path: polygon(50% 100%, 0% 30%, 0% 0%, 100% 0%, 100% 30%);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .wall-display .plumb-bob.visible {
+            opacity: 1;
+            height: 180px;
+        }
+
+        @keyframes plumbSwing {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(2deg); }
+            75% { transform: translateX(-50%) rotate(-2deg); }
+        }
+
+
+        /* ===== POINTING TROWEL ===== */
+        .pointing-trowel {
+            position: absolute;
+            bottom: 20px;
+            left: -60px;
+            width: 50px;
+            height: 50px;
+            opacity: 0;
+            transition: all 0.5s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .portfolio-card:hover .pointing-trowel {
+            opacity: 0.6;
+            left: calc(100% - 40px);
+        }
+
+        /* ===== PORTFOLIO ===== */
+        .portfolio {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .before-after-grid {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .before-after-container {
+            position: relative;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .before-after-container:hover {
+            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .before-after-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .before-image,
+        .after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .before-image {
+            background-color: #8B7355;
+        }
+
+        .after-image {
+            clip-path: inset(0 0 0 50%);
+            background-color: #C97B6B;
+        }
+
+        .ba-slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: white;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .ba-slider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .ba-slider::after {
+            content: '⬌';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            color: var(--cyan);
+            z-index: 1;
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .ba-label.before {
+            left: 1rem;
+        }
+
+        .ba-label.after {
+            right: 1rem;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            position: relative;
+        }
+
+        .gallery-wrapper {
+            position: relative;
+            aspect-ratio: 16/10;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+        }
+
+        .gallery-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-slide.active {
+            opacity: 1;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .gallery-btn {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--cyan);
+            transition: all 0.3s;
+            pointer-events: all;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .gallery-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .gallery-dots {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-dot.active {
+            background: white;
+            width: 32px;
+            border-radius: 6px;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 6rem 5%;
+            background: var(--off-white);
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .quote-mark {
+            display: none;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--cyan-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--cyan);
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-box {
+            background: var(--off-white);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .contact-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border: 4px solid white;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .contact-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .contact-detail strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .contact-phone {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+
+        .contact-phone:hover {
+            color: var(--cyan-dark);
+        }
+
+        .contact-socials {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-facebook,
+        .contact-instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .contact-facebook {
+            background: #1877F2;
+        }
+
+        .contact-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .contact-facebook:hover,
+        .contact-instagram:hover {
+            opacity: 0.9;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--text);
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+
+            .nav-inner {
+                justify-content: center;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-inner > div:last-child {
+                order: -1;
+            }
+
+            .hero-visual {
+                height: 350px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wall-display {
+                padding: 2rem;
+            }
+
+            .wall-background-text {
+                font-size: 2.5rem;
+            }
+
+            .brick-wall {
+                grid-template-columns: 1fr 5px 1fr 5px 1fr 5px 1fr;
+                max-width: 500px;
+            }
+
+            .mortar-line {
+                height: 5px;
+            }
+
+            .wall-display .plumb-bob.visible {
+                height: 100px;
+            }
+
+            .before-after-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spirit-level {
+                width: 200px;
+                height: 32px;
+            }
+
+            .level-vial {
+                width: 90px;
+                height: 16px;
+            }
+
+            .level-bubble {
+                width: 25px;
+                height: 12px;
+                left: 32px;
+            }
+
+            @keyframes bubbleMove {
+                0%, 100% { left: 32px; }
+                25% { left: 42px; }
+                50% { left: 32px; }
+                75% { left: 22px; }
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 6rem 5% 4rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .contact-phone {
+                font-size: 2rem;
+            }
+
+            .wall-display {
+                padding: 1rem;
+            }
+
+            .wall-background-text {
+                font-size: 1.75rem;
+                letter-spacing: 0.02em;
+            }
+
+            .brick-wall {
+                grid-template-columns: 1fr 4px 1fr 4px 1fr 4px 1fr;
+                max-width: 320px;
+            }
+
+            .mortar-line {
+                height: 4px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#home" class="nav-brand">
+                <img src="assets/img/cm-logo.jpg" alt="CM" class="nav-logo">
+                <span class="nav-brand-text">Concept Masonry</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="dust-container">
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+        </div>
+        <div class="hero-inner">
+            <div class="hero-visual">
+                <img src="assets/img/bricklaying.png" alt="Professional Bricklaying" class="hero-image">
+            </div>
+            <div>
+                <h1>Building <span class="highlight">Excellence</span><br>One Brick at a Time</h1>
+                <div class="hero-experience">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <strong>20+ years</strong> of trusted experience
+                </div>
+                <p class="hero-sub">Expert bricklaying and stonework for residential and commercial projects. From feature walls to full extensions, we deliver craftsmanship that lasts.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+                    <a href="#portfolio" class="btn btn-secondary">View Our Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="mortar-spread"></div>
+        <div class="section-header reveal">
+            <span class="section-tag">OUR SERVICES</span>
+            <h2>What We Do</h2>
+            <p>Professional masonry services for every project size and budget.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                </div>
+                <h3>Residential Bricklaying</h3>
+                <p>New home construction, extensions, and renovations. Quality brickwork that adds value and character to your property.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                </div>
+                <h3>Feature Walls</h3>
+                <p>Stunning feature walls in brick and stone. Transform your indoor and outdoor spaces with custom designs.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                </div>
+                <h3>Retaining Walls</h3>
+                <p>Strong and attractive retaining walls built to last. Engineered solutions for sloped properties and landscaping.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </div>
+                <h3>Repairs & Restoration</h3>
+                <p>Expert repairs and restoration for damaged or ageing brickwork. Matching existing styles and materials perfectly.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+                </div>
+                <h3>Commercial Projects</h3>
+                <p>Large-scale commercial and industrial bricklaying. Experienced team delivering on time and on budget.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <h3>Outdoor Structures</h3>
+                <p>Letterboxes, pizza ovens, BBQ areas, garden walls and more. Custom outdoor masonry to enhance your lifestyle.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wall Building Section -->
+    <section class="wall-section">
+        <div class="section-header reveal">
+            <span class="section-tag">CRAFTSMANSHIP</span>
+            <h2>Quality Construction</h2>
+            <p>Every project starts with quality materials and ends with precision. We take pride in building structures that stand the test of time.</p>
+        </div>
+        <div class="wall-display reveal">
+            <div class="plumb-bob"></div>
+            <div class="wall-background-text">Built to Last</div>
+            <div class="brick-wall" id="brickWall">
+                <div class="wall-brick" data-row="3" data-index="0"></div>
+                <div class="vert-mortar" data-row="3" data-index="0"></div>
+                <div class="wall-brick" data-row="3" data-index="1"></div>
+                <div class="vert-mortar" data-row="3" data-index="1"></div>
+                <div class="wall-brick" data-row="3" data-index="2"></div>
+                <div class="vert-mortar" data-row="3" data-index="2"></div>
+                <div class="wall-brick" data-row="3" data-index="3"></div>
+                <div class="wall-brick" data-row="2" data-index="0"></div>
+                <div class="vert-mortar" data-row="2" data-index="0"></div>
+                <div class="wall-brick" data-row="2" data-index="1"></div>
+                <div class="vert-mortar" data-row="2" data-index="1"></div>
+                <div class="wall-brick" data-row="2" data-index="2"></div>
+                <div class="vert-mortar" data-row="2" data-index="2"></div>
+                <div class="wall-brick" data-row="2" data-index="3"></div>
+                <div class="mortar-line" id="mortar-1"></div>
+                <div class="wall-brick" data-row="1" data-index="0"></div>
+                <div class="vert-mortar" data-row="1" data-index="0"></div>
+                <div class="wall-brick" data-row="1" data-index="1"></div>
+                <div class="vert-mortar" data-row="1" data-index="1"></div>
+                <div class="wall-brick" data-row="1" data-index="2"></div>
+                <div class="vert-mortar" data-row="1" data-index="2"></div>
+                <div class="wall-brick" data-row="1" data-index="3"></div>
+                <div class="mortar-line" id="mortar-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header reveal">
+            <span class="section-tag">PORTFOLIO</span>
+            <h2>Our Work</h2>
+            <p>See the transformation from start to finish on our recent projects.</p>
+        </div>
+
+        <div class="before-after-grid">
+            <div class="before-after-container reveal">
+                <div class="before-after-wrapper">
+                    <div class="before-image" style="background-image: url('assets/img/1-before.jpg')"></div>
+                    <div class="after-image" id="afterImage1" style="background-image: url('assets/img/1-after.jpg')"></div>
+                    <div class="ba-slider" id="baSlider1"></div>
+                    <div class="ba-label before">Before</div>
+                    <div class="ba-label after">After</div>
+                </div>
+            </div>
+            <div class="before-after-container reveal">
+                <div class="before-after-wrapper">
+                    <div class="before-image" style="background-image: url('assets/img/2-before.jpg')"></div>
+                    <div class="after-image" id="afterImage2" style="background-image: url('assets/img/2-after.jpg')"></div>
+                    <div class="ba-slider" id="baSlider2"></div>
+                    <div class="ba-label before">Before</div>
+                    <div class="ba-label after">After</div>
+                </div>
+            </div>
+            <div class="before-after-container reveal">
+                <div class="before-after-wrapper">
+                    <div class="before-image" style="background-image: url('assets/img/5-before.jpg')"></div>
+                    <div class="after-image" id="afterImage3" style="background-image: url('assets/img/5-after.jpg')"></div>
+                    <div class="ba-slider" id="baSlider3"></div>
+                    <div class="ba-label before">Before</div>
+                    <div class="ba-label after">After</div>
+                </div>
+            </div>
+            <div class="before-after-container reveal">
+                <div class="before-after-wrapper">
+                    <div class="before-image" style="background-image: url('assets/img/7-before.jpg')"></div>
+                    <div class="after-image" id="afterImage4" style="background-image: url('assets/img/7-after.jpg')"></div>
+                    <div class="ba-slider" id="baSlider4"></div>
+                    <div class="ba-label before">Before</div>
+                    <div class="ba-label after">After</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-container reveal">
+            <div class="gallery-wrapper">
+                <div class="gallery-slides">
+                    <div class="gallery-slide active" style="background-image: url('assets/img/bricklaying-1.jpg')"></div>
+                    <div class="gallery-slide" style="background-image: url('assets/img/bricklaying-2.jpg')"></div>
+                    <div class="gallery-slide" style="background-image: url('assets/img/bricklaying-3.jpg')"></div>
+                    <div class="gallery-slide" style="background-image: url('assets/img/bricklaying-4.jpg')"></div>
+                    <div class="gallery-slide" style="background-image: url('assets/img/bricklaying-5.jpg')"></div>
+                    <div class="gallery-slide" style="background-image: url('assets/img/bricklaying-6.jpg')"></div>
+                </div>
+                <div class="gallery-nav">
+                    <button type="button" class="gallery-btn" id="prevBtn">‹</button>
+                    <button type="button" class="gallery-btn" id="nextBtn">›</button>
+                </div>
+                <div class="gallery-dots">
+                    <div class="gallery-dot active" data-slide="0"></div>
+                    <div class="gallery-dot" data-slide="1"></div>
+                    <div class="gallery-dot" data-slide="2"></div>
+                    <div class="gallery-dot" data-slide="3"></div>
+                    <div class="gallery-dot" data-slide="4"></div>
+                    <div class="gallery-dot" data-slide="5"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header reveal">
+            <span class="section-tag">TESTIMONIALS</span>
+            <h2>What Our Clients Say</h2>
+            <p>Real feedback from property owners who trusted us with their masonry projects.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">The team at Concept Masonry did an incredible job on our house extension. Professional from start to finish, and the brickwork is absolutely flawless.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ST</div>
+                    <div class="author-info">
+                        <h4>Sarah Thompson</h4>
+                        <p>House Extension Project</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">We needed a retaining wall for our sloped backyard and couldn't be happier. Strong, beautiful, and built to last. Great communication throughout.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MR</div>
+                    <div class="author-info">
+                        <h4>Michael Roberts</h4>
+                        <p>Retaining Wall Project</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">Outstanding craftsmanship on our feature wall. They understood exactly what we wanted and delivered beyond expectations. The attention to detail is superb.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">EL</div>
+                    <div class="author-info">
+                        <h4>Emma Lewis</h4>
+                        <p>Feature Wall Project</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">Professional, reliable, and skilled. Our commercial project was completed on time and the quality of work was excellent. Will definitely use them again.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JP</div>
+                    <div class="author-info">
+                        <h4>James Parker</h4>
+                        <p>Commercial Build</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <section class="section-divider">
+        <div class="plumb-line-container">
+            <div class="plumb-line" id="plumbLine"></div>
+            <div class="plumb-bob" id="plumbBob"></div>
+            <div class="spirit-level" id="spiritLevel">
+                <div class="level-vial">
+                    <div class="level-marks"></div>
+                    <div class="level-bubble"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="section-header reveal">
+                <span class="section-tag">CONTACT</span>
+                <h2>Get Your Free Quote</h2>
+                <p>Ready to start your masonry project? Get in touch today for a free consultation and quote.</p>
+            </div>
+            <div class="contact-box reveal">
+                <img src="assets/img/ben.jpg" alt="Ben O'Connor" class="contact-avatar">
+                <div class="contact-name">Ben O'Connor</div>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <strong>20+ years</strong> experience
+                    </div>
+                    <div class="contact-detail">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        QBCC License <strong>1234567</strong>
+                    </div>
+                    <div class="contact-detail">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        ABN <strong>12 345 678 90</strong>
+                    </div>
+                </div>
+                <a href="tel:0412345678" class="contact-phone">0412 345 678</a>
+                <div class="contact-socials">
+                    <a href="https://www.facebook.com/profile.php?id=61576009487655" target="_blank" rel="noopener" class="contact-facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/concept__masonry" target="_blank" rel="noopener" class="contact-instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Concept Masonry. All rights reserved.</p>
+        <p>Website design by <a href="https://www.monoweb.com.au" target="_blank" rel="noopener"><strong>MonoWeb</strong></a>.</p>
+    </footer>
+
+    <script>
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const brickWall = document.getElementById('brickWall');
+
+        const wallObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const wallPlumbBob = document.querySelector('.wall-display .plumb-bob');
+                    if (wallPlumbBob) {
+                        setTimeout(() => {
+                            wallPlumbBob.classList.add('visible');
+                        }, 100);
+                    }
+
+                    const mortarLines = {
+                        0: document.getElementById('mortar-0'),
+                        1: document.getElementById('mortar-1')
+                    };
+
+                    const brickDelay = 250;
+                    const vertMortarDelay = 150;
+                    const horzMortarDelay = 200;
+                    const rowPause = 300;
+
+                    function animateRow(rowNumber, startTime, showHorzMortar = true) {
+                        const bricks = Array.from(brickWall.querySelectorAll(`.wall-brick[data-row="${rowNumber}"]`));
+                        const vertMortars = Array.from(brickWall.querySelectorAll(`.vert-mortar[data-row="${rowNumber}"]`));
+
+                        let currentTime = startTime;
+
+                        bricks.forEach((brick, index) => {
+                            setTimeout(() => {
+                                brick.classList.add('built');
+                            }, currentTime);
+                            currentTime += brickDelay;
+
+                            if (vertMortars[index]) {
+                                setTimeout(() => {
+                                    vertMortars[index].classList.add('visible');
+                                }, currentTime);
+                                currentTime += vertMortarDelay;
+                            }
+                        });
+
+                        if (showHorzMortar && mortarLines[rowNumber - 1]) {
+                            setTimeout(() => {
+                                mortarLines[rowNumber - 1].classList.add('visible');
+                            }, currentTime);
+                        }
+
+                        return currentTime + horzMortarDelay + rowPause;
+                    }
+
+                    let time = 0;
+                    time = animateRow(1, time);
+                    time = animateRow(2, time);
+                    animateRow(3, time, false);
+
+                    wallObserver.unobserve(brickWall);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        wallObserver.observe(brickWall);
+
+        // Section Divider Animation
+        const spiritLevel = document.getElementById('spiritLevel');
+        const plumbLine = document.getElementById('plumbLine');
+        const dividerContainer = document.querySelector('.plumb-line-container');
+
+        if (dividerContainer) {
+            const dividerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            plumbLine.classList.add('visible');
+                        }, 300);
+
+                        setTimeout(() => {
+                            spiritLevel.classList.add('visible');
+                        }, 1800);
+
+                        dividerObserver.unobserve(dividerContainer);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            dividerObserver.observe(dividerContainer);
+        }
+
+        // Before/After Sliders
+        function initBeforeAfter(sliderId, afterImageId) {
+            const slider = document.getElementById(sliderId);
+            const afterImage = document.getElementById(afterImageId);
+            const container = slider.parentElement.parentElement;
+
+            let isDragging = false;
+
+            function updateSlider(x) {
+                const rect = container.getBoundingClientRect();
+                const position = ((x - rect.left) / rect.width) * 100;
+                const clampedPosition = Math.max(0, Math.min(100, position));
+
+                slider.style.left = clampedPosition + '%';
+                afterImage.style.clipPath = `inset(0 0 0 ${clampedPosition}%)`;
+            }
+
+            slider.addEventListener('mousedown', () => isDragging = true);
+            container.addEventListener('mousemove', (e) => {
+                if (isDragging) updateSlider(e.clientX);
+            });
+            document.addEventListener('mouseup', () => isDragging = false);
+
+            slider.addEventListener('touchstart', () => isDragging = true);
+            container.addEventListener('touchmove', (e) => {
+                if (isDragging) updateSlider(e.touches[0].clientX);
+            });
+            document.addEventListener('touchend', () => isDragging = false);
+        }
+
+        if (document.getElementById('baSlider1')) {
+            initBeforeAfter('baSlider1', 'afterImage1');
+            initBeforeAfter('baSlider2', 'afterImage2');
+            initBeforeAfter('baSlider3', 'afterImage3');
+            initBeforeAfter('baSlider4', 'afterImage4');
+        }
+
+        // Image Gallery
+        const slides = document.querySelectorAll('.gallery-slide');
+        const dots = document.querySelectorAll('.gallery-dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+        let autoSlideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            currentSlide = (index + slides.length) % slides.length;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    showSlide(parseInt(dot.getAttribute('data-slide')));
+                    stopAutoSlide();
+                    startAutoSlide();
+                });
+            });
+
+            startAutoSlide();
+
+            const galleryWrapper = document.querySelector('.gallery-wrapper');
+            if (galleryWrapper) {
+                galleryWrapper.addEventListener('mouseenter', stopAutoSlide);
+                galleryWrapper.addEventListener('mouseleave', startAutoSlide);
+            }
+        }
+    </script>
+</body>
+</html>
