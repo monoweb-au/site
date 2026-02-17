@@ -60,18 +60,22 @@
         }
 
         .nav-logo {
-            width: 42px;
-            height: 42px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             object-fit: cover;
         }
 
         .nav-brand-text {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 400;
             color: var(--text);
             letter-spacing: -0.02em;
+        }
+
+        .nav-brand-text strong {
+            font-weight: 700;
         }
 
         .nav-links {
@@ -148,21 +152,6 @@
             margin-bottom: 1.5rem;
         }
 
-        .hero-experience {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-experience strong {
-            color: var(--cyan);
-            font-weight: 700;
-        }
-
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -229,27 +218,16 @@
         .hero-visual {
             position: relative;
             height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-visual::before {
-            content: '';
-            position: absolute;
-            inset: 0;
             border-radius: 16px;
-            box-shadow: inset 0 0 120px rgba(0,0,0,0.25);
-            pointer-events: none;
-            z-index: 1;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
         }
 
         .hero-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+
         }
 
         /* ===== BRICK DUST PARTICLES ===== */
@@ -262,19 +240,29 @@
 
         .dust {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(169, 101, 82, 0.3);
+            width: 4px;
+            height: 4px;
+            background: rgba(169, 101, 82, 0.5);
             border-radius: 50%;
-            animation: dustFloat 15s linear infinite;
+            animation: dustFloat 12s linear infinite;
         }
 
-        .dust:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .dust:nth-child(2) { left: 25%; animation-delay: 2s; }
-        .dust:nth-child(3) { left: 40%; animation-delay: 4s; }
-        .dust:nth-child(4) { left: 60%; animation-delay: 6s; }
-        .dust:nth-child(5) { left: 75%; animation-delay: 8s; }
-        .dust:nth-child(6) { left: 90%; animation-delay: 10s; }
+        .dust:nth-child(1) { left: 5%; width: 5px; height: 5px; animation-delay: 0s; }
+        .dust:nth-child(2) { left: 12%; animation-delay: 1s; animation-duration: 10s; }
+        .dust:nth-child(3) { left: 20%; width: 6px; height: 6px; animation-delay: 2.5s; }
+        .dust:nth-child(4) { left: 28%; width: 3px; height: 3px; animation-delay: 4s; animation-duration: 14s; }
+        .dust:nth-child(5) { left: 35%; width: 5px; height: 5px; animation-delay: 5.5s; }
+        .dust:nth-child(6) { left: 42%; animation-delay: 7s; animation-duration: 11s; }
+        .dust:nth-child(7) { left: 50%; width: 4px; height: 4px; animation-delay: 1.5s; }
+        .dust:nth-child(8) { left: 58%; width: 6px; height: 6px; animation-delay: 3.5s; animation-duration: 13s; }
+        .dust:nth-child(9) { left: 65%; width: 5px; height: 5px; animation-delay: 6s; }
+        .dust:nth-child(10) { left: 72%; animation-delay: 8s; animation-duration: 10s; }
+        .dust:nth-child(11) { left: 78%; width: 3px; height: 3px; animation-delay: 0.5s; }
+        .dust:nth-child(12) { left: 83%; width: 5px; height: 5px; animation-delay: 3s; animation-duration: 14s; }
+        .dust:nth-child(13) { left: 88%; animation-delay: 5s; }
+        .dust:nth-child(14) { left: 93%; width: 4px; height: 4px; animation-delay: 7.5s; animation-duration: 11s; }
+        .dust:nth-child(15) { left: 17%; width: 3px; height: 3px; animation-delay: 9s; }
+        .dust:nth-child(16) { left: 55%; width: 5px; height: 5px; animation-delay: 10s; animation-duration: 13s; }
 
         @keyframes dustFloat {
             0% {
@@ -282,14 +270,14 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.6;
+                opacity: 0.8;
             }
             50% {
-                transform: translateY(50vh) translateX(30px) scale(1.2);
-                opacity: 0.4;
+                transform: translateY(50vh) translateX(30px) scale(1.3);
+                opacity: 0.6;
             }
             90% {
-                opacity: 0.2;
+                opacity: 0.3;
             }
             100% {
                 transform: translateY(-20px) translateX(-20px) scale(0.8);
@@ -298,21 +286,11 @@
         }
 
 
-        /* ===== MORTAR SPREADING ===== */
-        .mortar-spread {
-            display: none;
-        }
-
-        /* ===== TROWEL CURSOR EFFECT ===== */
-        .service-card {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M8 24L14 8L16 10L10 26L8 24Z" fill="%2300BCD4"/></svg>') 16 16, auto;
-        }
-
         /* ===== SPIRIT LEVEL ===== */
         /* ===== SECTION DIVIDER ===== */
         .section-divider {
             padding: 4rem 5%;
-            background: linear-gradient(to bottom, var(--off-white) 0%, var(--off-white) 50%, var(--white) 50%, var(--white) 100%);
+            background: linear-gradient(to bottom, var(--white) 0%, var(--white) 50%, var(--off-white) 50%, var(--off-white) 100%);
             position: relative;
             display: flex;
             align-items: center;
@@ -347,14 +325,12 @@
         .plumb-line::after {
             content: '';
             position: absolute;
-            right: -10px;
+            right: -24px;
             top: 50%;
             transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, #888, #444);
-            clip-path: polygon(100% 50%, 70% 0%, 0% 0%, 0% 100%, 70% 100%);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            width: 24px;
+            height: 15px;
+            background: url('assets/img/plumb-bob.png') center / contain no-repeat;
         }
 
         .section-divider .plumb-bob {
@@ -371,9 +347,10 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.5s ease 1.5s;
+            transition: opacity 0.5s ease;
             position: relative;
             z-index: 1;
+            margin-bottom: 38px;
         }
 
         .spirit-level.visible {
@@ -405,6 +382,9 @@
             border-radius: 50%;
             top: 2px;
             left: 47px;
+        }
+
+        .spirit-level.visible .level-bubble {
             animation: bubbleMove 4s ease-in-out 1.5s infinite;
         }
 
@@ -426,7 +406,7 @@
         /* ===== SERVICES ===== */
         .services {
             padding: 6rem 5%;
-            background: var(--white);
+            background: var(--off-white);
         }
 
         .section-header {
@@ -478,6 +458,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            cursor: none;
         }
 
         .service-card::before {
@@ -502,19 +483,19 @@
                     0deg,
                     transparent,
                     transparent 28px,
-                    rgba(0,188,212,0.03) 28px,
-                    rgba(0,188,212,0.03) 30px
+                    rgba(169,101,82,0.06) 28px,
+                    rgba(169,101,82,0.06) 30px
                 ),
                 repeating-linear-gradient(
                     90deg,
                     transparent,
                     transparent 58px,
-                    rgba(0,188,212,0.03) 58px,
-                    rgba(0,188,212,0.03) 60px
+                    rgba(169,101,82,0.06) 58px,
+                    rgba(169,101,82,0.06) 60px
                 );
-            opacity: 0;
-            transition: opacity 0.3s;
+            opacity: 1;
             pointer-events: none;
+            transition: background 0.3s;
         }
 
         .service-card:hover {
@@ -527,8 +508,19 @@
             transform: scaleX(1);
         }
 
-        .service-card:hover::after {
-            opacity: 1;
+        .trowel-cursor {
+            position: fixed;
+            width: 32px;
+            height: 32px;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.15s;
+        }
+
+        .trowel-cursor img {
+            width: 100%;
+            height: 100%;
         }
 
         .service-icon {
@@ -541,6 +533,8 @@
             justify-content: center;
             margin-bottom: 1.5rem;
             color: var(--cyan);
+            position: relative;
+            z-index: 1;
         }
 
         .service-card h3 {
@@ -549,17 +543,22 @@
             font-weight: 600;
             margin-bottom: 0.75rem;
             color: var(--text);
+            position: relative;
+            z-index: 1;
         }
 
         .service-card p {
             color: var(--text-light);
-            line-height: 1.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
         }
 
         /* ===== WALL SECTION ===== */
         .wall-section {
             padding: 6rem 5%;
-            background: var(--off-white);
+            background: var(--white);
             position: relative;
             overflow: hidden;
         }
@@ -573,7 +572,6 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 3rem;
-            padding-top: 5rem;
             background: white;
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
@@ -598,31 +596,26 @@
 
         .brick-wall {
             display: grid;
-            grid-template-columns: 1fr 6px 1fr 6px 1fr 6px 1fr;
+            grid-template-columns: 1fr 6px 1fr 6px 1fr 6px 1fr 6px 1fr 6px 1fr 6px 1fr 6px 1fr;
             gap: 0;
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
 
         .wall-brick {
-            aspect-ratio: 2/1;
-            background: linear-gradient(135deg, #C97B6B 0%, #A65E52 100%);
             border-radius: 1px;
             opacity: 0;
             transform: translateY(10px) scale(0.95);
             transition: all 0.5s ease-out;
             position: relative;
-            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.15);
         }
 
-        .wall-brick::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
-            border-radius: 1px;
+        .wall-brick img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .vert-mortar {
@@ -652,6 +645,7 @@
             background: #D4C4B0;
             opacity: 0;
             transition: opacity 0.4s ease-out;
+            grid-column: 1 / -1;
         }
 
         .mortar-line.visible {
@@ -659,17 +653,21 @@
         }
 
         #mortar-0 {
-            top: calc(66.66% - 3px);
+            top: calc(75% - 3px);
         }
 
         #mortar-1 {
-            top: calc(33.33% - 3px);
+            top: calc(50% - 3px);
+        }
+
+        #mortar-2 {
+            top: calc(25% - 3px);
         }
 
         .wall-display .plumb-bob {
             position: absolute;
             left: 50%;
-            top: -40px;
+            top: 0;
             width: 2px;
             height: 0;
             background: linear-gradient(to bottom, #666, #888);
@@ -684,20 +682,17 @@
         .wall-display .plumb-bob::after {
             content: '';
             position: absolute;
-            bottom: -12px;
+            bottom: -20px;
             left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, #888, #444);
-            clip-path: polygon(50% 100%, 0% 30%, 0% 0%, 100% 0%, 100% 30%);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            z-index: 1;
+            transform: translateX(-50%) rotate(90deg);
+            width: 24px;
+            height: 15px;
+            background: url('assets/img/plumb-bob.png') center / contain no-repeat;
         }
 
         .wall-display .plumb-bob.visible {
             opacity: 1;
-            height: 180px;
+            height: 100px;
         }
 
         @keyframes plumbSwing {
@@ -707,28 +702,10 @@
         }
 
 
-        /* ===== POINTING TROWEL ===== */
-        .pointing-trowel {
-            position: absolute;
-            bottom: 20px;
-            left: -60px;
-            width: 50px;
-            height: 50px;
-            opacity: 0;
-            transition: all 0.5s ease;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .portfolio-card:hover .pointing-trowel {
-            opacity: 0.6;
-            left: calc(100% - 40px);
-        }
-
         /* ===== PORTFOLIO ===== */
         .portfolio {
             padding: 6rem 5%;
-            background: var(--white);
+            background: var(--off-white);
         }
 
         .before-after-grid {
@@ -934,20 +911,20 @@
         /* ===== TESTIMONIALS ===== */
         .testimonials {
             padding: 6rem 5%;
-            background: var(--off-white);
+            background: var(--white);
         }
 
         .testimonials-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
         .testimonial-card {
             background: var(--white);
-            padding: 2.5rem;
+            padding: 1.75rem;
             border-radius: 12px;
             border: 1px solid var(--border);
             position: relative;
@@ -960,15 +937,11 @@
             transform: translateY(-2px);
         }
 
-        .quote-mark {
-            display: none;
-        }
-
         .testimonial-text {
-            font-size: 1.05rem;
-            line-height: 1.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
             color: var(--text);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .testimonial-author {
@@ -1003,7 +976,7 @@
         /* ===== CONTACT ===== */
         .contact {
             padding: 6rem 5%;
-            background: var(--white);
+            background: var(--off-white);
         }
 
         .contact-container {
@@ -1013,11 +986,12 @@
         }
 
         .contact-box {
-            background: var(--off-white);
+            background: var(--white);
             padding: 3rem;
             border-radius: 16px;
             border: 1px solid var(--border);
             margin-top: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
         }
 
         .contact-avatar {
@@ -1069,7 +1043,10 @@
             font-weight: 700;
             color: var(--cyan);
             text-decoration: none;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
             margin-bottom: 2rem;
             transition: color 0.2s;
         }
@@ -1078,22 +1055,29 @@
             color: var(--cyan-dark);
         }
 
+        .contact-phone svg {
+            width: 2rem;
+            height: 2rem;
+            fill: currentColor;
+        }
+
         .contact-socials {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
 
         .contact-facebook,
         .contact-instagram {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             color: white;
-            padding: 1rem 2rem;
+            padding: 0.65rem 1.25rem;
             border-radius: 8px;
             text-decoration: none;
+            font-size: 0.85rem;
             font-weight: 600;
             transition: opacity 0.2s;
         }
@@ -1133,6 +1117,227 @@
             text-decoration: underline;
         }
 
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: var(--cyan);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0,188,212,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--cyan-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,188,212,0.4);
+        }
+
+        .scroll-top-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            background: var(--white);
+            padding: 1rem 5% 3rem;
+        }
+
+        .stats-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* ===== MOBILE NAV ===== */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            margin: 6px 0;
+            transition: all 0.3s;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 75px;
+            right: 5%;
+            width: auto;
+            min-width: 200px;
+            background: rgba(255, 255, 255, 0.98);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.75rem;
+            z-index: 99;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav.open {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--cyan);
+            background: var(--cyan-light);
+        }
+
+        .mobile-nav a:last-child {
+            color: white;
+            background: var(--cyan);
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-nav a:last-child:hover {
+            background: var(--cyan-dark);
+        }
+
+        /* ===== BEFORE/AFTER LABELS ===== */
+        .ba-project-label {
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        /* ===== PROCESS STEPS ===== */
+        .process-steps {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 2px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: var(--white);
+            border: 3px solid var(--cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
 
         /* ===== SCROLL REVEAL ===== */
         .reveal {
@@ -1149,15 +1354,35 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 968px) {
             .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .mobile-nav { display: block; }
 
             .nav-inner {
-                justify-content: center;
+                justify-content: space-between;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps::before {
+                display: none;
             }
 
             .hero-inner {
                 display: flex;
                 flex-direction: column;
                 gap: 2rem;
+                text-align: center;
+                align-items: center;
             }
 
             .hero-inner > div:last-child {
@@ -1166,6 +1391,7 @@
 
             .hero-inner h1 {
                 order: 1;
+                margin-top: 2rem;
             }
 
             .hero-visual {
@@ -1173,27 +1399,26 @@
                 height: 300px;
             }
 
-            .hero-experience {
-                order: 3;
-                margin-top: 2rem;
-            }
-
             .hero-sub {
-                order: 4;
+                order: 3;
                 margin-bottom: 1.5rem;
             }
 
             .hero-actions {
-                order: 5;
+                order: 4;
+                flex-wrap: nowrap;
+            }
+
+            .hero-actions .btn {
+                padding: 0.85rem 1.5rem;
+                font-size: 0.9rem;
+                white-space: nowrap;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
 
             .testimonials-grid {
                 grid-template-columns: 1fr;
@@ -1208,7 +1433,7 @@
             }
 
             .brick-wall {
-                grid-template-columns: 1fr 5px 1fr 5px 1fr 5px 1fr;
+                grid-template-columns: 1fr 5px 1fr 5px 1fr 5px 1fr 5px 1fr 5px 1fr 5px 1fr 5px 1fr;
                 max-width: 500px;
             }
 
@@ -1217,7 +1442,13 @@
             }
 
             .wall-display .plumb-bob.visible {
-                height: 100px;
+                height: 40px;
+            }
+
+            .wall-display .plumb-bob::after {
+                width: 16px;
+                height: 10px;
+                bottom: -14px;
             }
 
             .before-after-grid {
@@ -1257,8 +1488,30 @@
                 font-size: 2rem;
             }
 
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            .stat-item {
+                padding: 0.75rem 0.5rem;
+            }
+
             .contact-phone {
                 font-size: 2rem;
+            }
+
+            .contact-phone svg {
+                width: 1.5rem;
+                height: 1.5rem;
             }
 
             .wall-display {
@@ -1271,7 +1524,7 @@
             }
 
             .brick-wall {
-                grid-template-columns: 1fr 4px 1fr 4px 1fr 4px 1fr;
+                grid-template-columns: 1fr 4px 1fr 4px 1fr 4px 1fr 4px 1fr 4px 1fr 4px 1fr 4px 1fr;
                 max-width: 320px;
             }
 
@@ -1288,21 +1541,44 @@
     <nav class="nav">
         <div class="nav-inner">
             <a href="#home" class="nav-brand">
-                <img src="assets/img/cm-logo.jpg" alt="CM" class="nav-logo">
-                <span class="nav-brand-text">Concept Masonry</span>
+                <img src="assets/img/cm-logo.png" alt="Concept Masonry" class="nav-logo">
+                <span class="nav-brand-text"><strong>Concept</strong> Masonry</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
+                <li><a href="#process">Our Process</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
             </ul>
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#services">Services</a>
+        <a href="#process">Our Process</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Get a Quote</a>
+    </div>
 
     <!-- Hero -->
     <section class="hero" id="home">
         <div class="dust-container">
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
+            <div class="dust"></div>
             <div class="dust"></div>
             <div class="dust"></div>
             <div class="dust"></div>
@@ -1316,10 +1592,6 @@
             </div>
             <div>
                 <h1>Building <span class="highlight">Excellence</span><br>One Brick at a Time</h1>
-                <div class="hero-experience">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <strong>20+ years</strong> of trusted experience
-                </div>
                 <p class="hero-sub">Expert bricklaying and stonework for residential and commercial projects. From feature walls to full extensions, we deliver craftsmanship that lasts.</p>
                 <div class="hero-actions">
                     <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
@@ -1329,9 +1601,26 @@
         </div>
     </section>
 
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item reveal">
+                <div class="stat-number" id="yearsCount">0+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">QBCC</div>
+                <div class="stat-label">License 1234567</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">ABN</div>
+                <div class="stat-label">12 345 678 90</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services -->
     <section class="services" id="services">
-        <div class="mortar-spread"></div>
         <div class="section-header reveal">
             <span class="section-tag">OUR SERVICES</span>
             <h2>What We Do</h2>
@@ -1339,6 +1628,7 @@
         </div>
         <div class="services-grid">
             <div class="service-card reveal">
+
                 <div class="service-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
                 </div>
@@ -1346,6 +1636,7 @@
                 <p>New home construction, extensions, and renovations. Quality brickwork that adds value and character to your property.</p>
             </div>
             <div class="service-card reveal">
+
                 <div class="service-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
                 </div>
@@ -1353,6 +1644,7 @@
                 <p>Stunning feature walls in brick and stone. Transform your indoor and outdoor spaces with custom designs.</p>
             </div>
             <div class="service-card reveal">
+
                 <div class="service-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                 </div>
@@ -1360,6 +1652,7 @@
                 <p>Strong and attractive retaining walls built to last. Engineered solutions for sloped properties and landscaping.</p>
             </div>
             <div class="service-card reveal">
+
                 <div class="service-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 </div>
@@ -1367,6 +1660,7 @@
                 <p>Expert repairs and restoration for damaged or ageing brickwork. Matching existing styles and materials perfectly.</p>
             </div>
             <div class="service-card reveal">
+
                 <div class="service-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/></svg>
                 </div>
@@ -1374,6 +1668,7 @@
                 <p>Large-scale commercial and industrial bricklaying. Experienced team delivering on time and on budget.</p>
             </div>
             <div class="service-card reveal">
+
                 <div class="service-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                 </div>
@@ -1383,39 +1678,105 @@
         </div>
     </section>
 
-    <!-- Wall Building Section -->
-    <section class="wall-section">
+    <!-- Our Process -->
+    <section class="wall-section" id="process">
         <div class="section-header reveal">
-            <span class="section-tag">CRAFTSMANSHIP</span>
-            <h2>Quality Construction</h2>
-            <p>Every project starts with quality materials and ends with precision. We take pride in building structures that stand the test of time.</p>
+            <span class="section-tag">OUR PROCESS</span>
+            <h2>From Quote to Completion</h2>
+            <p>A clear, proven process that keeps your project on track and on budget.</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step reveal">
+                <div class="step-number">1</div>
+                <h4>Free Quote</h4>
+                <p>We visit your site, discuss your vision and provide a detailed, no-obligation quote.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">2</div>
+                <h4>Plan & Prepare</h4>
+                <p>Materials are selected, permits arranged and a timeline is locked in before work begins.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">3</div>
+                <h4>Build</h4>
+                <p>Our team gets to work – precision bricklaying with regular progress updates along the way.</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">4</div>
+                <h4>Final Inspection</h4>
+                <p>We walk the finished project with you, ensuring every detail meets our high standards.</p>
+            </div>
         </div>
         <div class="wall-display reveal">
             <div class="plumb-bob"></div>
             <div class="wall-background-text">Built to Last</div>
             <div class="brick-wall" id="brickWall">
-                <div class="wall-brick" data-row="3" data-index="0"></div>
-                <div class="vert-mortar" data-row="3" data-index="0"></div>
-                <div class="wall-brick" data-row="3" data-index="1"></div>
-                <div class="vert-mortar" data-row="3" data-index="1"></div>
-                <div class="wall-brick" data-row="3" data-index="2"></div>
-                <div class="vert-mortar" data-row="3" data-index="2"></div>
-                <div class="wall-brick" data-row="3" data-index="3"></div>
-                <div class="wall-brick" data-row="2" data-index="0"></div>
-                <div class="vert-mortar" data-row="2" data-index="0"></div>
-                <div class="wall-brick" data-row="2" data-index="1"></div>
-                <div class="vert-mortar" data-row="2" data-index="1"></div>
-                <div class="wall-brick" data-row="2" data-index="2"></div>
-                <div class="vert-mortar" data-row="2" data-index="2"></div>
-                <div class="wall-brick" data-row="2" data-index="3"></div>
+                <!-- Row 4 (top) -->
+                <div class="wall-brick" data-row="4"><img src="assets/img/brick2.png" alt=""></div>
+                <div class="vert-mortar" data-row="4"></div>
+                <div class="wall-brick" data-row="4"><img src="assets/img/brick4.png" alt=""></div>
+                <div class="vert-mortar" data-row="4"></div>
+                <div class="wall-brick" data-row="4"><img src="assets/img/brick1.png" alt=""></div>
+                <div class="vert-mortar" data-row="4"></div>
+                <div class="wall-brick" data-row="4"><img src="assets/img/brick3.png" alt=""></div>
+                <div class="vert-mortar" data-row="4"></div>
+                <div class="wall-brick" data-row="4"><img src="assets/img/brick2.png" alt=""></div>
+                <div class="vert-mortar" data-row="4"></div>
+                <div class="wall-brick" data-row="4"><img src="assets/img/brick1.png" alt=""></div>
+                <div class="vert-mortar" data-row="4"></div>
+                <div class="wall-brick" data-row="4"><img src="assets/img/brick4.png" alt=""></div>
+                <div class="vert-mortar" data-row="4"></div>
+                <div class="wall-brick" data-row="4"><img src="assets/img/brick3.png" alt=""></div>
+                <!-- Row 3 -->
+                <div class="wall-brick" data-row="3"><img src="assets/img/brick1.png" alt=""></div>
+                <div class="vert-mortar" data-row="3"></div>
+                <div class="wall-brick" data-row="3"><img src="assets/img/brick3.png" alt=""></div>
+                <div class="vert-mortar" data-row="3"></div>
+                <div class="wall-brick" data-row="3"><img src="assets/img/brick2.png" alt=""></div>
+                <div class="vert-mortar" data-row="3"></div>
+                <div class="wall-brick" data-row="3"><img src="assets/img/brick4.png" alt=""></div>
+                <div class="vert-mortar" data-row="3"></div>
+                <div class="wall-brick" data-row="3"><img src="assets/img/brick1.png" alt=""></div>
+                <div class="vert-mortar" data-row="3"></div>
+                <div class="wall-brick" data-row="3"><img src="assets/img/brick3.png" alt=""></div>
+                <div class="vert-mortar" data-row="3"></div>
+                <div class="wall-brick" data-row="3"><img src="assets/img/brick2.png" alt=""></div>
+                <div class="vert-mortar" data-row="3"></div>
+                <div class="wall-brick" data-row="3"><img src="assets/img/brick4.png" alt=""></div>
+                <div class="mortar-line" id="mortar-2"></div>
+                <!-- Row 2 -->
+                <div class="wall-brick" data-row="2"><img src="assets/img/brick3.png" alt=""></div>
+                <div class="vert-mortar" data-row="2"></div>
+                <div class="wall-brick" data-row="2"><img src="assets/img/brick1.png" alt=""></div>
+                <div class="vert-mortar" data-row="2"></div>
+                <div class="wall-brick" data-row="2"><img src="assets/img/brick4.png" alt=""></div>
+                <div class="vert-mortar" data-row="2"></div>
+                <div class="wall-brick" data-row="2"><img src="assets/img/brick2.png" alt=""></div>
+                <div class="vert-mortar" data-row="2"></div>
+                <div class="wall-brick" data-row="2"><img src="assets/img/brick1.png" alt=""></div>
+                <div class="vert-mortar" data-row="2"></div>
+                <div class="wall-brick" data-row="2"><img src="assets/img/brick3.png" alt=""></div>
+                <div class="vert-mortar" data-row="2"></div>
+                <div class="wall-brick" data-row="2"><img src="assets/img/brick4.png" alt=""></div>
+                <div class="vert-mortar" data-row="2"></div>
+                <div class="wall-brick" data-row="2"><img src="assets/img/brick2.png" alt=""></div>
                 <div class="mortar-line" id="mortar-1"></div>
-                <div class="wall-brick" data-row="1" data-index="0"></div>
-                <div class="vert-mortar" data-row="1" data-index="0"></div>
-                <div class="wall-brick" data-row="1" data-index="1"></div>
-                <div class="vert-mortar" data-row="1" data-index="1"></div>
-                <div class="wall-brick" data-row="1" data-index="2"></div>
-                <div class="vert-mortar" data-row="1" data-index="2"></div>
-                <div class="wall-brick" data-row="1" data-index="3"></div>
+                <!-- Row 1 (bottom) -->
+                <div class="wall-brick" data-row="1"><img src="assets/img/brick1.png" alt=""></div>
+                <div class="vert-mortar" data-row="1"></div>
+                <div class="wall-brick" data-row="1"><img src="assets/img/brick2.png" alt=""></div>
+                <div class="vert-mortar" data-row="1"></div>
+                <div class="wall-brick" data-row="1"><img src="assets/img/brick3.png" alt=""></div>
+                <div class="vert-mortar" data-row="1"></div>
+                <div class="wall-brick" data-row="1"><img src="assets/img/brick1.png" alt=""></div>
+                <div class="vert-mortar" data-row="1"></div>
+                <div class="wall-brick" data-row="1"><img src="assets/img/brick4.png" alt=""></div>
+                <div class="vert-mortar" data-row="1"></div>
+                <div class="wall-brick" data-row="1"><img src="assets/img/brick2.png" alt=""></div>
+                <div class="vert-mortar" data-row="1"></div>
+                <div class="wall-brick" data-row="1"><img src="assets/img/brick3.png" alt=""></div>
+                <div class="vert-mortar" data-row="1"></div>
+                <div class="wall-brick" data-row="1"><img src="assets/img/brick4.png" alt=""></div>
                 <div class="mortar-line" id="mortar-0"></div>
             </div>
         </div>
@@ -1430,40 +1791,52 @@
         </div>
 
         <div class="before-after-grid">
-            <div class="before-after-container reveal">
-                <div class="before-after-wrapper">
-                    <div class="before-image" style="background-image: url('assets/img/1-before.jpg')"></div>
-                    <div class="after-image" id="afterImage1" style="background-image: url('assets/img/1-after.jpg')"></div>
-                    <div class="ba-slider" id="baSlider1"></div>
-                    <div class="ba-label before">Before</div>
-                    <div class="ba-label after">After</div>
+            <div class="reveal">
+                <div class="ba-project-label">Wall Repair — Reservoir</div>
+                <div class="before-after-container">
+                    <div class="before-after-wrapper">
+                        <div class="before-image" style="background-image: url('assets/img/1-before.jpg')"></div>
+                        <div class="after-image" id="afterImage1" style="background-image: url('assets/img/1-after.jpg')"></div>
+                        <div class="ba-slider" id="baSlider1"></div>
+                        <div class="ba-label before">Before</div>
+                        <div class="ba-label after">After</div>
+                    </div>
                 </div>
             </div>
-            <div class="before-after-container reveal">
-                <div class="before-after-wrapper">
-                    <div class="before-image" style="background-image: url('assets/img/2-before.jpg')"></div>
-                    <div class="after-image" id="afterImage2" style="background-image: url('assets/img/2-after.jpg')"></div>
-                    <div class="ba-slider" id="baSlider2"></div>
-                    <div class="ba-label before">Before</div>
-                    <div class="ba-label after">After</div>
+            <div class="reveal">
+                <div class="ba-project-label">Retaining Wall – Preston</div>
+                <div class="before-after-container">
+                    <div class="before-after-wrapper">
+                        <div class="before-image" style="background-image: url('assets/img/2-before.jpg')"></div>
+                        <div class="after-image" id="afterImage2" style="background-image: url('assets/img/2-after.jpg')"></div>
+                        <div class="ba-slider" id="baSlider2"></div>
+                        <div class="ba-label before">Before</div>
+                        <div class="ba-label after">After</div>
+                    </div>
                 </div>
             </div>
-            <div class="before-after-container reveal">
-                <div class="before-after-wrapper">
-                    <div class="before-image" style="background-image: url('assets/img/5-before.jpg')"></div>
-                    <div class="after-image" id="afterImage3" style="background-image: url('assets/img/5-after.jpg')"></div>
-                    <div class="ba-slider" id="baSlider3"></div>
-                    <div class="ba-label before">Before</div>
-                    <div class="ba-label after">After</div>
+            <div class="reveal">
+                <div class="ba-project-label">Retro Wall Repair – Pascoe Vale</div>
+                <div class="before-after-container">
+                    <div class="before-after-wrapper">
+                        <div class="before-image" style="background-image: url('assets/img/5-before.jpg')"></div>
+                        <div class="after-image" id="afterImage3" style="background-image: url('assets/img/5-after.jpg')"></div>
+                        <div class="ba-slider" id="baSlider3"></div>
+                        <div class="ba-label before">Before</div>
+                        <div class="ba-label after">After</div>
+                    </div>
                 </div>
             </div>
-            <div class="before-after-container reveal">
-                <div class="before-after-wrapper">
-                    <div class="before-image" style="background-image: url('assets/img/7-before.jpg')"></div>
-                    <div class="after-image" id="afterImage4" style="background-image: url('assets/img/7-after.jpg')"></div>
-                    <div class="ba-slider" id="baSlider4"></div>
-                    <div class="ba-label before">Before</div>
-                    <div class="ba-label after">After</div>
+            <div class="reveal">
+                <div class="ba-project-label">Retaining Wall – Keon Park</div>
+                <div class="before-after-container">
+                    <div class="before-after-wrapper">
+                        <div class="before-image" style="background-image: url('assets/img/7-before.jpg')"></div>
+                        <div class="after-image" id="afterImage4" style="background-image: url('assets/img/7-after.jpg')"></div>
+                        <div class="ba-slider" id="baSlider4"></div>
+                        <div class="ba-label before">Before</div>
+                        <div class="ba-label after">After</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1494,6 +1867,7 @@
         </div>
     </section>
 
+
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="section-header reveal">
@@ -1502,8 +1876,7 @@
             <p>Real feedback from property owners who trusted us with their masonry projects.</p>
         </div>
         <div class="testimonials-grid">
-            <div class="testimonial-card reveal">
-                <div class="quote-mark">"</div>
+            <div class="testimonial-card reveal" style="transition-delay: 0s">
                 <p class="testimonial-text">The team at Concept Masonry did an incredible job on our house extension. Professional from start to finish, and the brickwork is absolutely flawless.</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">ST</div>
@@ -1513,8 +1886,7 @@
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card reveal">
-                <div class="quote-mark">"</div>
+            <div class="testimonial-card reveal" style="transition-delay: 0.1s">
                 <p class="testimonial-text">We needed a retaining wall for our sloped backyard and couldn't be happier. Strong, beautiful, and built to last. Great communication throughout.</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">MR</div>
@@ -1524,25 +1896,13 @@
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card reveal">
-                <div class="quote-mark">"</div>
+            <div class="testimonial-card reveal" style="transition-delay: 0.2s">
                 <p class="testimonial-text">Outstanding craftsmanship on our feature wall. They understood exactly what we wanted and delivered beyond expectations. The attention to detail is superb.</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">EL</div>
                     <div class="author-info">
                         <h4>Emma Lewis</h4>
                         <p>Feature Wall Project</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card reveal">
-                <div class="quote-mark">"</div>
-                <p class="testimonial-text">Professional, reliable, and skilled. Our commercial project was completed on time and the quality of work was excellent. Will definitely use them again.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">JP</div>
-                    <div class="author-info">
-                        <h4>James Parker</h4>
-                        <p>Commercial Build</p>
                     </div>
                 </div>
             </div>
@@ -1588,7 +1948,12 @@
                         ABN <strong>12 345 678 90</strong>
                     </div>
                 </div>
-                <a href="tel:0412345678" class="contact-phone">0412 345 678</a>
+                <a href="tel:0412345678" class="contact-phone">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    0412 345 678
+                </a>
                 <div class="contact-socials">
                     <a href="https://www.facebook.com/profile.php?id=61576009487655" target="_blank" rel="noopener" class="contact-facebook">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -1609,6 +1974,16 @@
         <p>Website design by <a href="https://www.monoweb.com.au" target="_blank" rel="noopener"><strong>MonoWeb</strong></a>.</p>
     </footer>
 
+    <!-- Trowel Cursor -->
+    <div class="trowel-cursor" id="trowelCursor">
+        <img src="assets/img/trowel.png" alt="">
+    </div>
+
+    <!-- Scroll to Top -->
+    <button type="button" class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <img src="assets/img/chevron.png" alt="" class="scroll-top-icon">
+    </button>
+
     <script>
 
         const observer = new IntersectionObserver((entries) => {
@@ -1620,6 +1995,24 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const yearsEl = document.getElementById('yearsCount');
+        if (yearsEl) {
+            const countObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    let current = 0;
+                    const target = 20;
+                    const step = () => {
+                        current++;
+                        yearsEl.textContent = current + '+';
+                        if (current < target) setTimeout(step, 60);
+                    };
+                    step();
+                    countObserver.unobserve(yearsEl);
+                }
+            }, { threshold: 0.5 });
+            countObserver.observe(yearsEl);
+        }
 
         const brickWall = document.getElementById('brickWall');
 
@@ -1635,7 +2028,8 @@
 
                     const mortarLines = {
                         0: document.getElementById('mortar-0'),
-                        1: document.getElementById('mortar-1')
+                        1: document.getElementById('mortar-1'),
+                        2: document.getElementById('mortar-2')
                     };
 
                     const brickDelay = 250;
@@ -1675,7 +2069,8 @@
                     let time = 0;
                     time = animateRow(1, time);
                     time = animateRow(2, time);
-                    animateRow(3, time, false);
+                    time = animateRow(3, time);
+                    animateRow(4, time, false);
 
                     wallObserver.unobserve(brickWall);
                 }
@@ -1699,7 +2094,7 @@
 
                         setTimeout(() => {
                             spiritLevel.classList.add('visible');
-                        }, 1400);
+                        }, 1300);
 
                         dividerObserver.unobserve(dividerContainer);
                     }
@@ -1808,6 +2203,61 @@
                 galleryWrapper.addEventListener('mouseenter', stopAutoSlide);
                 galleryWrapper.addEventListener('mouseleave', startAutoSlide);
             }
+        }
+
+        // Trowel Cursor
+        const trowelCursor = document.getElementById('trowelCursor');
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        document.addEventListener('mousemove', (e) => {
+            trowelCursor.style.left = e.clientX + 'px';
+            trowelCursor.style.top = e.clientY + 'px';
+        });
+
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                trowelCursor.style.opacity = '1';
+            });
+            card.addEventListener('mouseleave', () => {
+                trowelCursor.style.opacity = '0';
+            });
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+
+        // Mobile Nav
+        const navToggle = document.getElementById('navToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        if (navToggle && mobileNav) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                mobileNav.classList.toggle('open');
+            });
+
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navToggle.classList.remove('active');
+                    mobileNav.classList.remove('open');
+                });
+            });
         }
     </script>
 </body>
