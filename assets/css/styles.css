@@ -747,6 +747,13 @@ body:hover::before {
     overflow-x: auto;
 }
 
+.why-monoweb > .btn {
+    display: block;
+    text-align: center;
+    max-width: 300px;
+    margin: 3rem auto 0;
+}
+
 .comparison-table {
     width: 100%;
     border-collapse: separate;
