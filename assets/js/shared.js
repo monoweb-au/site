@@ -10,9 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="assets/img/mw-logo.png" alt="MonoWeb logo">
       </a>
 
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
       <ul class="nav-links">
         <li><a href="index.html#services">What You Get</a></li>
         <li><a href="index.html#why-us">Why Choose Us?</a></li>
+        <li><a href="index.html#examples">Examples</a></li>
         <li><a href="index.html#process">How It Works</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
         <li><a href="index.html#faqs">FAQs</a></li>
@@ -26,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <a href="index.html" class="logo" aria-label="MonoWeb home">
         <img src="assets/img/mw-logo.png" alt="MonoWeb logo">
       </a>
+
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
       <ul class="nav-links">
         <li><a href="#step1">Choose Your Plan</a></li>
@@ -76,6 +85,33 @@ document.addEventListener('DOMContentLoaded', () => {
     footerPlaceholder.outerHTML = footerHTML;
     const yearSpan = document.getElementById('year');
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  }
+
+  // Mobile hamburger menu
+  const hamburger = document.querySelector('.hamburger');
+  const navLinksEl = document.querySelector('.nav-links');
+  if (hamburger && navLinksEl) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinksEl.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinksEl.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinksEl.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav')) {
+        navLinksEl.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   // Cursor tracking for the subtle gradient (safe on all pages)
