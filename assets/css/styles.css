@@ -331,13 +331,13 @@ footer p a:hover {
 
 /* Section Backgrounds - Alternating Pattern */
 .section-alt {
-    padding: 4rem 5%;
+    padding: 6rem 5%;
     background: rgba(67, 86, 119, 0.5);
     position: relative;
 }
 
 .section-base {
-    padding: 4rem 5%;
+    padding: 6rem 5%;
     background: linear-gradient(135deg, #0f172a, #1e293b);
     position: relative;
 }
@@ -1618,7 +1618,7 @@ body:hover::before {
 /* Responsive Design */
 @media (max-width: 968px) {
     .hero {
-        padding-top: 110px;
+        padding-top: 130px;
         min-height: 0;
     }
 
@@ -2370,6 +2370,7 @@ h1 {
     gap: 2rem;
     max-width: 700px;
     margin: 0 auto;
+    text-align: left;
 }
 
 .builder-photo {
@@ -2405,7 +2406,7 @@ h1 {
 
 /* ===== Example Work / Portfolio Section ===== */
 .example-work {
-    padding: 5rem 5%;
+    padding: 6rem 5%;
     background: linear-gradient(180deg, var(--tertiary-dark) 0%, rgba(50, 66, 90, 0.9) 50%, var(--tertiary-dark) 100%);
     position: relative;
     overflow: hidden;
