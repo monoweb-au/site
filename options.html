@@ -314,13 +314,78 @@
         </div>
     </div>
 
-    <div class="section-base cta-only">
+    <div class="section-base" id="contact">
         <div class="content">
-            <div class="cta-section">
-                <h2>Ready to Get Started?</h2>
-                <p>Choose your package, pick your sections, and let's build your website.</p>
-                <a href="index.html#contact" class="btn">Get Your Website</a>
-            </div>
+            <section class="step-section">
+                <div class="section-header">
+                    <h2>Ready to Get Started?</h2>
+                    <p>Tell us a bit about your business and we’ll let you know if we’re a good fit. No obligation.</p>
+                </div>
+
+                <div class="contact-content">
+                    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="288f7004-fd48-49ed-93e3-cf357204a651">
+                        <input type="hidden" name="source" value="Options page">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="business">Business Name <span class="required">*</span></label>
+                                <input type="text" id="business" name="business" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="plan">Plan</label>
+                                <select id="plan" name="plan">
+                                    <option value="" disabled selected>Select a plan</option>
+                                    <option value="Starter ($649)">Starter</option>
+                                    <option value="Plus ($849)">Plus</option>
+                                    <option value="Not sure yet">Not sure yet</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="referral">Found Us Via</label>
+                                <select id="referral" name="referral">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Google Search">Google Search</option>
+                                    <option value="Social Media">Social Media</option>
+                                    <option value="Word of Mouth">Word of Mouth</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Business <span class="required">*</span></label>
+                            <textarea id="message" name="message"
+                                placeholder="What does your business do, and what would you like your website to include?"
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Enquiry</button>
+                    </form>
+                </div>
+
+                <div class="info-banner">
+                    <p>We respect your privacy, and don't sell your information.</p>
+                </div>
+            </section>
         </div>
     </div>
     <div id="footer-placeholder"></div>
