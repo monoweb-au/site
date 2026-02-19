@@ -1,9 +1,7 @@
-// Shared components + site-wide behaviour for MonoWeb
 document.addEventListener('DOMContentLoaded', () => {
   const isSimpleNav = document.body.classList.contains('simple-nav');
   const isPricingPage = document.body.classList.contains('options-page');
 
-  // Header: full nav (index) vs pricing nav vs simple logo-only (legal pages)
   const headerFullNav = `
     <nav>
       <a href="index.html" class="logo" aria-label="MonoWeb home">
@@ -68,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </p>
     </footer>
   `;
-  
+
   const headerPlaceholder = document.getElementById('header-placeholder');
   if (headerPlaceholder) {
     if (isPricingPage) {
@@ -87,10 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
   }
 
-  // Mobile hamburger menu
   const hamburger = document.querySelector('.hamburger');
   const navLinksEl = document.querySelector('.nav-links');
   if (hamburger && navLinksEl) {
+    const closeMenu = () => {
+      navLinksEl.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    };
+
     hamburger.addEventListener('click', () => {
       const isOpen = navLinksEl.classList.toggle('open');
       hamburger.classList.toggle('active', isOpen);
@@ -98,23 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     navLinksEl.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinksEl.classList.remove('open');
-        hamburger.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeMenu);
     });
 
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('nav')) {
-        navLinksEl.classList.remove('open');
-        hamburger.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
+      if (!e.target.closest('nav')) closeMenu();
     });
   }
 
-  // Cursor tracking for the subtle gradient (safe on all pages)
   document.addEventListener('mousemove', (e) => {
     const x = (e.clientX / window.innerWidth) * 100;
     const y = (e.clientY / window.innerHeight) * 100;
@@ -122,52 +116,76 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.setProperty('--mouse-y', `${y}%`);
   });
 
-  // Scroll progress bar (index only)
   const progressBar = document.getElementById('progressBar');
-  if (progressBar) {
-    window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = height > 0 ? (winScroll / height) : 0;
-      progressBar.style.transform = `scaleX(${scrolled})`;
-    });
-  }
 
-  // Scroll-to-top button (now on all pages)
   let scrollTopBtn = document.getElementById('scrollTop');
   if (!scrollTopBtn) {
-    // Create the scroll-to-top button if it doesn't exist
     scrollTopBtn = document.createElement('div');
     scrollTopBtn.id = 'scrollTop';
     scrollTopBtn.className = 'scroll-top';
     document.body.appendChild(scrollTopBtn);
   }
-
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) scrollTopBtn.classList.add('visible');
-    else scrollTopBtn.classList.remove('visible');
-  });
-
   scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // Process timeline fill on scroll
   const timeline = document.querySelector('.process-timeline');
   if (timeline) {
     const spark = document.createElement('div');
     spark.className = 'timeline-spark';
     timeline.appendChild(spark);
-
-    window.addEventListener('scroll', () => {
-      const rect = timeline.getBoundingClientRect();
-      const timelineTop = rect.top;
-      const timelineHeight = rect.height;
-      const triggerPoint = window.innerHeight * 0.5;
-      const progress = Math.min(Math.max((triggerPoint - timelineTop) / timelineHeight, 0), 1);
-      timeline.style.setProperty('--timeline-fill', progress);
-    });
   }
 
-  // Smooth scroll for hero chevron
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"], .nav-links a[href*="#"]');
+  let updateActiveNav;
+  if (navLinks.length) {
+    const sections = Array.from(navLinks)
+      .map(link => {
+        const hash = link.getAttribute('href').split('#')[1];
+        return hash ? document.getElementById(hash) : null;
+      })
+      .filter(Boolean);
+
+    updateActiveNav = () => {
+      const scrollPosition = window.pageYOffset + window.innerHeight / 3;
+      let currentSection = null;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          currentSection = section;
+        }
+      });
+      navLinks.forEach(link => {
+        const hash = link.getAttribute('href').split('#')[1];
+        if (currentSection && hash === currentSection.id) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    };
+    updateActiveNav();
+  }
+
+  window.addEventListener('scroll', () => {
+    if (progressBar) {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progressBar.style.transform = `scaleX(${height > 0 ? winScroll / height : 0})`;
+    }
+
+    if (window.pageYOffset > 300) scrollTopBtn.classList.add('visible');
+    else scrollTopBtn.classList.remove('visible');
+
+    if (timeline) {
+      const rect = timeline.getBoundingClientRect();
+      const triggerPoint = window.innerHeight * 0.5;
+      const progress = Math.min(Math.max((triggerPoint - rect.top) / rect.height, 0), 1);
+      timeline.style.setProperty('--timeline-fill', progress);
+    }
+
+    if (updateActiveNav) updateActiveNav();
+  });
+
   const scrollHint = document.getElementById('scrollHint');
   if (scrollHint) {
     scrollHint.addEventListener('click', (e) => {
@@ -194,7 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Magnetic CTA button
   const magneticBtns = document.querySelectorAll('.hero .btn-primary');
   magneticBtns.forEach((btn) => {
     btn.addEventListener('mousemove', (e) => {
@@ -208,7 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3D tilt on service cards (clear animation lock first)
   const serviceCards = document.querySelectorAll('.service-card');
   serviceCards.forEach((card) => {
     card.addEventListener('animationend', () => {
@@ -227,7 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Particle starfield in example work section
   const particleSection = document.querySelector('.example-work');
   if (particleSection) {
     const canvas = document.createElement('canvas');
@@ -265,8 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw();
   }
 
-  // Intersection Observer animations (index only)
-  const animated = document.querySelectorAll('.service-card, .process-step, .example-card, .pricing-card');
+  const animated = document.querySelectorAll('.service-card, .process-step, .example-card');
   if (animated.length) {
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
     const observer = new IntersectionObserver((entries) => {
@@ -276,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
     animated.forEach((el) => observer.observe(el));
   }
 
-  // FAQ accordion (index only)
   const faqQuestions = document.querySelectorAll('.faq-question');
   if (faqQuestions.length) {
     faqQuestions.forEach((question) => {
@@ -289,7 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Notification helper (index only)
   const notification = document.getElementById('notification');
   const showNotification = (msg) => {
     if (!notification) return;
@@ -298,44 +310,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.setTimeout(() => notification.classList.remove('show'), 5000);
   };
 
-  // Active section indicator in navigation
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"], .nav-links a[href*="#"]');
-  if (navLinks.length) {
-    const sections = Array.from(navLinks)
-      .map(link => {
-        const hash = link.getAttribute('href').split('#')[1];
-        return hash ? document.getElementById(hash) : null;
-      })
-      .filter(Boolean);
-
-    const updateActiveNav = () => {
-      const scrollPosition = window.pageYOffset + window.innerHeight / 3;
-
-      let currentSection = null;
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          currentSection = section;
-        }
-      });
-
-      navLinks.forEach(link => {
-        const hash = link.getAttribute('href').split('#')[1];
-        if (currentSection && hash === currentSection.id) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    };
-
-    window.addEventListener('scroll', updateActiveNav);
-    updateActiveNav(); // Run on load
-  }
-
-  // Contact form handler (index only; progressive enhancement)
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
@@ -345,7 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData(form);
       const submitButton = form.querySelector('button[type="submit"]');
 
-      // Remove any existing confirmation popup
       const existing = form.querySelector('.form-confirmation');
       if (existing) existing.remove();
 
@@ -361,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.success) {
           form.reset();
 
-          // Build confirmation popup
           const popup = document.createElement('div');
           popup.className = 'form-confirmation';
           popup.innerHTML = `
@@ -373,13 +345,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="form-confirmation-text">Thanks – we'll get back to you shortly.</p>
           `;
 
-          // Insert after submit button
           submitButton.insertAdjacentElement('afterend', popup);
-
-          // Trigger animation on next frame
           requestAnimationFrame(() => popup.classList.add('show'));
 
-          // Hide popup after 6 seconds
           setTimeout(() => {
             popup.classList.remove('show');
             popup.addEventListener('transitionend', () => popup.remove(), { once: true });

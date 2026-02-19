@@ -1,8 +1,6 @@
-// Demo Viewer System - Self-contained with styles
 (function() {
     'use strict';
-    
-    // Section data with demos and descriptions
+
     const sections = [
         {
             id: 'hero',
@@ -144,9 +142,7 @@
         }
     ];
     
-    // Inject CSS styles
     const styles = `
-        /* Demo Viewer - Embedded Version */
         .demo-viewer-container {
             width: 100%;
             background: #1f2937;
@@ -222,7 +218,6 @@
             transform-origin: top left;
         } 
 
-        /* Demo Modal - Lightbox Version */
         .demo-modal {
             position: fixed;
             top: 0;
@@ -308,7 +303,6 @@
             max-height: none;
         }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .demo-viewer-header {
                 padding: 12px;
@@ -354,16 +348,13 @@
         }
     `;
     
-    // Inject styles into head
     const styleSheet = document.createElement('style');
     styleSheet.textContent = styles;
     document.head.appendChild(styleSheet);
     
-    // Demo Viewer Class
     class DemoViewer {
-        constructor(containerId, isModal = false) {
+        constructor(containerId) {
             this.containerId = containerId;
-            this.isModal = isModal;
             this.currentSection = sections[0];
             this.init();
         }
@@ -418,7 +409,6 @@
         }
     }
 
-    // Modal Controller
     class DemoModal {
         constructor() {
             this.modal = null;
@@ -427,7 +417,6 @@
         }
 
         init() {
-            // Create modal HTML
             const modalHTML = `
                 <div id="demoModal" class="demo-modal">
                     <div class="demo-modal-overlay"></div>
@@ -458,10 +447,7 @@
                 }
             });
 
-            // Initialize viewer inside modal
-            this.viewer = new DemoViewer('demoModalViewer', true);
-
-            // Attach to trigger buttons
+            this.viewer = new DemoViewer('demoModalViewer');
             this.attachTriggers();
         }
 
@@ -477,7 +463,6 @@
         open() {
             this.modal.classList.add('active');
             document.body.classList.add('modal-open');
-            // Reset to first section
             this.viewer.selectElement.value = sections[0].id;
             this.viewer.loadSection(sections[0]);
         }
@@ -486,22 +471,18 @@
             this.modal.classList.remove('active');
             document.body.classList.remove('modal-open');
             
-            // Clear iframe after animation
             setTimeout(() => {
                 this.viewer.iframeElement.src = '';
             }, 300);
         }
     }
 
-    // Initialize on DOM ready
     document.addEventListener('DOMContentLoaded', function() {
-        // Initialize embedded viewer if container exists
         const embeddedContainer = document.getElementById('demoViewerEmbed');
         if (embeddedContainer) {
-            new DemoViewer('demoViewerEmbed', false);
+            new DemoViewer('demoViewerEmbed');
         }
 
-        // Initialize modal viewer if trigger exists
         const modalTrigger = document.querySelector('[data-demo-modal]');
         if (modalTrigger) {
             new DemoModal();
