@@ -191,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Particle starfield in testimonials
-  const particleSection = document.querySelector('.testimonials');
+  // Particle starfield in example work section
+  const particleSection = document.querySelector('.example-work');
   if (particleSection) {
     const canvas = document.createElement('canvas');
     canvas.className = 'section-particles';
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Intersection Observer animations (index only)
-  const animated = document.querySelectorAll('.service-card, .process-step, .testimonial-card, .pricing-card');
+  const animated = document.querySelectorAll('.service-card, .process-step, .example-card, .pricing-card');
   if (animated.length) {
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
     const observer = new IntersectionObserver((entries) => {

@@ -1256,7 +1256,7 @@ body:hover::before {
 }
 
 .pricing-card.featured::before {
-    content: 'MOST POPULAR';
+    content: 'RECOMMENDED';
     position: absolute;
     top: -15px;
     left: 50%;
@@ -2245,4 +2245,205 @@ h1 {
 
 .icon-plus {
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20height=%2224px%22%20viewBox=%220%20-960%20960%20960%22%20width=%2224px%22%20fill=%22#FFFFFF%22%3E%3Cpath%20d=%22M852-212%20732-332l56-56%20120%20120-56%2056ZM708-692l-56-56%20120-120%2056%2056-120%20120Zm-456%200L132-812l56-56%20120%20120-56%2056ZM108-212l-56-56%20120-120%2056%2056-120%20120Zm246-75%20126-76%20126%2077-33-144%20111-96-146-13-58-136-58%20135-146%2013%20111%2097-33%20143ZM233-120l65-281L80-590l288-25%20112-265%20112%20265%20288%2025-218%20189%2065%20281-247-149-247%20149Zm247-361Z%22/%3E%3C/svg%3E");
+}
+
+/* ===== Meet the Builder Section ===== */
+.meet-the-builder {
+    padding: 4rem 5%;
+}
+
+.builder-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.builder-photo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-cyan);
+    flex-shrink: 0;
+}
+
+.builder-text h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-light-cyan);
+    margin-bottom: 0.5rem;
+}
+
+.builder-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (max-width: 640px) {
+    .builder-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ===== Example Work / Portfolio Section ===== */
+.example-work {
+    padding: 5rem 5%;
+    background: linear-gradient(180deg, var(--primary-dark) 0%, rgba(30, 20, 50, 0.6) 50%, var(--primary-dark) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+}
+
+@media (max-width: 640px) {
+    .examples-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.example-card {
+    display: block;
+    text-decoration: none;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(6, 182, 212, 0.15);
+    background: rgba(30, 41, 59, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.example-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(6, 182, 212, 0.15);
+}
+
+.example-screenshot {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--secondary-dark);
+}
+
+.example-screenshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.example-info {
+    padding: 1rem 1.25rem;
+}
+
+.example-info strong {
+    display: block;
+    color: var(--text-light);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.example-info span {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.launch-promise {
+    max-width: 700px;
+    margin: 2rem auto 0;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(6, 182, 212, 0.1);
+    background: rgba(6, 182, 212, 0.05);
+}
+
+.launch-promise p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+    font-style: italic;
+}
+
+/* ===== Who This Is For Section ===== */
+.who-this-is-for {
+    padding: 4rem 5%;
+    background: linear-gradient(180deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+}
+
+.business-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.business-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    border: 1px solid rgba(6, 182, 212, 0.15);
+    background: rgba(30, 41, 59, 0.4);
+    transition: border-color 0.3s ease;
+}
+
+.business-type:hover {
+    border-color: var(--accent-cyan);
+}
+
+.business-type span {
+    color: var(--text-light);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ===== Pricing Label (Launch Pricing) ===== */
+.pricing-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-light-cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Contact Direct Line ===== */
+.contact-direct {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-direct p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.contact-direct a {
+    color: var(--accent-light-cyan);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-direct a:hover {
+    color: var(--accent-cyan);
 }
