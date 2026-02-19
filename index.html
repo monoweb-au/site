@@ -504,33 +504,56 @@
     <section class="contact" id="contact">
         <div class="section-header">
             <h2> Let's Get You Online</h2>
-            <p>Not sure where to start? No worries. <br><br>Tell us a bit about your business and we'll work out if
-                we're the right fit. We work with local Australian businesses who want a quality website without the
-                headaches.</p>
+            <p>Not sure where to start? No worries. <br>Tell us a bit about your business and we'll work out if
+                we're the right fit.</p>
         </div>
 
         <div class="contact-content">
             <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="288f7004-fd48-49ed-93e3-cf357204a651">
 
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="business">Business Name</label>
+                        <input type="text" id="business" name="business" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="business">Business Name</label>
-                    <input type="text" id="business" name="business" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number </label>
-                    <input type="tel" id="phone" name="phone" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="plan">Plan</label>
+                        <select id="plan" name="plan" required>
+                            <option value="" disabled selected>Select a plan</option>
+                            <option value="Starter ($649)">Starter</option>
+                            <option value="Plus ($849)">Plus</option>
+                            <option value="Not sure yet">Not sure yet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="referral">Found Us Via</label>
+                        <select id="referral" name="referral">
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Google Search">Google Search</option>
+                            <option value="Social Media">Social Media</option>
+                            <option value="Word of Mouth">Word of Mouth</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group">
