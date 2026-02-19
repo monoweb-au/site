@@ -345,6 +345,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData(form);
       const submitButton = form.querySelector('button[type="submit"]');
 
+      // Remove any existing confirmation popup
+      const existing = form.querySelector('.form-confirmation');
+      if (existing) existing.remove();
+
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
@@ -355,8 +359,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
 
         if (data.success) {
-          showNotification("Thanks — your enquiry has been sent. We'll get back to you shortly.");
           form.reset();
+
+          // Build confirmation popup
+          const popup = document.createElement('div');
+          popup.className = 'form-confirmation';
+          popup.innerHTML = `
+            <svg class="form-confirmation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12l3 3 5-5"/>
+            </svg>
+            <p class="form-confirmation-title">Enquiry sent!</p>
+            <p class="form-confirmation-text">Thanks – we'll get back to you shortly.</p>
+          `;
+
+          // Insert after submit button
+          submitButton.insertAdjacentElement('afterend', popup);
+
+          // Trigger animation on next frame
+          requestAnimationFrame(() => popup.classList.add('show'));
+
+          // Hide popup after 6 seconds
+          setTimeout(() => {
+            popup.classList.remove('show');
+            popup.addEventListener('transitionend', () => popup.remove(), { once: true });
+          }, 6000);
         } else {
           showNotification('Something went wrong. Please try again or email hello@monoweb.com.au');
         }
