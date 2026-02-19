@@ -365,8 +365,7 @@ body:hover::before {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: 180px 5% 0 5%;
-    padding-bottom: 6rem;
+    padding: 180px 5% 8rem 5%;
 }
 
 
@@ -583,7 +582,7 @@ body:hover::before {
 }
 
 .services {
-    padding: 6rem 5%;
+    padding: 8rem 5%;
     background: rgba(67, 86, 119, 0.5);
     position: relative;
     overflow: hidden;
@@ -612,6 +611,7 @@ body:hover::before {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900;
     line-height: 1.15;
+    margin-top: 0;
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, #ffffff, var(--accent-light-cyan));
     -webkit-background-clip: text;
@@ -719,7 +719,7 @@ body:hover::before {
 }
 
 .why-monoweb {
-    padding: 6rem 5%;
+    padding: 8rem 5%;
     background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
     position: relative;
     overflow: hidden;
@@ -892,7 +892,7 @@ body:hover::before {
 }
 
 .process {
-    padding: 6rem 5%;
+    padding: 8rem 5%;
     background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
     position: relative;
     overflow: hidden;
@@ -1040,7 +1040,7 @@ body:hover::before {
 
 .process-content h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
     color: var(--accent-light-cyan);
     display: flex;
@@ -1085,13 +1085,13 @@ body:hover::before {
     max-width: 700px;
     margin: 0 auto;
     color: var(--accent-light-cyan);
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 1.7;
     font-style: italic;
 }
 
 .pricing {
-    padding: 6rem 5%;
+    padding: 8rem 5%;
     background: linear-gradient(160deg, rgba(67, 86, 119, 0.5) 0%, rgba(59, 48, 84, 0.4) 100%);
     position: relative;
     overflow: hidden;
@@ -1107,172 +1107,6 @@ body:hover::before {
     background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
     pointer-events: none;
 }
-
-.pricing > .comparison-table-wrapper {
-    max-width: 850px;
-    margin-top: 3rem;
-    overflow: visible;
-}
-
-.pricing-comparison {
-    table-layout: fixed;
-    border: none;
-    overflow: visible;
-    border-radius: 0;
-}
-
-.pricing-comparison thead th {
-    padding: 1.5rem 1rem;
-    text-align: center;
-    vertical-align: middle;
-    border-bottom: none;
-}
-
-.pricing-comparison td {
-    vertical-align: middle;
-}
-
-.pricing-comparison .pricing-feature-header {
-    width: 64%;
-    background: transparent;
-    border: 2px solid var(--accent-cyan-40);
-    border-right: none;
-    border-bottom: none;
-    border-top-left-radius: 20px;
-    text-align: right;
-    padding-right: 1.5rem;
-    vertical-align: middle;
-}
-
-.pricing-feature-heading {
-    display: block;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-light);
-    margin-bottom: 0.25rem;
-}
-
-.heading-arrow {
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.1em;
-    margin-left: 0.2em;
-    color: var(--accent-cyan);
-}
-
-.pricing-feature-subheading {
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    letter-spacing: 0.5px;
-}
-
-.starter-header {
-    min-width: 100px;
-    background: rgba(30, 41, 59, 0.4);
-    color: var(--text-muted);
-    border-right: 1px solid rgba(203, 213, 225, 0.1);
-    border-top: 2px solid var(--accent-cyan-40);
-}
-
-.starter-header h3,
-.plus-header h3 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 0.2rem;
-    color: var(--text-light);
-}
-
-.plus-header {
-    min-width: 100px;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), var(--card-bg));
-    color: var(--accent-light-cyan);
-    position: relative;
-    border-top: 2px solid var(--accent-cyan-40);
-    border-right: 2px solid var(--accent-cyan-40);
-    border-top-right-radius: 20px;
-}
-
-.plus-header::before {
-    content: 'RECOMMENDED';
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-    color: white;
-    padding: 0.25rem 0.9rem;
-    border-radius: 8px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    white-space: nowrap;
-}
-
-.pricing-comparison .pricing-price {
-    font-size: 2.2rem;
-    margin-bottom: 0;
-}
-
-.feature-cell {
-    text-align: left;
-    background: rgba(15, 23, 42, 0.2);
-    border-right: 1px solid rgba(203, 213, 225, 0.1);
-    border-left: 2px solid var(--accent-cyan-40);
-    font-size: 0.95rem;
-}
-
-.starter-cell {
-    background: rgba(30, 41, 59, 0.2);
-    text-align: center;
-    border-right: 1px solid rgba(203, 213, 225, 0.1);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-
-.plus-cell {
-    background: rgba(6, 182, 212, 0.03);
-    text-align: center;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    border-right: 2px solid var(--accent-cyan-40);
-}
-
-.merged-cell {
-    text-align: center;
-    background: rgba(30, 41, 59, 0.2);
-    color: var(--text-muted);
-    font-weight: 500;
-    font-size: 0.95rem;
-    border-right: 2px solid var(--accent-cyan-40);
-}
-
-.pricing-comparison tbody td.cta-cell {
-    text-align: center;
-    background: rgba(15, 23, 42, 0.2);
-    padding: 1.5rem;
-    border-left: 2px solid var(--accent-cyan-40);
-    border-right: 2px solid var(--accent-cyan-40);
-    border-bottom: 2px solid var(--accent-cyan-40);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.tick {
-    color: var(--accent-cyan);
-    font-size: 1.2rem;
-}
-
-.cross {
-    color: rgba(203, 213, 225, 0.35);
-    font-size: 1.2rem;
-}
-
 
 .sr-only {
     position: absolute;
@@ -1304,12 +1138,10 @@ body:hover::before {
     border-radius: 5px;
     color: var(--accent-cyan);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
-    margin-bottom: 1.5rem;
-    max-width: 750px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 2rem auto 0;
+    max-width: 700px;
 }
 
 .pricing-price::after {
@@ -1317,6 +1149,143 @@ body:hover::before {
     font-size: 0.55em;
     font-weight: 600;
     margin-left: 0.1em;
+}
+
+.pricing-cards {
+    display: flex;
+    max-width: 850px;
+    margin: 2rem auto 0;
+    position: relative;
+}
+
+.pricing-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 2px solid var(--accent-cyan-40);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.pricing-card:first-child {
+    border-radius: 20px 0 0 20px;
+    border-right: 1px solid rgba(203, 213, 225, 0.1);
+}
+
+.pricing-card:last-child {
+    border-radius: 0 20px 20px 0;
+}
+
+.pricing-card-featured {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), var(--card-bg));
+    border-color: var(--accent-cyan);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    color: white;
+    padding: 0.25rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.pricing-card-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
+}
+
+.pricing-card .pricing-price {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.pricing-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    text-align: left;
+    flex: 1;
+}
+
+.pricing-features li {
+    padding: 0.55rem 0 0.55rem 1.8rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(203, 213, 225, 0.08);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features li::before {
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+.pricing-features li.included::before {
+    content: '\2713';
+    color: var(--accent-cyan);
+}
+
+.pricing-features li.not-included {
+    color: rgba(203, 213, 225, 0.3);
+    text-decoration: line-through;
+}
+
+.pricing-features li.not-included::before {
+    content: '\2717';
+    color: rgba(203, 213, 225, 0.3);
+}
+
+.pricing-card .btn {
+    margin-top: auto;
+    width: 100%;
+}
+
+.pricing-hosting {
+    margin: 0.75rem -1.5rem 0;
+    background: rgba(15, 23, 42, 0.92);
+    border-top: 1px solid var(--accent-cyan-20);
+    border-bottom: 1px solid var(--accent-cyan-20);
+    padding: 0.55rem 1rem;
+    text-align: center;
+    color: var(--accent-light-cyan);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.pricing-card:first-child .pricing-hosting {
+    width: calc(200% + 6rem + 3px);
+    position: relative;
+    z-index: 3;
+}
+
+.pricing-card-featured .pricing-hosting {
+    visibility: hidden;
 }
 
 .pricing > .cta-section {
@@ -1330,7 +1299,7 @@ body:hover::before {
 }
 
 .contact {
-    padding: 6rem 5%;
+    padding: 8rem 5%;
     background: linear-gradient(160deg, var(--tertiary-dark) 0%, rgba(50, 66, 90, 0.85) 100%);
     position: relative;
     overflow: hidden;
@@ -1513,51 +1482,32 @@ body:hover::before {
         grid-template-columns: 1fr;
     }
 
-    .pricing-comparison thead th {
-        padding: 1rem 0.4rem;
+    .pricing-card {
+        padding: 1.5rem 1rem;
     }
 
-    .pricing-comparison td {
-        padding: 0.9rem 0.5rem;
-        font-size: 0.82rem;
+    .pricing-features li {
+        font-size: 0.8rem;
+        padding: 0.4rem 0 0.4rem 1.5rem;
     }
 
-    .pricing-feature-header {
-        width: 40%;
-        padding-right: 0.5rem;
-    }
-
-    .pricing-feature-heading {
-        font-size: 0.75rem;
-    }
-
-    .heading-arrow {
-        width: 0.8em;
-        height: 0.8em;
-    }
-
-    .pricing-feature-subheading {
-        font-size: 0.6rem;
-    }
-
-    .starter-header h3,
-    .plus-header h3 {
-        font-size: 1.1rem;
-    }
-
-    .pricing-comparison .pricing-price {
+    .pricing-card-header h3 {
         font-size: 1.3rem;
     }
 
-    .plus-header::before {
-        font-size: 0.5rem;
-        padding: 0.1rem 0.35rem;
-        top: -8px;
-        letter-spacing: 0.5px;
+    .pricing-card .pricing-price {
+        font-size: 1.8rem;
     }
 
-    .merged-cell {
-        font-size: 0.78rem;
+    .pricing-hosting {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.5rem;
+    }
+
+    .pricing-card:first-child .pricing-hosting {
+        width: calc(200% + 4rem + 3px);
     }
 
     .hero-lottie {
@@ -1693,7 +1643,7 @@ body:hover::before {
 
 
 .faq {
-    padding: 6rem 5%;
+    padding: 8rem 5%;
     background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
 }
 
@@ -1730,7 +1680,7 @@ body:hover::before {
 
 .faq-question h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 400;
     color: var(--text-light);
     margin: 0;
@@ -1772,7 +1722,7 @@ body:hover::before {
     }
 
     .faq-question h3 {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 
     .faq-item.active .faq-answer {
@@ -1792,9 +1742,9 @@ body:hover::before {
 .info-banner p {
     color: var(--text-muted);
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.7;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 
@@ -1899,7 +1849,7 @@ h1 {
 
 .package-box h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #fff;
     margin-bottom: 0.5rem;
 }
@@ -2032,7 +1982,7 @@ h1 {
 .cta-section p {
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -2116,7 +2066,7 @@ h1 {
 }
 
 .meet-the-builder {
-    padding: 4rem 5%;
+    padding: 5rem 5%;
 }
 
 .builder-content {
@@ -2140,7 +2090,7 @@ h1 {
 
 .builder-text h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--accent-light-cyan);
     margin-bottom: 0.5rem;
@@ -2161,10 +2111,17 @@ h1 {
 }
 
 .example-work {
-    padding: 6rem 5%;
+    padding: 8rem 5%;
     background: linear-gradient(180deg, var(--tertiary-dark) 0%, rgba(50, 66, 90, 0.9) 50%, var(--tertiary-dark) 100%);
     position: relative;
     overflow: hidden;
+}
+
+.section-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
 }
 
 .examples-grid {
@@ -2210,6 +2167,11 @@ h1 {
     height: 100%;
     object-fit: cover;
     object-position: top;
+    transition: transform 0.4s ease;
+}
+
+.example-card:hover .example-screenshot img {
+    transform: scale(1.08);
 }
 
 .example-info {
@@ -2230,34 +2192,10 @@ h1 {
     font-size: 0.85rem;
 }
 
-.launch-promise {
-    max-width: 700px;
-    margin: 2rem auto 0;
-    text-align: center;
-    padding: 1.5rem 2rem;
-    border-radius: 10px;
-    border: 1px solid var(--accent-cyan-10);
-    background: rgba(6, 182, 212, 0.05);
+.pricing-info {
+    max-width: 850px;
+    margin: 0 auto;
 }
-
-.launch-promise p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin: 0;
-    font-style: italic;
-}
-
-.pricing-label {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-light-cyan);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-}
-
 
 .contact-form .btn {
     width: 100%;

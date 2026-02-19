@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw();
   }
 
-  const animated = document.querySelectorAll('.service-card, .process-step, .example-card');
+  const animated = document.querySelectorAll('.service-card, .process-step, .example-card, .pricing-card');
   if (animated.length) {
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
     const observer = new IntersectionObserver((entries) => {
