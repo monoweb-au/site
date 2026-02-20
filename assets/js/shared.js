@@ -306,22 +306,24 @@ document.addEventListener('DOMContentLoaded', () => {
     obs.observe(h2);
   });
 
-  // Count-up effect on pricing numbers with pop
+  // Count-down effect on pricing numbers with pop
   document.querySelectorAll('.pricing-price').forEach(el => {
     const match = el.childNodes[0]?.textContent?.match(/\$(\d+)/);
     if (!match) return;
     const target = parseInt(match[1]);
-    el.childNodes[0].textContent = '$0';
+    const from = 5000;
+    el.childNodes[0].textContent = '$' + from.toLocaleString();
     const countObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting || el.dataset.counted) return;
         el.dataset.counted = '1';
-        const duration = 2000;
+        const duration = 3000;
         const start = performance.now();
         const step = (now) => {
           const progress = Math.min((now - start) / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
-          el.childNodes[0].textContent = '$' + Math.round(target * eased);
+          const current = Math.round(from + (target - from) * eased);
+          el.childNodes[0].textContent = '$' + current.toLocaleString();
           if (progress < 1) {
             requestAnimationFrame(step);
           } else {
