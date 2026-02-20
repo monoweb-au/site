@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <title>Style Customiser | MonoWeb</title>
+    <title>Style Demo | MonoWeb</title>
     <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +17,9 @@
 
     <style>
         body::before { display: none; }
+
+        .scroll-top { display: none !important; }
+        .cookie-banner { display: none !important; }
 
         :root {
             --c-bg: #0c1625;
@@ -41,7 +44,7 @@
 
         .customiser-header h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-size: clamp(2.1rem, 4vw, 3rem);
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 0.6rem;
@@ -56,22 +59,75 @@
         }
 
         .customiser-bar {
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 200;
-            background: rgba(10, 18, 30, 0.97);
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 0.6rem 5%;
+            right: 0;
+            bottom: 0;
+            width: 290px;
+            z-index: 300;
+            background: #080f1a;
+            border-left: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            flex-direction: column;
+            transform: translateX(calc(100% + 1px));
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .customiser-bar.is-open { transform: translateX(0); }
+
+        .customiser-panel-head {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 1.1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            flex-shrink: 0;
+        }
+
+        .customiser-panel-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.35);
+            flex: 1;
+        }
+
+        .customiser-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.55);
+            flex-shrink: 0;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+
+        .customiser-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+        .customiser-close svg {
+            width: 12px;
+            height: 12px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
         }
 
         .customiser-inner {
-            max-width: 1200px;
-            margin: 0 auto;
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,0.08) transparent;
         }
 
         .picker-row {
@@ -79,11 +135,75 @@
             align-items: center;
             gap: 0.75rem;
             min-width: 0;
+            padding: 0.85rem 1.1rem;
         }
 
         .picker-row:not(:last-child) {
-            padding-bottom: 0.45rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .customiser-fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--c-accent);
+            border: none;
+            cursor: pointer;
+            z-index: 301;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px color-mix(in srgb, var(--c-accent) 45%, transparent);
+            transition: background 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .customiser-fab:hover { transform: scale(1.08); }
+        .customiser-fab.is-open { opacity: 0; pointer-events: none; transform: scale(0.8); }
+
+        .customiser-fab svg {
+            width: 20px;
+            height: 20px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        @media (max-width: 640px) {
+            .customiser-bar {
+                top: auto;
+                left: 0;
+                right: 0;
+                width: 100%;
+                max-height: 72vh;
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.09);
+                border-radius: 18px 18px 0 0;
+                transform: translateY(calc(100% + 1px));
+            }
+
+            .customiser-bar.is-open { transform: translateY(0); }
+
+            .customiser-bar::before {
+                content: '';
+                display: block;
+                width: 34px;
+                height: 3px;
+                background: rgba(255, 255, 255, 0.18);
+                border-radius: 2px;
+                margin: 10px auto 0;
+                flex-shrink: 0;
+            }
+
+            .customiser-fab {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 48px;
+                height: 48px;
+            }
         }
 
         .picker-section {
@@ -161,8 +281,13 @@
         .theme-pickers {
             display: flex;
             gap: 0.35rem;
-            flex-shrink: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            flex: 1;
+            min-width: 0;
         }
+
+        .theme-pickers::-webkit-scrollbar { display: none; }
 
         .theme-pick {
             padding: 0;
@@ -258,32 +383,16 @@
             color: rgba(255, 255, 255, 0.85);
         }
 
-        .customiser-cta {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 9px 20px;
-            background: var(--c-accent);
-            color: #fff;
-            border-radius: 8px;
-            text-decoration: none;
-            white-space: nowrap;
-            transition: opacity 0.2s ease, background 0.35s ease;
-            flex-shrink: 0;
-        }
-
-        .customiser-cta:hover { opacity: 0.82; }
-
         /* Demo sections */
 
         .d-hero {
             background: var(--c-bg);
-            min-height: 80vh;
+            min-height: 55vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 5%;
+            padding: 4rem 5%;
             position: relative;
             overflow: hidden;
             transition: background-color 0.35s ease;
@@ -310,7 +419,7 @@
 
         .d-h1 {
             font-family: var(--c-font-heading);
-            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-size: clamp(3rem, 6vw, 5.5rem);
             font-weight: 700;
             color: var(--c-heading);
             line-height: 1.05;
@@ -324,14 +433,14 @@
 
         .d-h1 span {
             display: block;
-            color: var(--c-accent);
-            -webkit-text-fill-color: var(--c-accent);
-            transition: color 0.35s ease, -webkit-text-fill-color 0.35s ease;
+            color: var(--c-heading);
+            -webkit-text-fill-color: currentColor;
+            transition: color 0.35s ease;
         }
 
         .d-h2 {
             font-family: var(--c-font-heading);
-            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
             font-weight: 700;
             color: var(--c-heading);
             margin-bottom: 1rem;
@@ -364,6 +473,8 @@
             text-decoration: none;
             transition: opacity 0.2s ease, transform 0.2s ease, background 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, border-radius 0.35s ease, padding 0.35s ease;
         }
+
+        .d-btn:hover { text-decoration: none; }
 
         .d-btn-primary {
             background: var(--c-accent);
@@ -464,7 +575,7 @@
 
         .d-services {
             background: var(--c-bg2);
-            padding: 5rem 5%;
+            padding: 3rem 5%;
             transition: background-color 0.35s ease;
         }
 
@@ -524,7 +635,7 @@
 
         .d-testimonials {
             background: var(--c-bg);
-            padding: 5rem 5%;
+            padding: 3rem 5%;
             transition: background-color 0.35s ease;
         }
 
@@ -544,7 +655,7 @@
         }
 
         .d-stars {
-            color: var(--c-accent);
+            color: var(--c-heading);
             font-size: 1rem;
             letter-spacing: 0.15em;
             margin-bottom: 1rem;
@@ -573,14 +684,14 @@
             display: block;
             font-weight: 400;
             font-size: 0.8rem;
-            color: var(--c-muted);
+            color: var(--c-accent);
             margin-top: 3px;
             transition: color 0.35s ease;
         }
 
         .d-cta-strip {
             background: var(--c-bg2);
-            padding: 5rem 5%;
+            padding: 3rem 5%;
             text-align: center;
             transition: background-color 0.35s ease;
         }
@@ -611,25 +722,6 @@
         [data-card="outline"] .d-card,
         [data-card="outline"] .d-quote { border: 2px solid var(--c-accent); }
 
-        /* Hero layout variants */
-        [data-layout="left"] .d-hero { justify-content: flex-start; }
-        [data-layout="left"] .d-hero-inner { text-align: left; }
-        [data-layout="left"] .d-cta-row { justify-content: flex-start; }
-
-        [data-layout="bold"] .d-h1 { font-size: clamp(4rem, 11vw, 9rem); line-height: 0.9; }
-        [data-layout="bold"] .d-lead { font-size: clamp(0.95rem, 1.5vw, 1.1rem); max-width: 480px; margin-left: auto; margin-right: auto; }
-
-        /* Spacing variants */
-        [data-spacing="tight"] .d-hero { padding: 4rem 5%; min-height: 60vh; }
-        [data-spacing="tight"] .d-services,
-        [data-spacing="tight"] .d-testimonials,
-        [data-spacing="tight"] .d-cta-strip { padding: 3rem 5%; }
-
-        [data-spacing="airy"] .d-hero { padding: 10rem 5%; min-height: 100vh; }
-        [data-spacing="airy"] .d-services,
-        [data-spacing="airy"] .d-testimonials,
-        [data-spacing="airy"] .d-cta-strip { padding: 9rem 5%; }
-
         @media (max-width: 860px) {
             .d-cards {
                 grid-template-columns: 1fr;
@@ -638,20 +730,6 @@
 
             .d-quotes {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 700px) {
-            .customiser-cta {
-                display: none;
-            }
-
-            .picker-label {
-                display: none;
-            }
-
-            .customiser-inner {
-                gap: 0.4rem;
             }
         }
 
@@ -676,11 +754,17 @@
     <div id="header-placeholder"></div>
 
     <header class="customiser-header">
-        <h1>Design Your Style</h1>
-        <p>Mix and match fonts, colours, button styles, card layouts, and more.</p>
+        <h1>Style Demo</h1>
+        <p>Mix and match fonts, colours, and button styles to see what appeals. Every site we build is made from scratch — this is just a way to get a feel for the direction you're after.</p>
     </header>
 
-    <div class="customiser-bar" role="region" aria-label="Style controls">
+    <div class="customiser-bar" id="customiser-panel" role="dialog" aria-label="Style demo">
+        <div class="customiser-panel-head">
+            <span class="customiser-panel-title">Customise</span>
+            <button type="button" class="customiser-close" id="customiser-close" aria-label="Close panel">
+                <svg viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg>
+            </button>
+        </div>
         <div class="customiser-inner">
 
             <div class="picker-row">
@@ -916,41 +1000,6 @@
 
             <div class="picker-row">
             <div class="picker-section">
-                <span class="picker-label">Layout</span>
-                <div class="btn-style-pickers" role="group" aria-label="Hero layout">
-
-                    <button type="button" class="btn-style-pick" data-layout="center" aria-pressed="true">
-                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x=".5" y=".5" width="41" height="25" rx="2.5" stroke="rgba(255,255,255,0.15)"/>
-                            <rect x="12" y="8" width="18" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
-                            <rect x="15" y="15" width="12" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
-                        </svg>
-                        <span class="btn-pick-label">Center</span>
-                    </button>
-
-                    <button type="button" class="btn-style-pick" data-layout="left" aria-pressed="false">
-                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x=".5" y=".5" width="41" height="25" rx="2.5" stroke="rgba(255,255,255,0.15)"/>
-                            <rect x="5" y="8" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
-                            <rect x="5" y="15" width="15" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
-                        </svg>
-                        <span class="btn-pick-label">Left</span>
-                    </button>
-
-                    <button type="button" class="btn-style-pick" data-layout="bold" aria-pressed="false">
-                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x=".5" y=".5" width="41" height="25" rx="2.5" stroke="rgba(255,255,255,0.15)"/>
-                            <rect x="5" y="9" width="32" height="7" rx="2" fill="rgba(255,255,255,0.65)"/>
-                        </svg>
-                        <span class="btn-pick-label">Bold</span>
-                    </button>
-
-                </div>
-            </div>
-            </div>
-
-            <div class="picker-row">
-            <div class="picker-section">
                 <span class="picker-label">Cards</span>
                 <div class="btn-style-pickers" role="group" aria-label="Card style">
 
@@ -990,58 +1039,36 @@
             </div>
             </div>
 
-            <div class="picker-row">
-            <div class="picker-section">
-                <span class="picker-label">Spacing</span>
-                <div class="btn-style-pickers" role="group" aria-label="Section spacing">
-
-                    <button type="button" class="btn-style-pick" data-spacing="tight" aria-pressed="false">
-                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2" y="2" width="38" height="10" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-                            <rect x="2" y="14" width="38" height="10" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-                        </svg>
-                        <span class="btn-pick-label">Tight</span>
-                    </button>
-
-                    <button type="button" class="btn-style-pick" data-spacing="normal" aria-pressed="true">
-                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2" y="3" width="38" height="8" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-                            <rect x="2" y="15" width="38" height="8" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-                        </svg>
-                        <span class="btn-pick-label">Normal</span>
-                    </button>
-
-                    <button type="button" class="btn-style-pick" data-spacing="airy" aria-pressed="false">
-                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2" y="4" width="38" height="6" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-                            <rect x="2" y="16" width="38" height="6" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-                        </svg>
-                        <span class="btn-pick-label">Airy</span>
-                    </button>
-
-                </div>
-            </div>
-            </div>
-
         </div>
     </div>
+
+    <button type="button" class="customiser-fab" id="customiser-fab" aria-label="Open style demo" aria-expanded="false">
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+            <line x1="3" y1="5" x2="17" y2="5"/>
+            <line x1="3" y1="10" x2="17" y2="10"/>
+            <line x1="3" y1="15" x2="17" y2="15"/>
+            <circle cx="7" cy="5" r="2.2" fill="white" stroke="none"/>
+            <circle cx="13" cy="10" r="2.2" fill="white" stroke="none"/>
+            <circle cx="8" cy="15" r="2.2" fill="white" stroke="none"/>
+        </svg>
+    </button>
 
     <main class="demo-preview" aria-label="Website style preview">
 
         <section class="d-hero">
             <div class="d-hero-inner">
-                <h1 class="d-h1">Built for <span>Local Business.</span></h1>
-                <p class="d-lead">Professional websites for Australian tradies, shops, and service providers. Done for you in days, not months.</p>
+                <h1 class="d-h1">This is your <span>headline.</span></h1>
+                <p class="d-lead">A place to say what you do, who you do it for, and why they should choose you. Keep it short, keep it honest.</p>
                 <div class="d-cta-row">
-                    <a href="index.html#contact" class="d-btn d-btn-primary">Get Started</a>
+                    <a class="d-btn d-btn-primary">Your Call to Action</a>
                 </div>
             </div>
         </section>
 
         <section class="d-services">
             <div class="d-section-header">
-                <h2 class="d-h2">Everything Included</h2>
-                <p>One clean, professional website — designed, built, and hosted for you.</p>
+                <h2 class="d-h2">What You Offer</h2>
+                <p>A line or two about this section — what it covers and why it matters to your customer.</p>
             </div>
             <div class="d-cards">
 
@@ -1052,8 +1079,8 @@
                             <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
                         </svg>
                     </div>
-                    <p class="d-card-title">Custom Design</p>
-                    <p>Built around your business — not a cookie-cutter template from a drag-and-drop editor.</p>
+                    <p class="d-card-title">Service or Feature</p>
+                    <p>Describe this in plain language. What does the customer get? How does it help them?</p>
                 </div>
 
                 <div class="d-card">
@@ -1063,8 +1090,8 @@
                             <line x1="12" y1="18" x2="12.01" y2="18"/>
                         </svg>
                     </div>
-                    <p class="d-card-title">Mobile Ready</p>
-                    <p>Your site looks great on every device. Over 60% of Australians browse on their phones.</p>
+                    <p class="d-card-title">Service or Feature</p>
+                    <p>Another thing you do well. Think about what your best customers always come back for.</p>
                 </div>
 
                 <div class="d-card">
@@ -1074,8 +1101,8 @@
                             <polyline points="9,12 11,14 15,10"/>
                         </svg>
                     </div>
-                    <p class="d-card-title">Done For You</p>
-                    <p>You focus on running your business. We handle everything else, start to finish.</p>
+                    <p class="d-card-title">Service or Feature</p>
+                    <p>Your third point. Could be a guarantee, a process, or something that sets you apart.</p>
                 </div>
 
             </div>
@@ -1083,25 +1110,25 @@
 
         <section class="d-testimonials">
             <div class="d-section-header">
-                <h2 class="d-h2">What Our Clients Say</h2>
+                <h2 class="d-h2">What Your Customers Say</h2>
             </div>
             <div class="d-quotes">
 
                 <blockquote class="d-quote">
                     <p class="d-stars" aria-label="5 stars">★★★★★</p>
-                    <p>"MonoWeb had our site live in less than a week. Our enquiries tripled in the first month — couldn't be happier."</p>
+                    <p>"This is where a real review from one of your customers goes. Something genuine — in their own words."</p>
                     <p class="d-quote-attr">
-                        Sarah K.
-                        <span>Plumber, Brisbane</span>
+                        Customer Name
+                        <span>Their job, their suburb</span>
                     </p>
                 </blockquote>
 
                 <blockquote class="d-quote">
                     <p class="d-stars" aria-label="5 stars">★★★★★</p>
-                    <p>"Finally a website that actually looks like us. Simple process, great communication, brilliant result."</p>
+                    <p>"Another review here. Pick ones that answer the doubts a new customer might have before calling you."</p>
                     <p class="d-quote-attr">
-                        Marcus T.
-                        <span>Café Owner, Melbourne</span>
+                        Customer Name
+                        <span>Their job, their suburb</span>
                     </p>
                 </blockquote>
 
@@ -1109,9 +1136,9 @@
         </section>
 
         <section class="d-cta-strip">
-            <h2 class="d-h2">Ready to Get Started?</h2>
-            <p>Join local businesses across Australia who are already online with MonoWeb.</p>
-            <a href="index.html#contact" class="d-btn d-btn-primary">Let's Build Your Site</a>
+            <h2 class="d-h2">Ready to take the next step?</h2>
+            <p>Tell them what happens when they click — a call, a quote, a booking. Make it easy.</p>
+            <a class="d-btn d-btn-primary">Your Call to Action</a>
         </section>
 
     </main>
@@ -1157,12 +1184,12 @@
             slate:     { bg: '#f8fafc', bg2: '#e2e8f0', card: '#ffffff',             text: '#334155', muted: '#64748b', heading: '#0f172a' },
             void:      { bg: '#0a0a0a', bg2: '#151515', card: 'rgba(22,22,22,0.9)', text: '#f5f5f5', muted: '#a3a3a3', heading: '#ffffff' },
             parchment: { bg: '#faf7f2', bg2: '#f0ebe3', card: '#ffffff',             text: '#44403c', muted: '#78716c', heading: '#1c1917' },
-            espresso:  { bg: '#1a1208', bg2: '#251a0e', card: 'rgba(50,35,20,0.7)', text: '#fdf6e3', muted: '#c8a96e', heading: '#fff8ed' },
+            espresso:  { bg: '#1a1208', bg2: '#251a0e', card: 'rgba(50,35,20,0.7)', text: '#fdf6e3', muted: '#b09880', heading: '#fff8ed' },
             arctic:    { bg: '#f0f7ff', bg2: '#e4f0fc', card: '#ffffff',             text: '#0c1a2e', muted: '#475569', heading: '#0f172a' },
-            forest:    { bg: '#0d1a10', bg2: '#162419', card: 'rgba(24,48,28,0.7)', text: '#f0fdf4', muted: '#86efac', heading: '#ffffff' },
-            sage:      { bg: '#f0fdf8', bg2: '#e6faf4', card: '#ffffff',             text: '#134e4a', muted: '#5eada0', heading: '#042f2e' },
-            plum:      { bg: '#130a1e', bg2: '#1e1030', card: 'rgba(40,20,65,0.7)', text: '#f3e8ff', muted: '#c084fc', heading: '#ffffff' },
-            lavender:  { bg: '#faf5ff', bg2: '#f3e8ff', card: '#ffffff',             text: '#3b0764', muted: '#7e22ce', heading: '#1e0348' },
+            forest:    { bg: '#0d1a10', bg2: '#162419', card: 'rgba(24,48,28,0.7)', text: '#f0fdf4', muted: '#8aaa96', heading: '#ffffff' },
+            sage:      { bg: '#f0fdf8', bg2: '#e6faf4', card: '#ffffff',             text: '#134e4a', muted: '#6a9890', heading: '#042f2e' },
+            plum:      { bg: '#130a1e', bg2: '#1e1030', card: 'rgba(40,20,65,0.7)', text: '#f3e8ff', muted: '#a888c0', heading: '#ffffff' },
+            lavender:  { bg: '#faf5ff', bg2: '#f3e8ff', card: '#ffffff',             text: '#3b0764', muted: '#7a60a0', heading: '#1e0348' },
             iron:      { bg: '#111111', bg2: '#1c1c1c', card: 'rgba(30,30,30,0.9)', text: '#f5f5f5', muted: '#a3a3a3', heading: '#ffffff' },
             chalk:     { bg: '#ffffff', bg2: '#f4f4f4', card: '#f9f9f9',            text: '#1a1a1a', muted: '#6b7280', heading: '#111111' },
         };
@@ -1184,7 +1211,7 @@
 
         const state = {
             font: 'modern', palette: 'midnight', accent: 'cyan',
-            btn: 'rounded', layout: 'center', card: 'flat', spacing: 'normal',
+            btn: 'rounded', card: 'flat',
         };
 
         function applyBtn(key) {
@@ -1221,16 +1248,8 @@
             root.style.setProperty('--c-accent2', a.accent2);
         }
 
-        function applyLayout(key) {
-            document.documentElement.setAttribute('data-layout', key);
-        }
-
         function applyCard(key) {
             document.documentElement.setAttribute('data-card', key);
-        }
-
-        function applySpacing(key) {
-            document.documentElement.setAttribute('data-spacing', key);
         }
 
         function setActive(attr, key) {
@@ -1246,37 +1265,46 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                const nav = document.querySelector('nav');
-                if (nav) {
-                    const bar = document.querySelector('.customiser-bar');
-                    if (bar) bar.style.top = nav.offsetHeight + 'px';
-                }
-            }, 0);
+            const fab      = document.getElementById('customiser-fab');
+            const panel    = document.getElementById('customiser-panel');
+            const closeBtn = document.getElementById('customiser-close');
+
+            function openPanel() {
+                panel.classList.add('is-open');
+                fab.classList.add('is-open');
+                fab.setAttribute('aria-expanded', 'true');
+            }
+
+            function closePanel() {
+                panel.classList.remove('is-open');
+                fab.classList.remove('is-open');
+                fab.setAttribute('aria-expanded', 'false');
+            }
+
+            fab.addEventListener('click', openPanel);
+            closeBtn.addEventListener('click', closePanel);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closePanel();
+            });
 
             const params = new URLSearchParams(window.location.search);
             state.font    = FONTS[params.get('font')]       ? params.get('font')    : 'modern';
             state.palette = PALETTES[params.get('palette')] ? params.get('palette') : 'midnight';
             state.accent  = ACCENTS[params.get('accent')]   ? params.get('accent')  : 'cyan';
             state.btn     = BTNS[params.get('btn')]         ? params.get('btn')     : 'rounded';
-            state.layout  = ['center','left','bold'].includes(params.get('layout'))     ? params.get('layout')  : 'center';
             state.card    = ['flat','raised','glass','outline'].includes(params.get('card')) ? params.get('card') : 'flat';
-            state.spacing = ['tight','normal','airy'].includes(params.get('spacing'))   ? params.get('spacing') : 'normal';
 
             applyFont(state.font);
             applyPalette(state.palette);
             applyAccent(state.accent);
             applyBtn(state.btn);
-            applyLayout(state.layout);
             applyCard(state.card);
-            applySpacing(state.spacing);
             setActive('data-font',    state.font);
             setActive('data-palette', state.palette);
             setActive('data-accent',  state.accent);
             setActive('data-btn',     state.btn);
-            setActive('data-layout',  state.layout);
             setActive('data-card',    state.card);
-            setActive('data-spacing', state.spacing);
 
             document.querySelectorAll('.font-pick').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1314,29 +1342,11 @@
                 });
             });
 
-            document.querySelectorAll('[data-layout]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    state.layout = this.getAttribute('data-layout');
-                    applyLayout(state.layout);
-                    setActive('data-layout', state.layout);
-                    updateURL();
-                });
-            });
-
             document.querySelectorAll('[data-card]').forEach(btn => {
                 btn.addEventListener('click', function() {
                     state.card = this.getAttribute('data-card');
                     applyCard(state.card);
                     setActive('data-card', state.card);
-                    updateURL();
-                });
-            });
-
-            document.querySelectorAll('[data-spacing]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    state.spacing = this.getAttribute('data-spacing');
-                    applySpacing(state.spacing);
-                    setActive('data-spacing', state.spacing);
                     updateURL();
                 });
             });
