@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const match = el.childNodes[0]?.textContent?.match(/\$(\d+)/);
     if (!match) return;
     const target = parseInt(match[1]);
-    const from = 5000;
+    const from = target + 1500;
     el.childNodes[0].textContent = '$' + from.toLocaleString();
     const countObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
