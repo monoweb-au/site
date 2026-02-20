@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Style Customiser | MonoWeb</title>
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500&family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700;800&family=Fraunces:ital,wght@0,700;1,700&family=Inter:wght@400;500&family=Josefin+Sans:wght@400;600&family=Jost:wght@400;500&family=Lato:wght@400;700&family=Manrope:wght@400;500&family=Mulish:wght@400;500&family=Nunito:wght@400;500;700;800&family=Open+Sans:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700&family=Raleway:wght@600;700&family=Source+Sans+3:wght@400;600&family=Space+Grotesk:wght@600;700&family=Syne:wght@600;700&family=Bebas+Neue&family=Crimson+Text:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@400;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/shared.js" defer></script>
+
+    <style>
+        body::before { display: none; }
+
+        :root {
+            --c-bg: #0c1625;
+            --c-bg2: #162236;
+            --c-card: rgba(30, 46, 68, 0.7);
+            --c-accent: #06b6d4;
+            --c-accent2: #a78bfa;
+            --c-text: #f1f5f9;
+            --c-muted: #94a3b8;
+            --c-heading: #ffffff;
+            --c-font-heading: 'DM Sans', sans-serif;
+            --c-font-body: 'DM Sans', sans-serif;
+            --c-btn-radius: 8px;
+        }
+
+        .customiser-header {
+            padding: 140px 5% 2.5rem;
+            text-align: center;
+            background: #0c1625;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .customiser-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.6rem;
+            line-height: 1.1;
+        }
+
+        .customiser-header p {
+            font-family: 'Inter', sans-serif;
+            color: #94a3b8;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .customiser-bar {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: rgba(10, 18, 30, 0.97);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.6rem 5%;
+        }
+
+        .customiser-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .picker-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .picker-row:not(:last-child) {
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .picker-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .picker-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.35);
+            white-space: nowrap;
+        }
+
+        .font-pickers {
+            display: flex;
+            gap: 0.4rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .font-pickers::-webkit-scrollbar { display: none; }
+
+        .font-pick {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            padding: 7px 11px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+            color: rgba(255, 255, 255, 0.75);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .font-pick:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .font-pick[aria-pressed="true"] {
+            border-color: var(--c-accent);
+            background: color-mix(in srgb, var(--c-accent) 12%, transparent);
+            color: #fff;
+        }
+
+        .font-preview {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .font-pick-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            opacity: 0.55;
+        }
+
+        .theme-pickers {
+            display: flex;
+            gap: 0.35rem;
+            flex-shrink: 0;
+        }
+
+        .theme-pick {
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .theme-pick:hover { transform: scale(1.12); }
+
+        .swatch {
+            display: block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 1.5px rgba(128,128,128,0.25);
+            transition: box-shadow 0.15s ease;
+        }
+
+        .theme-pick[aria-pressed="true"] .swatch {
+            box-shadow: 0 0 0 2.5px #fff, 0 0 0 4.5px rgba(0,0,0,0.3);
+        }
+
+        .btn-style-pickers {
+            display: flex;
+            gap: 0.4rem;
+            flex: 1;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .btn-style-pickers::-webkit-scrollbar { display: none; }
+
+        .btn-style-pick {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 11px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .btn-style-pick:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-style-pick[aria-pressed="true"] {
+            border-color: var(--c-accent);
+            background: color-mix(in srgb, var(--c-accent) 12%, transparent);
+        }
+
+        .btn-preview {
+            display: block;
+            padding: 3px 9px;
+            font-size: 0.55rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            background: rgba(255, 255, 255, 0.75);
+            color: #111;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-preview-pill      { border-radius: 50px; }
+        .btn-preview-rounded   { border-radius: 4px; }
+        .btn-preview-sharp     { border-radius: 0; }
+        .btn-preview-lifted    { border-radius: 4px; box-shadow: 0 3px 8px rgba(0,0,0,0.35); }
+        .btn-preview-ghost     { background: transparent; border: 1.5px solid rgba(255,255,255,0.7); color: rgba(255,255,255,0.8); border-radius: 4px; }
+        .btn-preview-chunky    { border-radius: 2px; padding: 3px 7px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.48rem; }
+        .btn-preview-glow      { border-radius: 4px; box-shadow: 0 0 8px rgba(255,255,255,0.7), 0 0 18px rgba(255,255,255,0.35); }
+        .btn-preview-soft      { border-radius: 4px; background: rgba(255,255,255,0.14); border: 1.5px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.9); }
+        .btn-preview-retro     { border-radius: 0; box-shadow: 3px 3px 0 rgba(255,255,255,0.65); transform: translate(-1px,-1px); }
+        .btn-preview-underline { background: transparent; border-radius: 0; border-bottom: 2px solid rgba(255,255,255,0.75); color: rgba(255,255,255,0.85); padding: 3px 2px; }
+
+        .btn-pick-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.52rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-style-pick[aria-pressed="true"] .btn-pick-label {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .customiser-cta {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 9px 20px;
+            background: var(--c-accent);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: opacity 0.2s ease, background 0.35s ease;
+            flex-shrink: 0;
+        }
+
+        .customiser-cta:hover { opacity: 0.82; }
+
+        /* Demo sections */
+
+        .d-hero {
+            background: var(--c-bg);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 5%;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.35s ease;
+        }
+
+        .d-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, color-mix(in srgb, var(--c-accent) 18%, transparent), transparent 65%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: background 0.35s ease;
+        }
+
+        .d-hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+        }
+
+        .d-h1 {
+            font-family: var(--c-font-heading);
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 700;
+            color: var(--c-heading);
+            line-height: 1.05;
+            margin-bottom: 1.25rem;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            -webkit-text-fill-color: currentColor;
+            transition: color 0.35s ease;
+        }
+
+        .d-h1 span {
+            display: block;
+            color: var(--c-accent);
+            -webkit-text-fill-color: var(--c-accent);
+            transition: color 0.35s ease, -webkit-text-fill-color 0.35s ease;
+        }
+
+        .d-h2 {
+            font-family: var(--c-font-heading);
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--c-heading);
+            margin-bottom: 1rem;
+            transition: color 0.35s ease;
+        }
+
+        .d-lead {
+            font-family: var(--c-font-body);
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            color: var(--c-muted);
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+            transition: color 0.35s ease;
+        }
+
+        .d-cta-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .d-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: var(--c-btn-radius);
+            font-family: var(--c-font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: opacity 0.2s ease, transform 0.2s ease, background 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, border-radius 0.35s ease, padding 0.35s ease;
+        }
+
+        .d-btn-primary {
+            background: var(--c-accent);
+            color: #fff;
+        }
+
+        .d-btn-primary:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        .d-btn-secondary {
+            background: transparent;
+            border: 2px solid var(--c-accent);
+            color: var(--c-accent);
+        }
+
+        .d-btn-secondary:hover {
+            background: color-mix(in srgb, var(--c-accent) 10%, transparent);
+            transform: translateY(-2px);
+        }
+
+        /* Button style variants */
+        [data-btn="lifted"] .d-btn-primary {
+            box-shadow: 0 6px 24px color-mix(in srgb, var(--c-accent) 45%, transparent);
+        }
+
+        [data-btn="lifted"] .d-btn-primary:hover {
+            box-shadow: 0 10px 32px color-mix(in srgb, var(--c-accent) 60%, transparent);
+        }
+
+        [data-btn="ghost"] .d-btn-primary {
+            background: transparent;
+            border: 2px solid var(--c-accent);
+            color: var(--c-accent);
+        }
+
+        [data-btn="ghost"] .d-btn-primary:hover {
+            background: color-mix(in srgb, var(--c-accent) 10%, transparent);
+            opacity: 1;
+        }
+
+        [data-btn="chunky"] .d-btn {
+            padding: 16px 42px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        [data-btn="glow"] .d-btn-primary {
+            box-shadow: 0 0 18px color-mix(in srgb, var(--c-accent) 65%, transparent),
+                        0 0 40px color-mix(in srgb, var(--c-accent) 30%, transparent);
+        }
+
+        [data-btn="glow"] .d-btn-primary:hover {
+            box-shadow: 0 0 28px color-mix(in srgb, var(--c-accent) 85%, transparent),
+                        0 0 60px color-mix(in srgb, var(--c-accent) 45%, transparent);
+            opacity: 1;
+        }
+
+        [data-btn="soft"] .d-btn-primary {
+            background: color-mix(in srgb, var(--c-accent) 16%, transparent);
+            color: var(--c-accent);
+            border: 1.5px solid color-mix(in srgb, var(--c-accent) 35%, transparent);
+        }
+
+        [data-btn="soft"] .d-btn-primary:hover {
+            background: color-mix(in srgb, var(--c-accent) 26%, transparent);
+            opacity: 1;
+        }
+
+        [data-btn="retro"] .d-btn-primary {
+            box-shadow: 4px 4px 0 var(--c-accent);
+            transform: translate(-2px, -2px);
+        }
+
+        [data-btn="retro"] .d-btn-primary:hover {
+            box-shadow: 6px 6px 0 var(--c-accent);
+            transform: translate(-4px, -4px);
+            opacity: 1;
+        }
+
+        [data-btn="underline"] .d-btn-primary {
+            background: transparent;
+            color: var(--c-accent);
+            border-bottom: 2px solid var(--c-accent);
+            border-radius: 0;
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+
+        [data-btn="underline"] .d-btn-primary:hover {
+            opacity: 1;
+            transform: none;
+            background: transparent;
+        }
+
+        .d-services {
+            background: var(--c-bg2);
+            padding: 5rem 5%;
+            transition: background-color 0.35s ease;
+        }
+
+        .d-section-header {
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto 3rem;
+        }
+
+        .d-section-header p {
+            font-family: var(--c-font-body);
+            color: var(--c-muted);
+            font-size: 1.05rem;
+            line-height: 1.65;
+            margin: 0;
+            transition: color 0.35s ease;
+        }
+
+        .d-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .d-card {
+            background: var(--c-card);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, border 0.35s ease;
+        }
+
+        .d-card-icon {
+            color: var(--c-accent);
+            margin-bottom: 1.25rem;
+            transition: color 0.35s ease;
+        }
+
+        .d-card-title {
+            font-family: var(--c-font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--c-heading);
+            margin-bottom: 0.6rem;
+            transition: color 0.35s ease;
+        }
+
+        .d-card p {
+            font-family: var(--c-font-body);
+            color: var(--c-muted);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin: 0;
+            transition: color 0.35s ease;
+        }
+
+        .d-testimonials {
+            background: var(--c-bg);
+            padding: 5rem 5%;
+            transition: background-color 0.35s ease;
+        }
+
+        .d-quotes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .d-quote {
+            background: var(--c-card);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, border 0.35s ease;
+        }
+
+        .d-stars {
+            color: var(--c-accent);
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            transition: color 0.35s ease;
+        }
+
+        .d-quote p {
+            font-family: var(--c-font-body);
+            color: var(--c-text);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+            font-style: italic;
+            transition: color 0.35s ease;
+        }
+
+        .d-quote-attr {
+            font-family: var(--c-font-body);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--c-heading);
+            transition: color 0.35s ease;
+        }
+
+        .d-quote-attr span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: var(--c-muted);
+            margin-top: 3px;
+            transition: color 0.35s ease;
+        }
+
+        .d-cta-strip {
+            background: var(--c-bg2);
+            padding: 5rem 5%;
+            text-align: center;
+            transition: background-color 0.35s ease;
+        }
+
+        .d-cta-strip p {
+            font-family: var(--c-font-body);
+            color: var(--c-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            transition: color 0.35s ease;
+        }
+
+        /* Card style variants */
+        [data-card="flat"] .d-card { border-top: 3px solid var(--c-accent); }
+        [data-card="flat"] .d-quote { border-left: 4px solid var(--c-accent); }
+
+        [data-card="raised"] .d-card,
+        [data-card="raised"] .d-quote { box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.1); }
+
+        [data-card="glass"] .d-card,
+        [data-card="glass"] .d-quote {
+            background: color-mix(in srgb, var(--c-bg2) 55%, transparent);
+            border: 1px solid color-mix(in srgb, var(--c-accent) 20%, rgba(128,128,128,0.2));
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+        }
+
+        [data-card="outline"] .d-card,
+        [data-card="outline"] .d-quote { border: 2px solid var(--c-accent); }
+
+        /* Hero layout variants */
+        [data-layout="left"] .d-hero { justify-content: flex-start; }
+        [data-layout="left"] .d-hero-inner { text-align: left; }
+        [data-layout="left"] .d-cta-row { justify-content: flex-start; }
+
+        [data-layout="bold"] .d-h1 { font-size: clamp(4rem, 11vw, 9rem); line-height: 0.9; }
+        [data-layout="bold"] .d-lead { font-size: clamp(0.95rem, 1.5vw, 1.1rem); max-width: 480px; margin-left: auto; margin-right: auto; }
+
+        /* Spacing variants */
+        [data-spacing="tight"] .d-hero { padding: 4rem 5%; min-height: 60vh; }
+        [data-spacing="tight"] .d-services,
+        [data-spacing="tight"] .d-testimonials,
+        [data-spacing="tight"] .d-cta-strip { padding: 3rem 5%; }
+
+        [data-spacing="airy"] .d-hero { padding: 10rem 5%; min-height: 100vh; }
+        [data-spacing="airy"] .d-services,
+        [data-spacing="airy"] .d-testimonials,
+        [data-spacing="airy"] .d-cta-strip { padding: 9rem 5%; }
+
+        @media (max-width: 860px) {
+            .d-cards {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+            }
+
+            .d-quotes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .customiser-cta {
+                display: none;
+            }
+
+            .picker-label {
+                display: none;
+            }
+
+            .customiser-inner {
+                gap: 0.4rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .font-pick {
+                padding: 6px 8px;
+            }
+
+            .font-preview {
+                font-size: 1.1rem;
+            }
+
+            .swatch {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body class="simple-nav">
+    <div id="header-placeholder"></div>
+
+    <header class="customiser-header">
+        <h1>Design Your Style</h1>
+        <p>Mix and match fonts, colours, button styles, card layouts, and more.</p>
+    </header>
+
+    <div class="customiser-bar" role="region" aria-label="Style controls">
+        <div class="customiser-inner">
+
+            <div class="picker-row">
+            <div class="picker-section">
+                <span class="picker-label">Font</span>
+                <div class="font-pickers" role="group" aria-label="Font style">
+
+                    <button type="button" class="font-pick" data-font="modern"
+                            style="font-family: 'DM Sans', sans-serif;"
+                            aria-pressed="true">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">DM Sans</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="outfit"
+                            style="font-family: 'Outfit', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Outfit</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="poppins"
+                            style="font-family: 'Poppins', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Poppins</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="montserrat"
+                            style="font-family: 'Montserrat', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Montserrat</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="worksans"
+                            style="font-family: 'Work Sans', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Work Sans</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="geo"
+                            style="font-family: 'Space Grotesk', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Space Grotesk</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="warm"
+                            style="font-family: 'Nunito', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Nunito</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="bold"
+                            style="font-family: 'Barlow Condensed', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Barlow</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="bebas"
+                            style="font-family: 'Bebas Neue', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Bebas Neue</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="corporate"
+                            style="font-family: 'Raleway', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Raleway</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="creative"
+                            style="font-family: 'Syne', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Syne</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="minimal"
+                            style="font-family: 'Josefin Sans', sans-serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Josefin Sans</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="classic"
+                            style="font-family: 'Playfair Display', serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Playfair</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="luxury"
+                            style="font-family: 'Cormorant Garamond', serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Cormorant</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="earthy"
+                            style="font-family: 'Fraunces', serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Fraunces</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="crimson"
+                            style="font-family: 'Crimson Text', serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Crimson Text</span>
+                    </button>
+
+                    <button type="button" class="font-pick" data-font="robotoslab"
+                            style="font-family: 'Roboto Slab', serif;"
+                            aria-pressed="false">
+                        <span class="font-preview">Aa</span>
+                        <span class="font-pick-label">Roboto Slab</span>
+                    </button>
+
+                </div>
+            </div>
+            </div>
+
+            <div class="picker-row">
+            <div class="picker-section">
+                <span class="picker-label">Background</span>
+                <div class="theme-pickers" role="group" aria-label="Background palette">
+
+                    <button type="button" class="theme-pick" data-palette="midnight" aria-label="Midnight — dark navy" aria-pressed="true"><span class="swatch" style="background:#0c1625"></span></button>
+                    <button type="button" class="theme-pick" data-palette="slate" aria-label="Slate — cool white" aria-pressed="false"><span class="swatch" style="background:#f8fafc"></span></button>
+                    <button type="button" class="theme-pick" data-palette="void" aria-label="Void — pure black" aria-pressed="false"><span class="swatch" style="background:#0a0a0a"></span></button>
+                    <button type="button" class="theme-pick" data-palette="parchment" aria-label="Parchment — warm cream" aria-pressed="false"><span class="swatch" style="background:#faf7f2"></span></button>
+                    <button type="button" class="theme-pick" data-palette="espresso" aria-label="Espresso — dark brown" aria-pressed="false"><span class="swatch" style="background:#1a1208"></span></button>
+                    <button type="button" class="theme-pick" data-palette="arctic" aria-label="Arctic — icy blue" aria-pressed="false"><span class="swatch" style="background:#f0f7ff"></span></button>
+                    <button type="button" class="theme-pick" data-palette="forest" aria-label="Forest — deep green" aria-pressed="false"><span class="swatch" style="background:#0d1a10"></span></button>
+                    <button type="button" class="theme-pick" data-palette="sage" aria-label="Sage — pale green" aria-pressed="false"><span class="swatch" style="background:#f0fdf8"></span></button>
+                    <button type="button" class="theme-pick" data-palette="plum" aria-label="Plum — deep purple" aria-pressed="false"><span class="swatch" style="background:#130a1e"></span></button>
+                    <button type="button" class="theme-pick" data-palette="lavender" aria-label="Lavender — pale purple" aria-pressed="false"><span class="swatch" style="background:#faf5ff"></span></button>
+                    <button type="button" class="theme-pick" data-palette="iron" aria-label="Iron — dark charcoal" aria-pressed="false"><span class="swatch" style="background:#111111"></span></button>
+                    <button type="button" class="theme-pick" data-palette="chalk" aria-label="Chalk — pure white" aria-pressed="false"><span class="swatch" style="background:#ffffff"></span></button>
+
+                </div>
+            </div>
+            </div>
+
+            <div class="picker-row">
+            <div class="picker-section">
+                <span class="picker-label">Accent</span>
+                <div class="theme-pickers" role="group" aria-label="Accent colour">
+
+                    <button type="button" class="theme-pick" data-accent="cyan" aria-label="Cyan" aria-pressed="true"><span class="swatch" style="background:#06b6d4"></span></button>
+                    <button type="button" class="theme-pick" data-accent="blue" aria-label="Blue" aria-pressed="false"><span class="swatch" style="background:#3b82f6"></span></button>
+                    <button type="button" class="theme-pick" data-accent="amber" aria-label="Amber" aria-pressed="false"><span class="swatch" style="background:#f59e0b"></span></button>
+                    <button type="button" class="theme-pick" data-accent="green" aria-label="Green" aria-pressed="false"><span class="swatch" style="background:#22c55e"></span></button>
+                    <button type="button" class="theme-pick" data-accent="pink" aria-label="Pink" aria-pressed="false"><span class="swatch" style="background:#f472b6"></span></button>
+                    <button type="button" class="theme-pick" data-accent="orange" aria-label="Orange" aria-pressed="false"><span class="swatch" style="background:#f97316"></span></button>
+                    <button type="button" class="theme-pick" data-accent="hot" aria-label="Hot Pink" aria-pressed="false"><span class="swatch" style="background:#ff2a6d"></span></button>
+                    <button type="button" class="theme-pick" data-accent="violet" aria-label="Violet" aria-pressed="false"><span class="swatch" style="background:#8b5cf6"></span></button>
+                    <button type="button" class="theme-pick" data-accent="teal" aria-label="Teal" aria-pressed="false"><span class="swatch" style="background:#14b8a6"></span></button>
+                    <button type="button" class="theme-pick" data-accent="red" aria-label="Red" aria-pressed="false"><span class="swatch" style="background:#ef4444"></span></button>
+                    <button type="button" class="theme-pick" data-accent="gold" aria-label="Gold" aria-pressed="false"><span class="swatch" style="background:#eab308"></span></button>
+                    <button type="button" class="theme-pick" data-accent="indigo" aria-label="Indigo" aria-pressed="false"><span class="swatch" style="background:#6366f1"></span></button>
+
+                </div>
+            </div>
+            </div>
+
+            <div class="picker-row">
+            <div class="picker-section">
+                <span class="picker-label">Buttons</span>
+                <div class="btn-style-pickers" role="group" aria-label="Button style">
+
+                    <button type="button" class="btn-style-pick" data-btn="rounded" aria-pressed="true">
+                        <span class="btn-preview btn-preview-rounded">Button</span>
+                        <span class="btn-pick-label">Rounded</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-btn="pill" aria-pressed="false">
+                        <span class="btn-preview btn-preview-pill">Button</span>
+                        <span class="btn-pick-label">Pill</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-btn="sharp" aria-pressed="false">
+                        <span class="btn-preview btn-preview-sharp">Button</span>
+                        <span class="btn-pick-label">Sharp</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-btn="lifted" aria-pressed="false">
+                        <span class="btn-preview btn-preview-lifted">Button</span>
+                        <span class="btn-pick-label">Lifted</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-btn="ghost" aria-pressed="false">
+                        <span class="btn-preview btn-preview-ghost">Button</span>
+                        <span class="btn-pick-label">Ghost</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-btn="chunky" aria-pressed="false">
+                        <span class="btn-preview btn-preview-chunky">Button</span>
+                        <span class="btn-pick-label">Chunky</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-btn="glow" aria-pressed="false">
+                        <span class="btn-preview btn-preview-glow">Button</span>
+                        <span class="btn-pick-label">Glow</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-btn="soft" aria-pressed="false">
+                        <span class="btn-preview btn-preview-soft">Button</span>
+                        <span class="btn-pick-label">Soft</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-btn="retro" aria-pressed="false">
+                        <span class="btn-preview btn-preview-retro">Button</span>
+                        <span class="btn-pick-label">Retro</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-btn="underline" aria-pressed="false">
+                        <span class="btn-preview btn-preview-underline">Button</span>
+                        <span class="btn-pick-label">Underline</span>
+                    </button>
+
+                </div>
+            </div>
+            </div>
+
+            <div class="picker-row">
+            <div class="picker-section">
+                <span class="picker-label">Layout</span>
+                <div class="btn-style-pickers" role="group" aria-label="Hero layout">
+
+                    <button type="button" class="btn-style-pick" data-layout="center" aria-pressed="true">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x=".5" y=".5" width="41" height="25" rx="2.5" stroke="rgba(255,255,255,0.15)"/>
+                            <rect x="12" y="8" width="18" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+                            <rect x="15" y="15" width="12" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+                        </svg>
+                        <span class="btn-pick-label">Center</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-layout="left" aria-pressed="false">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x=".5" y=".5" width="41" height="25" rx="2.5" stroke="rgba(255,255,255,0.15)"/>
+                            <rect x="5" y="8" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+                            <rect x="5" y="15" width="15" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+                        </svg>
+                        <span class="btn-pick-label">Left</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-layout="bold" aria-pressed="false">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x=".5" y=".5" width="41" height="25" rx="2.5" stroke="rgba(255,255,255,0.15)"/>
+                            <rect x="5" y="9" width="32" height="7" rx="2" fill="rgba(255,255,255,0.65)"/>
+                        </svg>
+                        <span class="btn-pick-label">Bold</span>
+                    </button>
+
+                </div>
+            </div>
+            </div>
+
+            <div class="picker-row">
+            <div class="picker-section">
+                <span class="picker-label">Cards</span>
+                <div class="btn-style-pickers" role="group" aria-label="Card style">
+
+                    <button type="button" class="btn-style-pick" data-card="flat" aria-pressed="true">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x=".5" y=".5" width="41" height="25" rx="2.5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+                            <rect x=".5" y=".5" width="41" height="4" rx="2.5" fill="rgba(255,255,255,0.7)"/>
+                        </svg>
+                        <span class="btn-pick-label">Flat</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-card="raised" aria-pressed="false">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="4" width="38" height="20" rx="2.5" fill="rgba(0,0,0,0.25)"/>
+                            <rect x="1" y="2" width="38" height="20" rx="2.5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.1)"/>
+                        </svg>
+                        <span class="btn-pick-label">Raised</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-card="glass" aria-pressed="false">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x=".5" y=".5" width="41" height="25" rx="2.5" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.28)"/>
+                            <line x1="10" y1="0.5" x2="0.5" y2="10" stroke="rgba(255,255,255,0.14)"/>
+                            <line x1="20" y1="0.5" x2="0.5" y2="20" stroke="rgba(255,255,255,0.09)"/>
+                        </svg>
+                        <span class="btn-pick-label">Glass</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-card="outline" aria-pressed="false">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x=".5" y=".5" width="41" height="25" rx="2.5" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
+                        </svg>
+                        <span class="btn-pick-label">Outline</span>
+                    </button>
+
+                </div>
+            </div>
+            </div>
+
+            <div class="picker-row">
+            <div class="picker-section">
+                <span class="picker-label">Spacing</span>
+                <div class="btn-style-pickers" role="group" aria-label="Section spacing">
+
+                    <button type="button" class="btn-style-pick" data-spacing="tight" aria-pressed="false">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="38" height="10" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+                            <rect x="2" y="14" width="38" height="10" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+                        </svg>
+                        <span class="btn-pick-label">Tight</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-spacing="normal" aria-pressed="true">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="3" width="38" height="8" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+                            <rect x="2" y="15" width="38" height="8" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+                        </svg>
+                        <span class="btn-pick-label">Normal</span>
+                    </button>
+
+                    <button type="button" class="btn-style-pick" data-spacing="airy" aria-pressed="false">
+                        <svg width="42" height="26" viewBox="0 0 42 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="4" width="38" height="6" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+                            <rect x="2" y="16" width="38" height="6" rx="1.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+                        </svg>
+                        <span class="btn-pick-label">Airy</span>
+                    </button>
+
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+    <main class="demo-preview" aria-label="Website style preview">
+
+        <section class="d-hero">
+            <div class="d-hero-inner">
+                <h1 class="d-h1">Built for <span>Local Business.</span></h1>
+                <p class="d-lead">Professional websites for Australian tradies, shops, and service providers. Done for you in days, not months.</p>
+                <div class="d-cta-row">
+                    <a href="index.html#contact" class="d-btn d-btn-primary">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="d-services">
+            <div class="d-section-header">
+                <h2 class="d-h2">Everything Included</h2>
+                <p>One clean, professional website — designed, built, and hosted for you.</p>
+            </div>
+            <div class="d-cards">
+
+                <div class="d-card">
+                    <div class="d-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 20h9"/>
+                            <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        </svg>
+                    </div>
+                    <p class="d-card-title">Custom Design</p>
+                    <p>Built around your business — not a cookie-cutter template from a drag-and-drop editor.</p>
+                </div>
+
+                <div class="d-card">
+                    <div class="d-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <p class="d-card-title">Mobile Ready</p>
+                    <p>Your site looks great on every device. Over 60% of Australians browse on their phones.</p>
+                </div>
+
+                <div class="d-card">
+                    <div class="d-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="9,12 11,14 15,10"/>
+                        </svg>
+                    </div>
+                    <p class="d-card-title">Done For You</p>
+                    <p>You focus on running your business. We handle everything else, start to finish.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="d-testimonials">
+            <div class="d-section-header">
+                <h2 class="d-h2">What Our Clients Say</h2>
+            </div>
+            <div class="d-quotes">
+
+                <blockquote class="d-quote">
+                    <p class="d-stars" aria-label="5 stars">★★★★★</p>
+                    <p>"MonoWeb had our site live in less than a week. Our enquiries tripled in the first month — couldn't be happier."</p>
+                    <p class="d-quote-attr">
+                        Sarah K.
+                        <span>Plumber, Brisbane</span>
+                    </p>
+                </blockquote>
+
+                <blockquote class="d-quote">
+                    <p class="d-stars" aria-label="5 stars">★★★★★</p>
+                    <p>"Finally a website that actually looks like us. Simple process, great communication, brilliant result."</p>
+                    <p class="d-quote-attr">
+                        Marcus T.
+                        <span>Café Owner, Melbourne</span>
+                    </p>
+                </blockquote>
+
+            </div>
+        </section>
+
+        <section class="d-cta-strip">
+            <h2 class="d-h2">Ready to Get Started?</h2>
+            <p>Join local businesses across Australia who are already online with MonoWeb.</p>
+            <a href="index.html#contact" class="d-btn d-btn-primary">Let's Build Your Site</a>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const BTNS = {
+            rounded:   { radius: '8px' },
+            pill:      { radius: '50px' },
+            sharp:     { radius: '0px' },
+            lifted:    { radius: '8px' },
+            ghost:     { radius: '8px' },
+            chunky:    { radius: '4px' },
+            glow:      { radius: '8px' },
+            soft:      { radius: '8px' },
+            retro:     { radius: '0px' },
+            underline: { radius: '0px' },
+        };
+
+        const FONTS = {
+            modern:     { heading: "'DM Sans', sans-serif",           body: "'DM Sans', sans-serif" },
+            outfit:     { heading: "'Outfit', sans-serif",            body: "'Inter', sans-serif" },
+            poppins:    { heading: "'Poppins', sans-serif",           body: "'Poppins', sans-serif" },
+            montserrat: { heading: "'Montserrat', sans-serif",        body: "'Open Sans', sans-serif" },
+            worksans:   { heading: "'Work Sans', sans-serif",         body: "'Work Sans', sans-serif" },
+            geo:        { heading: "'Space Grotesk', sans-serif",     body: "'Inter', sans-serif" },
+            warm:       { heading: "'Nunito', sans-serif",            body: "'Nunito', sans-serif" },
+            bold:       { heading: "'Barlow Condensed', sans-serif",  body: "'Barlow', sans-serif" },
+            bebas:      { heading: "'Bebas Neue', sans-serif",        body: "'Roboto', sans-serif" },
+            corporate:  { heading: "'Raleway', sans-serif",           body: "'Open Sans', sans-serif" },
+            creative:   { heading: "'Syne', sans-serif",              body: "'Manrope', sans-serif" },
+            minimal:    { heading: "'Josefin Sans', sans-serif",      body: "'Mulish', sans-serif" },
+            classic:    { heading: "'Playfair Display', serif",       body: "'Source Sans 3', sans-serif" },
+            luxury:     { heading: "'Cormorant Garamond', serif",     body: "'Jost', sans-serif" },
+            earthy:     { heading: "'Fraunces', serif",               body: "'Lato', sans-serif" },
+            crimson:    { heading: "'Crimson Text', serif",           body: "'Inter', sans-serif" },
+            robotoslab: { heading: "'Roboto Slab', serif",            body: "'Roboto', sans-serif" },
+        };
+
+        const PALETTES = {
+            midnight:  { bg: '#0c1625', bg2: '#162236', card: 'rgba(30,46,68,0.7)',  text: '#f1f5f9', muted: '#94a3b8', heading: '#ffffff' },
+            slate:     { bg: '#f8fafc', bg2: '#e2e8f0', card: '#ffffff',             text: '#334155', muted: '#64748b', heading: '#0f172a' },
+            void:      { bg: '#0a0a0a', bg2: '#151515', card: 'rgba(22,22,22,0.9)', text: '#f5f5f5', muted: '#a3a3a3', heading: '#ffffff' },
+            parchment: { bg: '#faf7f2', bg2: '#f0ebe3', card: '#ffffff',             text: '#44403c', muted: '#78716c', heading: '#1c1917' },
+            espresso:  { bg: '#1a1208', bg2: '#251a0e', card: 'rgba(50,35,20,0.7)', text: '#fdf6e3', muted: '#c8a96e', heading: '#fff8ed' },
+            arctic:    { bg: '#f0f7ff', bg2: '#e4f0fc', card: '#ffffff',             text: '#0c1a2e', muted: '#475569', heading: '#0f172a' },
+            forest:    { bg: '#0d1a10', bg2: '#162419', card: 'rgba(24,48,28,0.7)', text: '#f0fdf4', muted: '#86efac', heading: '#ffffff' },
+            sage:      { bg: '#f0fdf8', bg2: '#e6faf4', card: '#ffffff',             text: '#134e4a', muted: '#5eada0', heading: '#042f2e' },
+            plum:      { bg: '#130a1e', bg2: '#1e1030', card: 'rgba(40,20,65,0.7)', text: '#f3e8ff', muted: '#c084fc', heading: '#ffffff' },
+            lavender:  { bg: '#faf5ff', bg2: '#f3e8ff', card: '#ffffff',             text: '#3b0764', muted: '#7e22ce', heading: '#1e0348' },
+            iron:      { bg: '#111111', bg2: '#1c1c1c', card: 'rgba(30,30,30,0.9)', text: '#f5f5f5', muted: '#a3a3a3', heading: '#ffffff' },
+            chalk:     { bg: '#ffffff', bg2: '#f4f4f4', card: '#f9f9f9',            text: '#1a1a1a', muted: '#6b7280', heading: '#111111' },
+        };
+
+        const ACCENTS = {
+            cyan:   { accent: '#06b6d4', accent2: '#a78bfa' },
+            blue:   { accent: '#3b82f6', accent2: '#06b6d4' },
+            amber:  { accent: '#f59e0b', accent2: '#ef4444' },
+            green:  { accent: '#22c55e', accent2: '#84cc16' },
+            pink:   { accent: '#f472b6', accent2: '#e879f9' },
+            orange: { accent: '#f97316', accent2: '#facc15' },
+            hot:    { accent: '#ff2a6d', accent2: '#05d9e8' },
+            violet: { accent: '#8b5cf6', accent2: '#fb7185' },
+            teal:   { accent: '#14b8a6', accent2: '#10b981' },
+            red:    { accent: '#ef4444', accent2: '#f97316' },
+            gold:   { accent: '#eab308', accent2: '#d97706' },
+            indigo: { accent: '#6366f1', accent2: '#a855f7' },
+        };
+
+        const state = {
+            font: 'modern', palette: 'midnight', accent: 'cyan',
+            btn: 'rounded', layout: 'center', card: 'flat', spacing: 'normal',
+        };
+
+        function applyBtn(key) {
+            const b = BTNS[key];
+            if (!b) return;
+            document.documentElement.style.setProperty('--c-btn-radius', b.radius);
+            document.documentElement.setAttribute('data-btn', key);
+        }
+
+        function applyFont(key) {
+            const f = FONTS[key];
+            if (!f) return;
+            document.documentElement.style.setProperty('--c-font-heading', f.heading);
+            document.documentElement.style.setProperty('--c-font-body', f.body);
+        }
+
+        function applyPalette(key) {
+            const p = PALETTES[key];
+            if (!p) return;
+            const root = document.documentElement;
+            root.style.setProperty('--c-bg',      p.bg);
+            root.style.setProperty('--c-bg2',     p.bg2);
+            root.style.setProperty('--c-card',    p.card);
+            root.style.setProperty('--c-text',    p.text);
+            root.style.setProperty('--c-muted',   p.muted);
+            root.style.setProperty('--c-heading', p.heading);
+        }
+
+        function applyAccent(key) {
+            const a = ACCENTS[key];
+            if (!a) return;
+            const root = document.documentElement;
+            root.style.setProperty('--c-accent',  a.accent);
+            root.style.setProperty('--c-accent2', a.accent2);
+        }
+
+        function applyLayout(key) {
+            document.documentElement.setAttribute('data-layout', key);
+        }
+
+        function applyCard(key) {
+            document.documentElement.setAttribute('data-card', key);
+        }
+
+        function applySpacing(key) {
+            document.documentElement.setAttribute('data-spacing', key);
+        }
+
+        function setActive(attr, key) {
+            document.querySelectorAll(`[${attr}]`).forEach(btn => {
+                btn.setAttribute('aria-pressed', btn.getAttribute(attr) === key ? 'true' : 'false');
+            });
+        }
+
+        function updateURL() {
+            const url = new URL(window.location);
+            Object.entries(state).forEach(([k, v]) => url.searchParams.set(k, v));
+            history.replaceState(null, '', url);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const nav = document.querySelector('nav');
+                if (nav) {
+                    const bar = document.querySelector('.customiser-bar');
+                    if (bar) bar.style.top = nav.offsetHeight + 'px';
+                }
+            }, 0);
+
+            const params = new URLSearchParams(window.location.search);
+            state.font    = FONTS[params.get('font')]       ? params.get('font')    : 'modern';
+            state.palette = PALETTES[params.get('palette')] ? params.get('palette') : 'midnight';
+            state.accent  = ACCENTS[params.get('accent')]   ? params.get('accent')  : 'cyan';
+            state.btn     = BTNS[params.get('btn')]         ? params.get('btn')     : 'rounded';
+            state.layout  = ['center','left','bold'].includes(params.get('layout'))     ? params.get('layout')  : 'center';
+            state.card    = ['flat','raised','glass','outline'].includes(params.get('card')) ? params.get('card') : 'flat';
+            state.spacing = ['tight','normal','airy'].includes(params.get('spacing'))   ? params.get('spacing') : 'normal';
+
+            applyFont(state.font);
+            applyPalette(state.palette);
+            applyAccent(state.accent);
+            applyBtn(state.btn);
+            applyLayout(state.layout);
+            applyCard(state.card);
+            applySpacing(state.spacing);
+            setActive('data-font',    state.font);
+            setActive('data-palette', state.palette);
+            setActive('data-accent',  state.accent);
+            setActive('data-btn',     state.btn);
+            setActive('data-layout',  state.layout);
+            setActive('data-card',    state.card);
+            setActive('data-spacing', state.spacing);
+
+            document.querySelectorAll('.font-pick').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    state.font = this.getAttribute('data-font');
+                    applyFont(state.font);
+                    setActive('data-font', state.font);
+                    updateURL();
+                });
+            });
+
+            document.querySelectorAll('[data-palette]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    state.palette = this.getAttribute('data-palette');
+                    applyPalette(state.palette);
+                    setActive('data-palette', state.palette);
+                    updateURL();
+                });
+            });
+
+            document.querySelectorAll('[data-accent]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    state.accent = this.getAttribute('data-accent');
+                    applyAccent(state.accent);
+                    setActive('data-accent', state.accent);
+                    updateURL();
+                });
+            });
+
+            document.querySelectorAll('[data-btn]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    state.btn = this.getAttribute('data-btn');
+                    applyBtn(state.btn);
+                    setActive('data-btn', state.btn);
+                    updateURL();
+                });
+            });
+
+            document.querySelectorAll('[data-layout]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    state.layout = this.getAttribute('data-layout');
+                    applyLayout(state.layout);
+                    setActive('data-layout', state.layout);
+                    updateURL();
+                });
+            });
+
+            document.querySelectorAll('[data-card]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    state.card = this.getAttribute('data-card');
+                    applyCard(state.card);
+                    setActive('data-card', state.card);
+                    updateURL();
+                });
+            });
+
+            document.querySelectorAll('[data-spacing]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    state.spacing = this.getAttribute('data-spacing');
+                    applySpacing(state.spacing);
+                    setActive('data-spacing', state.spacing);
+                    updateURL();
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
