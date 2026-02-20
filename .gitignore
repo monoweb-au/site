@@ -1,0 +1,13 @@
+# VS Code
+.vscode/
+**/.vscode/
+
+# Claude folder
+.claude/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Local test/demo folders (optional – only if you don’t want them in repo)
+# demos/retrowave/

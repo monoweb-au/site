@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON WAVE DESIGN — Web Designer</title>
+    <meta name="description"
+        content="Retro-futuristic web design studio. Crafting digital experiences that push boundaries.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- SCANLINE OVERLAY -->
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <!-- VHS TRACKING NOISE -->
+    <div class="vhs-overlay" aria-hidden="true"></div>
+
+    <!-- STARS BACKGROUND -->
+    <div class="stars" id="stars" aria-hidden="true"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">NEON<span class="logo-accent">WAVE</span></span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-text="HOME">HOME</a></li>
+                <li><a href="#about" data-text="ABOUT">ABOUT</a></li>
+                <li><a href="#services" data-text="SERVICES">SERVICES</a></li>
+                <li><a href="#work" data-text="WORK">WORK</a></li>
+                <li><a href="#testimonials" data-text="CLIENTS">CLIENTS</a></li>
+                <li><a href="#contact" data-text="CONTACT" class="nav-cta">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-grid-floor" aria-hidden="true">
+            <div class="grid-floor-inner"></div>
+        </div>
+
+        <div class="retro-sun" aria-hidden="true">
+            <div class="sun-body">
+                <div class="sun-stripe"></div>
+                <div class="sun-stripe"></div>
+                <div class="sun-stripe"></div>
+                <div class="sun-stripe"></div>
+                <div class="sun-stripe"></div>
+                <div class="sun-stripe"></div>
+                <div class="sun-stripe"></div>
+            </div>
+        </div>
+
+        <div class="palm-trees" aria-hidden="true">
+            <svg class="palm-left" viewBox="0 0 200 400" fill="none">
+                <path d="M100,400 L100,200 Q95,190 60,170 Q40,160 20,180 Q50,150 80,160 Q70,140 40,120 Q20,110 10,130 Q30,100 60,110 Q50,80 30,60 Q20,50 15,70 Q25,40 55,50 Q60,30 50,10 Q70,30 75,60 Q90,40 110,20 Q100,45 95,70 Q120,50 145,45 Q130,65 110,80 Q140,80 165,90 Q140,95 115,100 Q135,120 150,140 Q125,135 105,130 Q115,160 130,175 Q105,155 100,170 Z"
+                      fill="#0a0015" opacity="0.9"/>
+            </svg>
+            <svg class="palm-right" viewBox="0 0 200 400" fill="none">
+                <path d="M100,400 L100,200 Q105,190 140,170 Q160,160 180,180 Q150,150 120,160 Q130,140 160,120 Q180,110 190,130 Q170,100 140,110 Q150,80 170,60 Q180,50 185,70 Q175,40 145,50 Q140,30 150,10 Q130,30 125,60 Q110,40 90,20 Q100,45 105,70 Q80,50 55,45 Q70,65 90,80 Q60,80 35,90 Q60,95 85,100 Q65,120 50,140 Q75,135 95,130 Q85,160 70,175 Q95,155 100,170 Z"
+                      fill="#0a0015" opacity="0.9"/>
+            </svg>
+        </div>
+
+        <div class="mountains" aria-hidden="true">
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <polygon points="0,320 200,180 350,220 500,140 650,200 800,120 950,190 1100,100 1250,170 1440,80 1440,320"
+                    fill="url(#mountain-grad)" />
+                <defs>
+                    <linearGradient id="mountain-grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#1a0030" />
+                        <stop offset="100%" stop-color="#0a0015" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <div class="glitch-wrapper">
+                <h1 class="hero-title glitch" data-text="NEON WAVE">NEON WAVE</h1>
+            </div>
+            <h2 class="hero-subtitle chrome-text">WEB DESIGNER</h2>
+            <p class="hero-tagline">Crafting digital experiences from the <span class="neon-pink">future</span> of the
+                <span class="neon-cyan">past</span>
+            </p>
+            <div class="hero-cta">
+                <a href="#work" class="btn btn-primary">
+                    <span class="btn-text">VIEW MY WORK</span>
+                    <span class="btn-glitch" aria-hidden="true"></span>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span class="btn-text">GET IN TOUCH</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator" aria-hidden="true">
+            <span class="scroll-text">SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about section" id="about">
+        <div class="section-grid-bg" aria-hidden="true"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title neon-text">ABOUT <span class="text-outline">ME</span></h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <div class="image-placeholder">
+                            <div class="placeholder-icon">
+                                <svg viewBox="0 0 100 100" fill="none">
+                                    <circle cx="50" cy="35" r="18" stroke="currentColor" stroke-width="2" />
+                                    <path d="M20 85 C20 60, 80 60, 80 85" stroke="currentColor" stroke-width="2"
+                                        fill="none" />
+                                </svg>
+                            </div>
+                            <span class="placeholder-text">YOUR PHOTO</span>
+                        </div>
+                        <div class="frame-corner tl"></div>
+                        <div class="frame-corner tr"></div>
+                        <div class="frame-corner bl"></div>
+                        <div class="frame-corner br"></div>
+                    </div>
+                    <div class="image-vhs-tag">REC <span class="blink">●</span> 2026</div>
+                </div>
+
+                <div class="about-content">
+                    <p class="about-lead">I'm a <span class="neon-pink">web designer</span> and <span
+                            class="neon-cyan">digital creative</span> who builds experiences that refuse to blend in.
+                    </p>
+                    <p>With over a decade of experience in web design and development, I merge cutting-edge technology
+                        with bold, unforgettable aesthetics. Every pixel has purpose. Every interaction tells a story.
+                    </p>
+                    <p>My work draws from the neon-lit streets of retro-futurism — but it's built for the modern web.
+                        Fast. Accessible. Responsive. And absolutely impossible to ignore.</p>
+
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-count="150">0</span>
+                            <span class="stat-label">Projects Delivered</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="12">0</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="98">0</span>
+                            <span class="stat-label">% Client Retention</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-label">TECH_STACK://</span>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">WordPress</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title neon-text">SERV<span class="text-outline">ICES</span></h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" data-tilt>
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="4" y="8" width="56" height="40" rx="3" />
+                                <line x1="4" y1="48" x2="60" y2="48" />
+                                <rect x="20" y="48" width="24" height="8" />
+                                <line x1="16" y1="56" x2="48" y2="56" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Web Design</h3>
+                        <p>Bespoke websites that capture attention and convert visitors. Every design is
+                            tailor-made to your brand's identity.</p>
+                        <div class="service-tags">
+                            <span>UI Design</span>
+                            <span>Responsive</span>
+                            <span>Prototyping</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-tilt>
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="8" y="4" width="48" height="56" rx="3" />
+                                <circle cx="32" cy="50" r="3" />
+                                <line x1="20" y1="12" x2="44" y2="12" />
+                                <rect x="16" y="18" width="32" height="24" rx="2" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">UX Strategy</h3>
+                        <p>User-centered design rooted in research, data, and empathy. Interfaces
+                            that feel intuitive from the first click.</p>
+                        <div class="service-tags">
+                            <span>User Research</span>
+                            <span>Wireframes</span>
+                            <span>Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-tilt>
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="32,4 40,24 60,24 44,36 50,56 32,44 14,56 20,36 4,24 24,24" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Brand Identity</h3>
+                        <p>Logos, colour systems, typography, and guidelines that make your
+                            brand unmistakable in any medium.</p>
+                        <div class="service-tags">
+                            <span>Logo Design</span>
+                            <span>Guidelines</span>
+                            <span>Typography</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-tilt>
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,20 8,32 20,44" />
+                                <polyline points="44,20 56,32 44,44" />
+                                <line x1="36" y1="12" x2="28" y2="52" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Development</h3>
+                        <p>Clean, performant code that brings designs to life. From landing
+                            pages to full-scale web applications.</p>
+                        <div class="service-tags">
+                            <span>Frontend</span>
+                            <span>CMS</span>
+                            <span>E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="work section" id="work">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title neon-text">PORT<span class="text-outline">FOLIO</span></h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <span class="placeholder-num">01</span>
+                            <span>PROJECT IMAGE</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">Web Design</span>
+                            <h3>CYBER LUXE</h3>
+                            <p>E-commerce redesign for a luxury fashion brand</p>
+                            <a href="#" class="portfolio-link">VIEW PROJECT →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <span class="placeholder-num">02</span>
+                            <span>PROJECT IMAGE</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">Brand Identity</span>
+                            <h3>NEON DISTRICT</h3>
+                            <p>Full brand system for a nightlife venue</p>
+                            <a href="#" class="portfolio-link">VIEW PROJECT →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <span class="placeholder-num">03</span>
+                            <span>PROJECT IMAGE</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">UX / UI Design</span>
+                            <h3>PULSE APP</h3>
+                            <p>Fitness tracking app with real-time analytics</p>
+                            <a href="#" class="portfolio-link">VIEW PROJECT →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <span class="placeholder-num">04</span>
+                            <span>PROJECT IMAGE</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">Development</span>
+                            <h3>RETRO ARCADE</h3>
+                            <p>Interactive web experience for a gaming studio</p>
+                            <a href="#" class="portfolio-link">VIEW PROJECT →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <span class="placeholder-num">05</span>
+                            <span>PROJECT IMAGE</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">Web Design + Development</span>
+                            <h3>SYNTHCORP</h3>
+                            <p>Corporate website for a tech startup pushing boundaries</p>
+                            <a href="#" class="portfolio-link">VIEW PROJECT →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <span class="placeholder-num">06</span>
+                            <span>PROJECT IMAGE</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">Brand + Web</span>
+                            <h3>MIDNIGHT FM</h3>
+                            <p>Music streaming platform branding and web app</p>
+                            <a href="#" class="portfolio-link">VIEW PROJECT →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title neon-text">CLIENT<span class="text-outline">S</span></h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="testimonials-track">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p>Working with Neon Wave was like stepping into a time machine. The design was unlike anything
+                        we'd ever seen — bold, electric, and completely on brand. Our conversions jumped 40%.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <strong>Jake Reynolds</strong>
+                            <span>CEO, Cyber Luxe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p>Not just a designer — a creative force. They took our vague brief and turned it into a brand
+                        identity that stops people in their tracks. Absolute game-changer.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <strong>Sarah Mitchell</strong>
+                            <span>Founder, Neon District</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p>The attention to detail is insane. Every micro-interaction, every animation, every colour
+                        choice — it all feels intentional. This is what premium web design looks like.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div class="author-info">
+                            <strong>Marcus Kim</strong>
+                            <span>CTO, Pulse App</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title neon-text">CON<span class="text-outline">TACT</span></h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 class="contact-heading">Let's build something <span class="neon-pink">electric</span>.</h3>
+                    <p>Got a project in mind? Whether it's a full website build, a brand refresh, or something totally
+                        out there — I'm all ears. Drop me a line and let's make it happen.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-label">EMAIL://</span>
+                            <a href="mailto:hello@neonwave.design">hello@neonwave.design</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">LOCATION://</span>
+                            <span>Melbourne, Australia</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">AVAILABILITY://</span>
+                            <span class="status-available">● AVAILABLE FOR PROJECTS</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Dribbble">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.245.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter/X">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">NAME_</label>
+                        <input type="text" id="name" name="name" required autocomplete="name">
+                        <div class="input-line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">EMAIL_</label>
+                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <div class="input-line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">SUBJECT_</label>
+                        <input type="text" id="subject" name="subject" required>
+                        <div class="input-line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">MESSAGE_</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <div class="input-line"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span class="btn-text">TRANSMIT MESSAGE</span>
+                        <span class="btn-glitch" aria-hidden="true"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid-line" aria-hidden="true"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-bracket">[</span>
+                    <span class="logo-text">NEON<span class="logo-accent">WAVE</span></span>
+                    <span class="logo-bracket">]</span>
+                    <p class="footer-tagline">Designing the future, one pixel at a time.</p>
+                </div>
+                <div class="footer-copy">
+                    <span>&copy; 2026 NEONWAVE DESIGN</span>
+                    <span class="footer-sep">|</span>
+                    <span>ALL RIGHTS RESERVED</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-neon-line" aria-hidden="true"></div>
+    </footer>
+
+    <!-- CURSOR GLOW -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
