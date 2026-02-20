@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <ul class="nav-links">
         <li><a href="index.html#services">What You Get</a></li>
         <li><a href="index.html#why-us">Why Choose Us?</a></li>
-        <li><a href="index.html#examples">Examples</a></li>
+        <li><a href="index.html#recent-projects">Projects</a></li>
         <li><a href="index.html#process">How It Works</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
         <li><a href="index.html#faqs">FAQs</a></li>
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const particleSection = document.querySelector('.example-work');
+  const particleSection = document.querySelector('.recent-projects');
   if (particleSection) {
     const canvas = document.createElement('canvas');
     canvas.className = 'section-particles';
@@ -289,6 +289,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animated.forEach((el) => observer.observe(el));
   }
+
+  // Fade-in section headings on scroll
+  document.querySelectorAll('.section-header h2').forEach(h2 => {
+    h2.style.opacity = '0';
+    h2.style.transform = 'translateY(16px)';
+    h2.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting || h2.dataset.revealed) return;
+        h2.dataset.revealed = '1';
+        h2.style.opacity = '1';
+        h2.style.transform = 'translateY(0)';
+      });
+    }, { threshold: 0.5 });
+    obs.observe(h2);
+  });
+
+  // Count-up effect on pricing numbers with pop
+  document.querySelectorAll('.pricing-price').forEach(el => {
+    const match = el.childNodes[0]?.textContent?.match(/\$(\d+)/);
+    if (!match) return;
+    const target = parseInt(match[1]);
+    el.childNodes[0].textContent = '$0';
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting || el.dataset.counted) return;
+        el.dataset.counted = '1';
+        const duration = 2000;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.childNodes[0].textContent = '$' + Math.round(target * eased);
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.style.transition = 'transform 0.3s ease';
+            el.style.transform = 'scale(1.15)';
+            setTimeout(() => { el.style.transform = 'scale(1)'; }, 300);
+          }
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 });
+    countObserver.observe(el);
+  });
 
   const faqQuestions = document.querySelectorAll('.faq-question');
   if (faqQuestions.length) {

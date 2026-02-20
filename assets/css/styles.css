@@ -1,14 +1,14 @@
 :root {
-    --primary-dark: #0f172a;
-    --secondary-dark: #1e293b;
-    --tertiary-dark: #2a3a50;
+    --primary-dark: #0c1625;
+    --secondary-dark: #162236;
+    --tertiary-dark: #1e2e44;
     --accent-cyan: #06b6d4;
     --accent-light-cyan: #22d3ee;
-    --accent-purple: #8b5cf6;
+    --accent-purple: #a78bfa;
     --text-light: #f1f5f9;
     --text-muted: #cbd5e1;
-    --bg-gradient-1: #0f172a;
-    --bg-gradient-2: #253041;
+    --bg-gradient-1: #0c1625;
+    --bg-gradient-2: #162236;
     --accent-cyan-10: rgba(6, 182, 212, 0.1);
     --accent-cyan-20: rgba(6, 182, 212, 0.2);
     --accent-cyan-40: rgba(6, 182, 212, 0.4);
@@ -276,7 +276,7 @@ a.logo:hover {
 
 footer {
     padding: 3rem 5%;
-    background: var(--secondary-dark);
+    background: #121c2c;
     text-align: center;
     border-top: 1px solid var(--accent-cyan-10);
     display: flex;
@@ -312,7 +312,7 @@ footer p a:hover {
 
 .section-base {
     padding: 6rem 5%;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    background: linear-gradient(135deg, #0c1625, #162236);
     position: relative;
 }
 
@@ -597,8 +597,8 @@ body:hover::before {
 }
 
 .services {
-    padding: 8rem 5%;
-    background: rgba(67, 86, 119, 0.5);
+    padding: 10rem 5%;
+    background: linear-gradient(160deg, #1e3450 0%, #2c4668 100%);
     position: relative;
     overflow: hidden;
 }
@@ -734,8 +734,8 @@ body:hover::before {
 }
 
 .why-monoweb {
-    padding: 8rem 5%;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
+    padding: 10rem 5%;
+    background: linear-gradient(180deg, #101828 0%, #182438 55%, #101828 100%);
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -753,7 +753,7 @@ body:hover::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(15, 23, 42, 0.7) 40%, rgba(30, 41, 59, 0.95) 50%, rgba(15, 23, 42, 1) 60%);
+    background: linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(16, 24, 40, 0.7) 40%, rgba(16, 24, 40, 0.95) 50%, rgba(16, 24, 40, 1) 60%);
     pointer-events: none;
     z-index: 1;
 }
@@ -907,8 +907,8 @@ body:hover::before {
 }
 
 .process {
-    padding: 8rem 5%;
-    background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+    padding: 10rem 5%;
+    background: linear-gradient(145deg, #0e1e28 0%, #162c38 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1106,8 +1106,8 @@ body:hover::before {
 }
 
 .pricing {
-    padding: 8rem 5%;
-    background: linear-gradient(160deg, rgba(67, 86, 119, 0.5) 0%, rgba(59, 48, 84, 0.4) 100%);
+    padding: 10rem 5%;
+    background: linear-gradient(160deg, #1e2c50 0%, #2c3e68 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1314,8 +1314,8 @@ body:hover::before {
 }
 
 .contact {
-    padding: 8rem 5%;
-    background: linear-gradient(160deg, var(--tertiary-dark) 0%, rgba(50, 66, 90, 0.85) 100%);
+    padding: 10rem 5%;
+    background: linear-gradient(160deg, #1e3248 0%, #2c4462 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1393,7 +1393,7 @@ body:hover::before {
 }
 
 .form-group select option {
-    background: #1e293b;
+    background: #141c28;
     color: var(--text-light);
 }
 
@@ -1658,8 +1658,8 @@ body:hover::before {
 
 
 .faq {
-    padding: 8rem 5%;
-    background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+    padding: 10rem 5%;
+    background: linear-gradient(135deg, #121c2c 0%, #1a2838 100%);
 }
 
 .faq-container {
@@ -1981,9 +1981,9 @@ h1 {
     margin: 0 auto;
     padding: 2.5rem 2rem;
     max-width: 700px;
-    background: linear-gradient(135deg, var(--accent-cyan-10), rgba(139, 92, 246, 0.1));
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.18), rgba(139, 92, 246, 0.14));
     border-radius: 20px;
-    border: 1px solid var(--accent-cyan-20);
+    border: 1px solid rgba(6, 182, 212, 0.35);
 }
 
 .cta-section h2 {
@@ -2125,9 +2125,9 @@ h1 {
     }
 }
 
-.example-work {
-    padding: 8rem 5%;
-    background: linear-gradient(180deg, var(--tertiary-dark) 0%, rgba(50, 66, 90, 0.9) 50%, var(--tertiary-dark) 100%);
+.recent-projects {
+    padding: 10rem 5%;
+    background: linear-gradient(180deg, #1c3048 0%, #2a4262 50%, #1c3048 100%);
     position: relative;
     overflow: hidden;
 }
