@@ -1234,7 +1234,7 @@ body:hover::before {
 
 .pricing-card-header h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--text-light);
     margin-bottom: 0.3rem;
@@ -1296,7 +1296,7 @@ body:hover::before {
 
 .pricing-card .btn {
     margin-top: auto;
-    width: 100%;
+    align-self: center;
 }
 
 .pricing-hosting {
@@ -1518,7 +1518,7 @@ body:hover::before {
 
     .pricing-cards {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 5rem;
     }
 
     .pricing-card {
@@ -1550,7 +1550,7 @@ body:hover::before {
     }
 
     .pricing-card-header h3 {
-        font-size: 1.3rem;
+        font-size: 1.7rem;
     }
 
     .pricing-card .pricing-price {
