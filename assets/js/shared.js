@@ -181,6 +181,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const triggerPoint = window.innerHeight * 0.5;
       const progress = Math.min(Math.max((triggerPoint - rect.top) / rect.height, 0), 1);
       timeline.style.setProperty('--timeline-fill', progress);
+
+      const sparkY = rect.top + progress * rect.height;
+      document.querySelectorAll('.process-step').forEach(step => {
+        const icon = step.querySelector('.process-number');
+        if (!icon) return;
+        const iconRect = icon.getBoundingClientRect();
+        const iconCenter = iconRect.top + iconRect.height / 2;
+        if (sparkY >= iconCenter) {
+          step.classList.add('reached');
+        } else {
+          step.classList.remove('reached');
+        }
+      });
     }
 
     if (updateActiveNav) updateActiveNav();

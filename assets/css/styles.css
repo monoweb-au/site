@@ -509,7 +509,7 @@ body:hover::before {
 .floating-element {
     position: absolute;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.12), transparent);
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.18), transparent);
 }
 
 @keyframes float1 {
@@ -957,7 +957,7 @@ body:hover::before {
 
 .timeline-spark {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     left: 50%;
     top: calc(var(--timeline-fill, 0) * 100%);
     width: 8px;
@@ -1043,6 +1043,17 @@ body:hover::before {
     justify-content: center;
     color: white;
     box-shadow: 0 0 0 10px rgba(15, 23, 42, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.process-step.reached .process-number {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 0 0 10px rgba(15, 23, 42, 0.5), 0 0 20px 5px rgba(34, 211, 238, 0.4);
+}
+
+.process-step.reached .process-content {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
 }
 
 .process-number .service-icon {
@@ -1497,13 +1508,37 @@ body:hover::before {
         grid-template-columns: 1fr;
     }
 
+    .pricing-cards {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
     .pricing-card {
         padding: 1.5rem 1rem;
+        border-radius: 20px;
+        border: 2px solid var(--accent-cyan-40);
+    }
+
+    .pricing-card:first-child {
+        border-radius: 20px;
+        border-right: 2px solid var(--accent-cyan-40);
+    }
+
+    .pricing-card:last-child {
+        border-radius: 20px;
+    }
+
+    .pricing-card:first-child .pricing-hosting {
+        width: auto;
+    }
+
+    .pricing-card-featured .pricing-hosting {
+        visibility: visible;
     }
 
     .pricing-features li {
-        font-size: 0.8rem;
-        padding: 0.4rem 0 0.4rem 1.5rem;
+        font-size: 0.9rem;
+        padding: 0.55rem 0 0.55rem 1.8rem;
     }
 
     .pricing-card-header h3 {
@@ -1517,12 +1552,8 @@ body:hover::before {
     .pricing-hosting {
         margin-left: -1rem;
         margin-right: -1rem;
-        font-size: 0.8rem;
-        padding: 0.4rem 0.5rem;
-    }
-
-    .pricing-card:first-child .pricing-hosting {
-        width: calc(200% + 4rem + 3px);
+        font-size: 0.85rem;
+        padding: 0.5rem 0.5rem;
     }
 
     .hero-lottie {
@@ -2209,7 +2240,7 @@ h1 {
 
 .pricing-info {
     max-width: 850px;
-    margin: 0 auto;
+    margin: 0 auto 2.5rem;
 }
 
 .contact-form .btn {
