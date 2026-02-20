@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="terms.html">Terms</a>
         <br>
         Empowering local businesses with simple, professional websites.
+        <br>ABN 45 782 652 688
       </p>
     </footer>
   `;
@@ -194,6 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
           step.classList.remove('reached');
         }
       });
+
+      if (progress >= 0.99) {
+        timeline.classList.add('completed');
+      } else {
+        timeline.classList.remove('completed');
+      }
     }
 
     if (updateActiveNav) updateActiveNav();
@@ -373,12 +380,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
+    contactForm.querySelectorAll('[required]').forEach(field => {
+      field.addEventListener('input', () => {
+        field.classList.remove('input-error');
+        const err = field.parentElement.querySelector('.field-error');
+        if (err) err.remove();
+      });
+    });
+
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const form = e.target;
-      const formData = new FormData(form);
       const submitButton = form.querySelector('button[type="submit"]');
+
+      form.querySelectorAll('.field-error').forEach(el => el.remove());
+      form.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+
+      let valid = true;
+      form.querySelectorAll('[required]').forEach(field => {
+        let error = '';
+        if (!field.value.trim()) {
+          error = 'This field is required.';
+        } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+          error = 'Please enter a valid email address.';
+        }
+        if (error) {
+          valid = false;
+          field.classList.add('input-error');
+          const msg = document.createElement('span');
+          msg.className = 'field-error';
+          msg.textContent = error;
+          field.insertAdjacentElement('afterend', msg);
+        }
+      });
+
+      if (!valid) return;
+
+      const formData = new FormData(form);
 
       const existing = form.querySelector('.form-confirmation');
       if (existing) existing.remove();
@@ -424,6 +463,18 @@ document.addEventListener('DOMContentLoaded', () => {
           submitButton.textContent = 'Send Enquiry';
         }
       }
+    });
+  }
+
+  if (!localStorage.getItem('mw_cookie_ok')) {
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.innerHTML = '<p>This site uses cookies for analytics.<br><a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy policy</a></p><button>Got it</button>';
+    document.body.appendChild(banner);
+    banner.querySelector('button').addEventListener('click', () => {
+      localStorage.setItem('mw_cookie_ok', '1');
+      banner.classList.add('dismissing');
+      banner.addEventListener('animationend', () => banner.remove(), { once: true });
     });
   }
 });
