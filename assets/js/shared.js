@@ -317,6 +317,15 @@ document.addEventListener('DOMContentLoaded', () => {
     draw();
   }
 
+  const heroLottie = document.querySelector('.hero-lottie');
+  if (heroLottie) {
+    new IntersectionObserver(([entry]) => {
+      if (!heroLottie.dotLottie) return;
+      if (entry.isIntersecting) heroLottie.dotLottie.play();
+      else heroLottie.dotLottie.pause();
+    }).observe(heroLottie);
+  }
+
   const animated = document.querySelectorAll('.service-card, .process-step, .example-card, .pricing-card');
   if (animated.length) {
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
