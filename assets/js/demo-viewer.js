@@ -484,7 +484,7 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
+    function initDemoViewer() {
         const embeddedContainer = document.getElementById('demoViewerEmbed');
         if (embeddedContainer) {
             new DemoViewer('demoViewerEmbed');
@@ -494,5 +494,11 @@
         if (modalTrigger) {
             new DemoModal();
         }
-    });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDemoViewer);
+    } else {
+        initDemoViewer();
+    }
 })();

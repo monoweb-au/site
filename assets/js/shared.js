@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resize();
     window.addEventListener('resize', resize);
 
-    const particles = Array.from({ length: 150 }, () => ({
+    const particles = Array.from({ length: 50 }, () => ({
       x: Math.random() * particleSection.offsetWidth,
       y: Math.random() * particleSection.offsetHeight,
       r: Math.random() * 2 + 0.5,
@@ -511,7 +511,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.querySelectorAll('[data-demo-modal]').forEach(trigger => {
-    trigger.addEventListener('click', () => ga('demo_modal_open'));
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      ga('demo_modal_open');
+      if (document.getElementById('demoModal')) return;
+      const s = document.createElement('script');
+      s.src = 'assets/js/demo-viewer.js';
+      document.head.appendChild(s);
+    });
   });
 
   const pricingSection = document.querySelector('.pricing');
