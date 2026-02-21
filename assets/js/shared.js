@@ -218,31 +218,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (updateActiveNav) updateActiveNav();
   });
 
-  const scrollHint = document.getElementById('scrollHint');
-  if (scrollHint) {
-    scrollHint.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.getElementById('services');
-      if (!target) return;
-      const start = window.pageYOffset;
-      const end = target.offsetTop;
-      const distance = end - start;
-      const duration = 800;
-      let startTime = null;
-
-      const step = (timestamp) => {
-        if (!startTime) startTime = timestamp;
-        const elapsed = timestamp - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease = progress < 0.5
-          ? 4 * progress * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-        window.scrollTo(0, start + distance * ease);
-        if (elapsed < duration) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    });
-  }
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href*="#"]');
+    if (!link || link.hasAttribute('data-demo-modal')) return;
+    const url = new URL(link.href, location.href);
+    if (url.pathname !== location.pathname && url.pathname !== location.pathname.replace(/\/$/, '/index.html')) return;
+    const id = url.hash.slice(1);
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+    history.pushState(null, '', '#' + id);
+  });
 
   const magneticBtns = document.querySelectorAll('.hero .btn-primary');
   magneticBtns.forEach((btn) => {

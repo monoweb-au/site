@@ -2175,11 +2175,11 @@ h1 {
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2224px%22%20viewBox%3D%220%20-960%20960%20960%22%20width%3D%2224px%22%20fill%3D%22%23FFFFFF%22%3E%3Cpath%20d%3D%22m80-80%20200-560%20360%20360L80-80Zm132-132%20282-100-182-182-100%20282Zm370-246-42-42%20224-224q32-32%2077-32t77%2032l24%2024-42%2042-24-24q-14-14-35-14t-35%2014L582-458ZM422-618l-42-42%2024-24q14-14%2014-34t-14-34l-26-26%2042-42%2026%2026q32%2032%2032%2076t-32%2076l-24%2024Zm80%2080-42-42%20144-144q14-14%2014-35t-14-35l-64-64%2042-42%2064%2064q32%2032%2032%2077t-32%2077L502-538Zm160%20160-42-42%2064-64q32-32%2077-32t77%2032l64%2064-42%2042-64-64q-14-14-35-14t-35%2014l-64%2064ZM212-212Z%22%2F%3E%3C%2Fsvg%3E");
 }
 
-.meet-the-builder {
+.about {
     padding: 5rem 5%;
 }
 
-.builder-content {
+.about-content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2189,7 +2189,7 @@ h1 {
     text-align: left;
 }
 
-.builder-photo {
+.about-photo {
     width: 130px;
     height: 130px;
     border-radius: 50%;
@@ -2198,7 +2198,11 @@ h1 {
     flex-shrink: 0;
 }
 
-.builder-text h3 {
+.about-text h2 {
+    margin-top: 0;
+}
+
+.about-text h3 {
     font-family: 'Outfit', sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
@@ -2206,7 +2210,7 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
-.builder-text p {
+.about-text p {
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.7;
@@ -2214,7 +2218,7 @@ h1 {
 }
 
 @media (max-width: 640px) {
-    .builder-content {
+    .about-content {
         flex-direction: column;
         text-align: center;
     }
