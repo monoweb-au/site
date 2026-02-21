@@ -62,6 +62,7 @@ nav {
 }
 
 .logo img {
+    width: auto;
     height: 55px;
 }
 
