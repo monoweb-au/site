@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers - Landscaping</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.offers-section {
+    padding: 110px 5%;
+    background: linear-gradient(135deg, #fefce8 0%, #fef9c3 50%, #fef08a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.offers-section::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: 6%;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(234, 179, 8, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 12s ease-in-out infinite;
+}
+
+.offers-section::after {
+    content: '';
+    position: absolute;
+    bottom: 12%;
+    left: 5%;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(202, 138, 4, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 15s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.offers-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.offers-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.offers-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #ca8a04;
+    margin-bottom: 16px;
+}
+
+.offers-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 900;
+    color: #713f12;
+    margin-bottom: 20px;
+}
+
+.offers-header p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #854d0e;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.offer-card {
+    background: #ffffff;
+    border: 2px solid #fde68a;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.6s ease-out both;
+    position: relative;
+}
+
+.offer-card:nth-child(1) { animation-delay: 0.1s; }
+.offer-card:nth-child(2) { animation-delay: 0.2s; }
+.offer-card:nth-child(3) { animation-delay: 0.3s; }
+
+.offer-card:hover {
+    transform: translateY(-8px);
+    border-color: #eab308;
+    box-shadow: 0 20px 50px rgba(234, 179, 8, 0.2);
+}
+
+.offer-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 2;
+}
+
+.offer-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #fefce8;
+}
+
+.offer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.offer-card:hover .offer-image img {
+    transform: scale(1.08);
+}
+
+.offer-content {
+    padding: 32px;
+}
+
+.offer-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #713f12;
+    margin-bottom: 12px;
+}
+
+.offer-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #854d0e;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.offer-pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.offer-price-old {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #a8a29e;
+    text-decoration: line-through;
+}
+
+.offer-price-new {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ca8a04;
+}
+
+.offer-expiry {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #a16207;
+    margin-bottom: 24px;
+}
+
+.offer-cta {
+    display: inline-block;
+    padding: 14px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.offer-cta:hover {
+    background: linear-gradient(135deg, #ca8a04 0%, #a16207 100%);
+    transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .offers-section { padding: 70px 5%; }
+    .offers-grid { grid-template-columns: 1fr; }
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+}
+</style>
+</head>
+<body>
+
+<section class="offers-section">
+    <div class="offers-container">
+        <div class="offers-header">
+            <div class="offers-label">Limited Time</div>
+            <h2>Special Offers</h2>
+            <p>Take advantage of our seasonal deals before they expire</p>
+        </div>
+
+        <div class="offers-grid">
+            <div class="offer-card">
+                <span class="offer-badge">Save 20%</span>
+                <div class="offer-image">
+                    <img src="https://picsum.photos/600/340?random=701" alt="Spring Garden Package">
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Spring Garden Package</h3>
+                    <p class="offer-description">Full garden tidy-up including mowing, edging, hedge trimming, and green waste removal</p>
+                    <div class="offer-pricing">
+                        <span class="offer-price-old">$450</span>
+                        <span class="offer-price-new">$360</span>
+                    </div>
+                    <p class="offer-expiry">Offer ends 30 November 2025</p>
+                    <a class="offer-cta">Get This Deal</a>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <span class="offer-badge">Popular</span>
+                <div class="offer-image">
+                    <img src="https://picsum.photos/600/340?random=702" alt="Monthly Maintenance Plan">
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Monthly Maintenance Plan</h3>
+                    <p class="offer-description">Fortnightly mowing, quarterly hedge trim, and seasonal planting — lock in this year's rate</p>
+                    <div class="offer-pricing">
+                        <span class="offer-price-old">$180/mo</span>
+                        <span class="offer-price-new">$149/mo</span>
+                    </div>
+                    <p class="offer-expiry">First 3 months discounted</p>
+                    <a class="offer-cta">Get This Deal</a>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <span class="offer-badge">New</span>
+                <div class="offer-image">
+                    <img src="https://picsum.photos/600/340?random=703" alt="Free Design Consultation">
+                </div>
+                <div class="offer-content">
+                    <h3 class="offer-title">Free Design Consultation</h3>
+                    <p class="offer-description">Book a landscape design consultation and get a custom plan for your outdoor space — no obligation</p>
+                    <div class="offer-pricing">
+                        <span class="offer-price-old">$150</span>
+                        <span class="offer-price-new">Free</span>
+                    </div>
+                    <p class="offer-expiry">Available for new customers</p>
+                    <a class="offer-cta">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

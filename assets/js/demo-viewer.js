@@ -348,10 +348,15 @@
         }
     `;
     
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = styles;
-    document.head.appendChild(styleSheet);
-    
+    let stylesInjected = false;
+    function injectStyles() {
+        if (stylesInjected) return;
+        stylesInjected = true;
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = styles;
+        document.head.appendChild(styleSheet);
+    }
+
     class DemoViewer {
         constructor(containerId) {
             this.containerId = containerId;
@@ -363,6 +368,7 @@
             const container = document.getElementById(this.containerId);
             if (!container) return;
 
+            injectStyles();
             const html = this.generateHTML();
             container.innerHTML = html;
 
@@ -389,7 +395,7 @@
                     <p></p>
                 </div>
                 <div class="demo-viewer-frame-container">
-                    <iframe class="demo-viewer-iframe" src="" frameborder="0"></iframe>
+                    <iframe class="demo-viewer-iframe" src="" frameborder="0" loading="lazy"></iframe>
                 </div>
             `;
         }
