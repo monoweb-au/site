@@ -110,11 +110,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  let mouseTicking = false;
   document.addEventListener('mousemove', (e) => {
+    if (mouseTicking) return;
+    mouseTicking = true;
     const x = (e.clientX / window.innerWidth) * 100;
     const y = (e.clientY / window.innerHeight) * 100;
-    document.body.style.setProperty('--mouse-x', `${x}%`);
-    document.body.style.setProperty('--mouse-y', `${y}%`);
+    requestAnimationFrame(() => {
+      document.body.style.setProperty('--mouse-x', `${x}%`);
+      document.body.style.setProperty('--mouse-y', `${y}%`);
+      mouseTicking = false;
+    });
   });
 
   const progressBar = document.getElementById('progressBar');
@@ -283,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
       o: Math.random() * 0.5 + 0.15,
     }));
 
+    let particleAnimId = null;
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((p) => {
@@ -295,8 +302,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
       });
-      requestAnimationFrame(draw);
+      particleAnimId = requestAnimationFrame(draw);
     };
+
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (particleAnimId === null) draw();
+      } else if (particleAnimId !== null) {
+        cancelAnimationFrame(particleAnimId);
+        particleAnimId = null;
+      }
+    }).observe(particleSection);
+
     draw();
   }
 
@@ -312,15 +329,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Fade-in section headings on scroll
   document.querySelectorAll('.section-header h2').forEach(h2 => {
-    h2.style.opacity = '0';
-    h2.style.transform = 'translateY(16px)';
-    h2.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (!entry.isIntersecting || h2.dataset.revealed) return;
-        h2.dataset.revealed = '1';
-        h2.style.opacity = '1';
-        h2.style.transform = 'translateY(0)';
+        if (entry.isIntersecting && !h2.classList.contains('revealed')) {
+          h2.classList.add('revealed');
+        }
       });
     }, { threshold: 0.5 });
     obs.observe(h2);
