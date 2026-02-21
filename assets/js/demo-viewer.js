@@ -405,6 +405,7 @@
             const section = sections.find(s => s.id === sectionId);
             if (section) {
                 this.loadSection(section);
+                if (typeof gtag === 'function') gtag('event', 'demo_section_change', { section: section.name });
             }
         }
 

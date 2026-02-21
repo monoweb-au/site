@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const isSimpleNav = document.body.classList.contains('simple-nav');
   const isPricingPage = document.body.classList.contains('options-page');
+  const ga = (event, params) => { if (typeof gtag === 'function') gtag('event', event, params); };
 
   const headerFullNav = `
     <nav>
@@ -173,11 +174,16 @@ document.addEventListener('DOMContentLoaded', () => {
     updateActiveNav();
   }
 
+  const scrollDepthHit = {};
   window.addEventListener('scroll', () => {
     if (progressBar) {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       progressBar.style.transform = `scaleX(${height > 0 ? winScroll / height : 0})`;
+      const pct = height > 0 ? Math.round((winScroll / height) * 100) : 0;
+      [25, 50, 75, 100].forEach(t => {
+        if (pct >= t && !scrollDepthHit[t]) { scrollDepthHit[t] = true; ga('scroll_depth', { percent: t }); }
+      });
     }
 
     if (window.pageYOffset > 300) scrollTopBtn.classList.add('visible');
@@ -387,7 +393,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = question.parentElement;
         const isActive = item.classList.contains('active');
         document.querySelectorAll('.faq-item').forEach((faqItem) => faqItem.classList.remove('active'));
-        if (!isActive) item.classList.add('active');
+        if (!isActive) {
+          item.classList.add('active');
+          ga('faq_open', { question: question.textContent.trim() });
+        }
       });
     });
   }
@@ -455,6 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (data.success) {
           form.reset();
+          ga('form_submit', { source: formData.get('source') });
 
           const popup = document.createElement('div');
           popup.className = 'form-confirmation';
@@ -475,10 +485,10 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.addEventListener('transitionend', () => popup.remove(), { once: true });
           }, 6000);
         } else {
-          showNotification('Something went wrong. Please try again or email hello@monoweb.com.au');
+          showNotification('Something went wrong. Please try again or email support@monoweb.com.au');
         }
       } catch {
-        showNotification('Something went wrong. Please try again or email hello@monoweb.com.au');
+        showNotification('Something went wrong. Please try again or email support@monoweb.com.au');
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
@@ -486,6 +496,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
+  }
+
+  // GA event tracking
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-primary');
+    if (btn) ga('cta_click', { label: btn.textContent.trim() });
+  });
+
+  document.querySelectorAll('.btn-secondary').forEach(btn => {
+    if (btn.getAttribute('href')?.includes('options.html')) {
+      btn.addEventListener('click', () => ga('inclusions_click'));
+    }
+  });
+
+  document.querySelectorAll('[data-demo-modal]').forEach(trigger => {
+    trigger.addEventListener('click', () => ga('demo_modal_open'));
+  });
+
+  const pricingSection = document.querySelector('.pricing');
+  if (pricingSection) {
+    const pricingObs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { ga('pricing_view'); pricingObs.disconnect(); }
+    }, { threshold: 0.1 });
+    pricingObs.observe(pricingSection);
   }
 
   if (!localStorage.getItem('mw_cookie_ok')) {
