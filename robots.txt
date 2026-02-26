@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /demos/
+Disallow: /assets/components/
 
 Sitemap: https://www.monoweb.com.au/sitemap.xml
